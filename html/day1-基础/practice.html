@@ -5,8 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-    新的内容
-</div>
+
+<script>
+    var length=10;
+    function fn(){
+        console.log(this.length);
+    }
+    var obj = {
+        length:5,
+        method: function (fn) {
+
+            fn(console.log(this));
+            arguments[0]();
+        }
+    };
+    obj.method(fn);
+    obj.method(fn, 123);
+</script>
 </body>
 </html>
