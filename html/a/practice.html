@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            width: 100px;
+            /*height: 100px;*/
+            background-color: #2e91b3;
+            margin-top: 200px;
+            overflow: ;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span>
+        efnsdjfksaf
+    </span>
+    <h1>bjkasdf</h1>
+</div>
+
+<script>
+    var length=10;
+    function fn(){
+        console.log(this.length);
+    }
+    var obj = {
+        length:5,
+        method: function (fn) {
+
+            fn(console.log(this));
+            arguments[0]();
+        }
+    };
+    obj.method(fn);
+    obj.method(fn, 123);
+</script>
+</body>
+</html>
