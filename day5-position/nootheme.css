@@ -45,22 +45,130 @@ nav{
     align-items: center;
     padding: 0 50px;
 }
-nav ul{
+nav>ul{
     margin-left: auto;
 }
-nav ul li{
+nav>ul>li{
     float: left;
     margin-left: 30px;
+    position: relative;
+    overflow: hidden;
 }
-nav ul li a{
+nav>ul>li:hover{
+    overflow: visible;
+}
+
+nav>ul>li a{
     font-size: 16px;
     color: #212121;
 }
+nav ul li a:hover{
+    color: rgba(0,128,0,.6);
+}
+.lione{
+    position: absolute;
+    top:70px;
+    left: -20px;
+    -webkit-transition: all .3s linear;
+}
+nav>ul>li:hover .lione{
+    top: 50px;
+}
+.lioneb .lione{
+    left: -100px;
+}
+
+.lione>li{
+    /*display:inline-block;*/
+    width: 200px;
+    height: 20px;
+    line-height: 20px;
+    padding: 15px;
+    border-top: 1px solid rgba(128,128,128,.3);
+    background-color: white;
+
+}
+.lione>li>a{
+    -webkit-transition: all .3s linear;
+}
+.lione>li:hover a{
+    margin-left: 10px;
+    color:  rgba(0,128,0,.6);;
+}
+.shop{
+    position: absolute;
+    top: 70px;
+    right:-280px;
+    border-top: 1px solid rgba(128,128,128,.3);
+    width: 1200px;
+    height: 400px;
+    background-color: white;
+    z-index: 50;
+    -webkit-transition: all .3s linear;
+}
+nav>ul>li:hover .shop{
+    top: 50px;
+}
+
+
+.two.three{
+    border-right:1px solid rgba(128,128,128,0);
+}
+.one,.two{
+    float: left;
+    width: 265px;
+    height: 380px;
+    padding: 15px;
+    border-right:1px solid rgba(128,128,128,.3);
+}
+.shop ul>li:nth-of-type(2n){
+    width: 260px;
+    border-bottom:1px solid rgba(128,128,128,.3);
+    margin-bottom:10px;
+}
+.one>ul>li{
+    height: 20px;
+    color: rgba(128,128,128,.9);
+
+}
+.two>ul>li{
+    height: 50px;
+}
+.leftone{
+    float: left;
+}
+.leftone img{
+    width: 70px;
+    height: 70px;
+}
+.rone{
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.rone  h5{
+    color: rgba(128,128,128,.9);
+    font-size: 18px;
+    font-weight: 400;
+}
+.rone p{
+    color: #45b284;
+}
+
+
+.shop h3{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: "Lato",sans-serif;
+    color:#212121;
+    margin-bottom: 20px;
+}
+
+
 #img img{
     position: relative;
     margin-top: 90px;
     margin-left: 120px;
-
 }
 .kuaijie{
     position: absolute;
@@ -147,7 +255,21 @@ nav ul li a{
     text-transform: uppercase;
     margin-right: 21px;
     margin-top: 20px;
+    -webkit-transition: all .3s linear;
+    overflow: hidden;
 }
+.list:hover{
+    border:  1px solid rgba(0,128,0,.3);
+}
+.gaodu{
+    -webkit-transition: all .3s linear;
+}
+.list:hover .gaodu{
+
+    -webkit-transform: scale(1.1,1.1);
+}
+
+
 .icon{
     font-family: myfont;
 

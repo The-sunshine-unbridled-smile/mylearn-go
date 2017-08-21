@@ -285,7 +285,7 @@ letter-spacing: 2px;
 }
 #nine{
     width: 449px;
-    height: 280px;
+    height: 250px;
     overflow: hidden;
 }
 #nine>img{
@@ -387,7 +387,7 @@ letter-spacing: 2px;
 #new4{
     width: 449px;
     height: 561px;
-    margin-top: 23px;
+    /*margin-top: 23px;*/
 }
 #new4 img{
     width: 449px;
