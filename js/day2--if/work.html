@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /* 作业1.模拟自动饮料机
+
+     要求：
+
+     1.当输入0时，模拟自动饮料机停止运行
+
+     2.自动饮料机运行的过程中，当输入1-5时候给出对应的饮料(1.可口可乐 2.雪碧 3.鲜橙多 4.冰红茶 5.矿泉水)
+
+     输入其他值的时候给出非法操作提示，并提示重新输入*/
+    /*    var a = parseInt(window.prompt("请输入你所需饮料对应的编号'\n'1:可口可乐；2：雪碧；3：鲜橙多；4：冰红茶；5：矿泉水"));
+     switch (a) {
+     case 0:
+     alert("停止运行");
+     break;
+     case 1:
+     alert("可口可乐");
+     break;
+     case 2:
+     alert("雪碧");
+     break;
+     case 3:
+     alert("鲜橙多");
+     break;
+     case 4:
+     alert("冰红茶");
+     break;
+     case 5:
+     alert("矿泉水");
+     break;
+     default:
+     alert("非法操作，请重新输入")
+
+     }*/
+
+
+    /* 作业2：作业7：水仙花数
+     例：水仙花数 153=1*1*1+5*5*5+3*3*3
+     输入一个数，判断是不是水仙花数*/
+    /* var a=parseInt(window.prompt("请输入一个数"));
+     var gewei=parseInt(a%100%10);
+     var shiwei=parseInt(a%100/10);
+     var baiwei=parseInt(a/100);
+     if(baiwei*baiwei*baiwei+shiwei*shiwei*shiwei+gewei*gewei*gewei==a){
+     alert("这个数是水仙花数")
+     }else {
+     alert("这个数不是水仙花数")
+     };*/
+
+
+
+
+    /*  作业3：判断三角形
+     根据三角形的三条边长(长、中、短三条边)，来判断三角形类型。
+     提示：
+     (1) 一个三角形的边应该都为正数
+     (2) 一个三角形的边都应该满足三角形条件：两边之和大于第三边
+     钝角三角形：任意两边的平方和小于第三边的平方，如：a*a+b*b<c*c*/
+/*    var a = parseInt(window.prompt("请输入三角形的第一边"));
+    var b = parseInt(window.prompt("请输入三角形的第二边"));
+    var c = parseInt(window.prompt("请输入三角形的第三边"));
+    if((a>0&&b>0&&c>0)&&a+b>c||a+c>b||b+c>a){
+        if(a*a+b*b<c*c||a*a+c*c<b*b||b*b+c*c<a*a){
+            alert("钝角三角形");
+        }else if(a*a+b*b>c*c||a*a+c*c>b*b||b*b+c*c>a*a){
+            alert("锐角三角形");
+        }else if(a*a+b*b==c*c||a*a+c*c==b*b||b*b+c*c==a*a){
+            alert("直角角三角形");
+        }
+    }*/
+
+
+
+
+    /*  作业4：按年/月/日的顺序输入一个任意日期，在页面输出：这是这一年的第几天
+     如：2016年1月2日 是2016年的第2天，而2016年12月31日则是2016年的第366天（因为闰年会多一天）*/
+    var years = parseInt(window.prompt());
+    var month = parseInt(window.prompt());
+    var days = parseInt(window.prompt());
+    var myDays=31;
+    var myMid=30;
+    if (years % 4 == 0 && years % 100 != 0 || years % 400 == 0) {
+        myFun(29);
+    }else {
+        myFun(28);
+    }
+    function  myFun(myMin) {
+        if (month >= 1 && month <= 12 && days >= 1 && days <= myDays) {
+            switch (month) {
+                case 1 :
+                    console.log("这是今年的第" + days + "天");
+                    break;
+                case 2 :
+                    console.log("这是今年的第" + (myDays + days) + "天");
+                    break;
+                case 3 :
+                    console.log("这是今年的第" + (myDays + myMin + days) + "天");
+                    break;
+                case 4 :
+                    console.log("这是今年的第" + (myDays * 2 + myMin + days) + "天");
+                    break;
+                case 5 :
+                    console.log("这是今年的第" + (myDays * 2 + myMid + myMin + days) + "天");
+                    break;
+                case 6 :
+                    console.log("这是今年的第" + (myDays * 3 + myMid + myMin + days) + "天");
+                    break;
+                case 7 :
+                    console.log("这是今年的第" + (myDays * 3 + myMid * 2 + myMin + days) + "天");
+                    break;
+                case 8 :
+                    console.log("这是今年的第" + (myDays * 4 + myMid * 2 + myMin + days) + "天");
+                    break;
+                case 9 :
+                    console.log("这是今年的第" + (myDays * 5 + myMid * 2 + myMin + days) + "天");
+                    break;
+                case 10 :
+                    console.log("这是今年的第" + (myDays * 5 + myMid * 3 + myMin + days) + "天");
+                    break;
+                case 11 :
+                    console.log("这是今年的第" + (myDays * 6 + myMid * 3 + myMin + days) + "天");
+                    break;
+                case 12 :
+                    console.log("这是今年的第" + (myDays * 6 + myMid * 4 + myMin + days) + "天");
+                    break;
+                default:
+                    console.log("非法操作，重新输入");
+            }
+        }
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>
