@@ -86,53 +86,49 @@
     var years = parseInt(window.prompt());
     var month = parseInt(window.prompt());
     var days = parseInt(window.prompt());
-    var myDays=31;
-    var myMid=30;
     if (years % 4 == 0 && years % 100 != 0 || years % 400 == 0) {
         myFun(29);
     }else {
         myFun(28);
-
-
     }
     function  myFun(myMin) {
-        if (month >= 1 && month <= 12 && days >= 1 && days <= myDays) {
+        if (month >= 1 && month <= 12 && days >= 1 && days <= 31) {
             switch (month) {
                 case 1 :
                     console.log("这是今年的第" + days + "天");
                     break;
                 case 2 :
-                    console.log("这是今年的第" + (myDays + days) + "天");
+                    console.log("这是今年的第" + (31 + days) + "天");
                     break;
                 case 3 :
-                    console.log("这是今年的第" + (myDays + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 + myMin + days) + "天");
                     break;
                 case 4 :
-                    console.log("这是今年的第" + (myDays * 2 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 2 + myMin + days) + "天");
                     break;
                 case 5 :
-                    console.log("这是今年的第" + (myDays * 2 + myMid + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 2 + 30 + myMin + days) + "天");
                     break;
                 case 6 :
-                    console.log("这是今年的第" + (myDays * 3 + myMid + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 3 + 30 + myMin + days) + "天");
                     break;
                 case 7 :
-                    console.log("这是今年的第" + (myDays * 3 + myMid * 2 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 3 + 30 * 2 + myMin + days) + "天");
                     break;
                 case 8 :
-                    console.log("这是今年的第" + (myDays * 4 + myMid * 2 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 4 + 30 * 2 + myMin + days) + "天");
                     break;
                 case 9 :
-                    console.log("这是今年的第" + (myDays * 5 + myMid * 2 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 5 + 30 * 2 + myMin + days) + "天");
                     break;
                 case 10 :
-                    console.log("这是今年的第" + (myDays * 5 + myMid * 3 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 5 + 30 * 3 + myMin + days) + "天");
                     break;
                 case 11 :
-                    console.log("这是今年的第" + (myDays * 6 + myMid * 3 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 6 + 30 * 3 + myMin + days) + "天");
                     break;
                 case 12 :
-                    console.log("这是今年的第" + (myDays * 6 + myMid * 4 + myMin + days) + "天");
+                    console.log("这是今年的第" + (31 * 6 + 30 * 4 + myMin + days) + "天");
                     break;
                 default:
                     console.log("非法操作，重新输入");
