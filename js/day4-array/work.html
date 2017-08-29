@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /* 1.猜数字游戏，有一个0-100随机数 玩家有5次输入的机会猜， 每次猜一次，都要将结果告诉玩家是小了，还是大了
+     如果在5次机会内猜中，输出“聪明”，程序结束.如果5次机会用完 程序直接结束。*/
+    /* var a=parseInt(Math.random()*101);
+     var b;
+     for(var i=0;i<5;i++){
+     b=parseInt(window.prompt("请输入0-100的任意一个整数"));
+     if(a==b){
+     alert("聪明");
+     }else if(a>b){
+     alert("小了");
+     }else {
+     alert("大了");
+     }
+     }*/
+
+
+
+
+
+    /*  2.有一个4个长度的数组，每个位置装有0-9之间的随机数字，有10次输入的机会来猜每个位置的上的数是什么，
+     每次猜完4个数字以后都要给出提示，正确几个 错误几个，
+     只有位置和数字完全正确才算正确，其他情况全视为错误。*/
+    /*var arr = new Array(4);
+    for (var a = 0; a < 4; a++) {
+        arr[a] = parseInt(Math.random() * 10);
+    }
+    var arr2=[];
+        for (var i = 0; i < 10; i++) {
+            var temp = 0;
+            for (var j = 0; j < 4; j++) {
+                arr2[j] = parseInt(window.prompt("请输入0-9之间的任意整数"));
+                if (arr2[j] == arr[j]) {
+                    temp++;
+                }
+            }
+            if (temp == 4) {
+                alert("正确");
+                break;
+            } else {
+                alert("正确" + temp + "个；错误：" + (4 - temp) + "个");
+            }
+        }*/
+
+
+    /* 3. 根据双色球摇奖规则，产生6个红球1个蓝球；红球范围1-33， 蓝球范围1-16. 红球不能有重复的产生。
+     思路：每次产生一个随机球，存入数组中，下一次产生的随机球，要和数组中的进行比较，如果有相等的，
+     则重新产生一个号（循环变量要减1），反之继续存入数组；直到产生6个球；蓝球单独产生；最后输出所有球。*/
+     var blue=parseInt(Math.random()*16+1);
+    var red=[];
+    for(var i=0;i<6;i++){
+        red[i]=parseInt(Math.random()*33+1);
+    }
+    for(var j=red.length-1;j>=1;j--){
+        for(var k=red.length-2;k>=0;k--){
+            if(red[j]==red[k]&&j!=k){
+                red.splice(j,1,(parseInt(Math.random()*33+1)));
+            }
+        }
+    }
+    alert("双色球的号码为："+red+","+blue);
+
+
+
+
+</script>
+</body>
+</html>
