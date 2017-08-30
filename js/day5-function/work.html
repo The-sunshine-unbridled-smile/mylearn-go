@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /* 认真理解，函数什么时候需要参数，什么时候需要返回值,将下列作业用函数形式完成
+     1.输入半径，高，求圆柱体的面积，和体积，把体积、面积返回给函数调用者，然后由调用者输出面积和体积大小.
+     圆面积：PI*R*R    圆周长：2*PI*R*/
+
+   /* var r = parseInt(window.prompt("请输入圆的半径"));
+    var h = parseInt(window.prompt("请输入圆的高"));
+    document.write("圆的面积是：" + myS(r, h) + "<br/>" + "圆的体积是：" + myV(r, h));
+    function myS(r, h) {
+        return Math.PI * r * r * 2 + 2 * Math.PI * r * h;      //圆柱体的面积
+    }
+    function myV(r, h) {
+        return Math.PI * r * r * h;            //圆柱体的体积
+    }*/
+
+    /* 2.输入一个三位数，判定它是否是水仙花数（输出是否是水仙花数的结果必须由调用者来输出，不能由函数内部输出）
+     g=n%10;
+     s=parseInt(n/10)%10;
+     b=parseInt(n/100)*/
+
+   /* var inputNum = parseInt(window.prompt("请输入一个三位数"));
+    var gewei = parseInt(inputNum % 10);
+    var shiwei = parseInt(inputNum / 10 % 10);
+    var baiwei = parseInt(inputNum / 100);
+    document.write(num(inputNum));
+    function num(a) {
+        if (gewei * gewei * gewei + shiwei * shiwei * shiwei + baiwei * baiwei * baiwei == inputNum) {
+            return "是水仙花数";
+        } else {
+            return "不是水仙花数";
+        }
+    }*/
+
+
+    /* 3.输入三个数（0-9之间） 找出最大数和最小数,然后组成最大的三位数。*/
+   /* var num1 = parseInt(window.prompt("请输入0-9之间的第1位数"));
+    var num2 = parseInt(window.prompt("请输入0-9之间的第2位数"));
+    var num3 = parseInt(window.prompt("请输入0-9之间的第3位数"));
+    var max, mid, min, maxNum;
+    document.write("这个最大的三位数是：" + myNum());
+    function myNum() {
+        if (num1 > num2) {
+            max = num1;
+            min = num2;
+        } else {
+            max = num2;
+            min = num1;
+        }
+        if (max < num3) {
+            max = num3;
+        }
+        if (min > num3) {
+            min = num3;                 //找出最大值，最小值
+        }
+        mid = num1 + num2 + num3 - min - max;    //中间值
+        maxNum = max * 100 + mid * 10 + min;        //最大的三位数
+        return maxNum;
+    }*/
+
+    /*4.提供一个函数，此函数用来打印由“*”组成的矩形，但是行数和列数，
+     做为形参，由调用者来给具体的行数和列数，最后由函数打印出对应行数列数大小的矩形*/
+   /* myRectangle(5, 4);
+    function myRectangle(h, l) {
+        for (var i = 1; i <= h; i++) {
+            for (var j = 1; j <= l; j++) {
+                document.write("*")
+            }
+            document.write("<br/>")
+        }
+    }*/
+
+    /* 5.如4题一样，最后打出等腰三角形*/
+    /*myFun(3, 10);
+    function myFun(h, l) {
+        for (var i = 1; i <= h; i++) {
+            for (var j = l; j >= i; j--) {
+                document.write("&ensp;");
+            }
+            for (var k = 1; k <= 2 * i - 1; k++) {
+                document.write("*");
+            }
+            document.write("<br/>");
+        }
+    }*/
+
+
+    /* 6.输入2个日期 （年月日），计算两个日期相差多少天？(改写成函数，体会重用原则)*/
+    /*var year1=parseInt(window.prompt("请输入开始年"));
+    var month1=parseInt(window.prompt("请输入开始月"));
+    var day1=parseInt(window.prompt("请输入开始日"));
+    var year2=parseInt(window.prompt("请输入结束年"));
+    var month2=parseInt(window.prompt("请输入结束月"));
+    var day2=parseInt(window.prompt("请输入结束日"));
+
+     var tatol1= myDate(year1,month1,day1);
+    var tatol2=myDate(year2,month2,day2);
+
+    if (year1 == year2) {
+        alert("相差" + (tatol2 - tatol1) + "天");         //如果是同年相差的天数
+    } else {
+        var ruinian=0;
+        for (var i = year1; i < year2; i++) {
+            if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+                ruinian++;
+            }
+        }                                                      //不同年相差的天数
+        alert("相差" +( 365 - tatol1 + tatol2 + (year2 - year1 - 1) * 365 + ruinian)+ "天")
+    }
+    function myDate(year,month,day) {
+        var tatol;
+        switch (month) {
+            case 1:tatol = day;break;
+            case 2:tatol = day + 31;break;
+            case 3:tatol = day + 59;break;
+            case 4:tatol = day +90; break;
+            case 5:tatol = day +120; break;
+            case 6:tatol = day +151; break;
+            case 7:tatol = day +181; break;
+            case 8:tatol = day + 212; break;
+            case 9:tatol = day + 243;break;
+            case 10:tatol = day +273;break;
+            case 11:tatol = day + 304; break;
+            case 12:tatol = day +334;break;
+        }
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+            if (month > 2) {
+                tatol++;
+            }
+        }
+        return tatol;
+    }*/
+
+
+    /* 7. 写一个函数，有唯一参数接口1个，参数类型为number; 返回值为1，表示是质数；返回值为0，表示不是质数。*/
+    document.write(myNumber(2));
+    function myNumber(number) {
+            for (var i = 2; i < number; i++) {
+                if (number%i==0){
+                    return 0;
+                }
+            }
+            return 1;
+    }
+</script>
+
+</body>
+</html>
