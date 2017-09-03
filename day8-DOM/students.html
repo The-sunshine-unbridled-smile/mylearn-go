@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //ALL学生信息数组
+    var studentInfo = [[1, "test1", "男", "20", "s166"], [2, "test2", "女", "25", "s166"], [3, "test3", "男", "23", "s166"]];
+    /**
+     * 获取最大的学号
+     */
+    function getMaxStudentNo() {
+        var max = 0;
+        for (var i = 0; i < studentInfo.length; i++) {
+           var  studentNo = studentInfo[i][0];
+            if (studentNo > max) {
+                max = studentNo;
+            }
+        }
+        return max;
+    }
+    showUI();
+    /**
+     *
+     系统主界面
+     */
+
+    function showUI() {
+        var inputM = parseInt(window.prompt("请选择你的操作：\n 1:新增学员信息；；2：修改学员信息；3：删除学员信息；4：查询学员信息"));
+        if (inputM == 1) {
+            newAdd();
+        } else if (inputM == 2) {
+            update();
+        } else if (inputM == 3) {
+            _delete();
+        } else if (inputM == 4) {
+            query();
+        } else {
+            alert("你输入数字为" + inputM + "输入有误，请重新输入");
+            showUI();
+        }
+    }
+    /*
+     *
+     新增学员信息
+     */
+    function newAdd() {
+        if (studentInfo.length > 30) {
+            alert("班级人数已满，无法新增学员");
+            return;
+        }
+        var name = window.prompt("请输入学生姓名");
+        var sex = window.prompt("请输入学生性别");
+        var age = window.prompt("请输入学生年龄");
+        var _class = window.prompt("请输入学生班级");
+        var student = [parseInt(getMaxStudentNo()) + 1, name, sex, age, _class];
+        studentInfo.push(student);
+        showUI();
+    }
+    /*
+     *
+     修改学员信息
+     */
+
+    function update() {
+        query();
+       var updateStudent=parseInt(window.prompt("请输入需要修改学员的学号"));
+        for (var i = 0; i < studentInfo.length; i++) {
+            if( updateStudent == parseInt(studentInfo[i][0])){
+                alert(studentInfo[i]);
+                var name1 = window.prompt("请输入学生姓名");
+                var sex1 = window.prompt("请输入学生性别");
+                var age1 = window.prompt("请输入学生年龄");
+                var _class1 = window.prompt("请输入学生班级");
+                var student1 = [updateStudent, name1, sex1, age1, _class1];
+                studentInfo[i]=student1;
+                alert("修改成功，修改后学员信息为 \n"+student1);
+                showUI()
+            }
+        }
+    }
+
+    /*
+     *
+     删除学员信息
+     */
+    function _delete() {
+        var deleteStudent=parseInt(window.prompt("请输入需要删除学员的学号"));
+        for (var i = 0; i < studentInfo.length; i++) {
+            if(  deleteStudent== parseInt(studentInfo[i][0])){
+                if( confirm(studentInfo[i]+"\n 确认删除学生信息？")){
+                    studentInfo[i]="";
+                    alert("删除学员信息成功");
+                    showUI();
+                }
+            }
+        }
+    }
+
+    /**
+     * 查询学员信息
+     */
+    function query() {
+        var st = "学号 姓名 性别 年龄 班级 \n";
+        for (var i = 0; i < studentInfo.length; i++) {
+            st = st + studentInfo[i] + "\n";
+        }
+        alert(st);
+        return st;
+    }
+</script>
+</body>
+</html>

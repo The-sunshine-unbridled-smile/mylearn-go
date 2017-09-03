@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #see{
+            width: 980px;
+            height: 330px;
+            position: absolute;
+            overflow: hidden;
+
+        }
+        #fixtop{
+            width: 980px;
+            height: 70px;
+            background: url("img/topbg.png") black;
+            position: absolute;
+            top: -30px;
+            left: 0;
+            z-index: 2;
+        }
+       #fixbottom{
+           width: 980px;
+           height: 50px;
+           background: url("img/bottombg.png") black;
+           position: absolute;
+           bottom:0 ;
+           left: 0;
+           z-index: 2;
+       }
+        #myPrev,#myNext{
+            font-size: 50px;
+            color: white;
+            z-index: 2;
+        }
+        #myPrev{
+            position: absolute;
+            left: 0;
+            top: 130px;
+        }
+        #myNext{
+            position: absolute;
+            right: 0;
+            top: 130px;
+        }
+        #myList{
+            position: absolute;
+            z-index: 1;
+            width: 7840px;
+            height: 330px;
+            -webkit-transition: all .3s linear;
+        }
+        #myList img{
+            width: 980px;
+            height: 330px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="see">
+    <div id="fixtop"></div>
+    <div id="fixbottom"></div>
+    <div id="myPrev" onclick="myPrev()">&lt;</div>
+    <div id="myNext" onclick="myNext()">&gt;</div>
+   <div id="myList" style="left: -980px;">
+       <img src="img/1.jpg" alt="">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+        <img src="img/5.jpg" alt="">
+        <img src="img/6.jpg" alt="">
+        <img src="img/7.jpg" alt="">
+        <img src="img/8.jpg" alt="">
+
+    </div>
+</div>
+<script>
+
+    window.onload = function() {
+        var myList = document.getElementById('myList');
+        var myPrev = document.getElementById('myPrev');
+        var myNext = document.getElementById('myNext');
+        function lunbo(yidong) {
+            var newLeft = parseInt(myList.style.left) + yidong;
+            myList.style.left = newLeft + "px";
+            if(newLeft<-6860){
+                myList.style.left = -980 + "px";
+            }
+            if(newLeft>-980){
+                myList.style.left = -6860 + "px";
+            }
+        }
+        myPrev.onclick = function() {
+            lunbo(980);
+        };
+        myNext.onclick = function() {
+            lunbo(-980);
+        }
+    };
+    
+</script>
+</body>
+</html>

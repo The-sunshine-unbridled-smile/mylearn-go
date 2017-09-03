@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="dom2.css">
+</head>
+<body>
+<div id="main">
+    <p>单击下面的“添加”按钮添加标签</p>
+    <div id="null">
+    </div>
+    <div>
+        <button id="all" onclick="clrAll()">全部清除</button>
+    </div>
+    <div id="big">
+        <div class="little">
+            <span>John Doe</span><button onclick="myClick(this)">添加</button>
+        </div>
+        <div class="little">
+            <span>Jone Doe</span><button onclick="myClick(this)">添加</button>
+        </div>
+        <div class="little">
+            <span>Dan Doe</span><button onclick="myClick(this)">添加</button>
+        </div>
+        <div class="little">
+            <span>Danielle Doe</span><button onclick="myClick(this)">添加</button>
+        </div>
+        <div class="little">
+            <span> Mike Doe </span><button onclick="myClick(this)">添加</button>
+        </div>
+        <div class="little">
+            <span>Leah Doe</span><button onclick="myClick(this)">添加</button>
+        </div>
+    </div>
+</div>
+<script>
+
+    function myClick(t) {
+      // var myBtn = document.getElementsByTagName("button");
+        var myNull = document.getElementById("null");
+        var chils = t.previousSibling.innerHTML;
+        var newDiv= document.createElement("div");
+        newDiv.className = "newDiv";
+
+        var newText= document.createTextNode(chils);
+        myNull.appendChild(newDiv);
+        newDiv.appendChild(newText);
+
+      //动态创建一个a标签 点击它删除其所在的div 即newDiv
+        var newA=document.createElement("a");
+        var myA=document.createTextNode("   X");
+        newA.appendChild(myA);
+        newDiv.appendChild(newA);
+
+//删除我动态创建的div  下面两种办法都可以  呀呀  好开森 继续加油哦！！
+        newA.onclick=function() {
+            newA.parentNode.remove();
+        }
+    }
+      /*  newA.onclick=function() {
+            newDiv.remove();
+        }
+    }*/
+
+//删除所有的div
+function clrAll() {
+    var myNull=document.getElementById("null");
+    myNull.innerHTML="";
+}
+
+
+
+
+
+</script>
+</body>
+</html>

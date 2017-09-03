@@ -1,0 +1,152 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    width: 1171px;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 89px;
+    background-color: white;
+    border-bottom: 2px solid darkgrey;
+}
+
+nav > h1 {
+    width: 100px;
+    height: 80px;
+    float: left;
+}
+
+nav > h1 > img {
+    width: 100px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+nav > ul {
+    float: left;
+}
+
+nav > div {
+    float: left;
+}
+
+nav > ul > li {
+    list-style: none;
+    float: left;
+
+}
+
+nav > ul > li > a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: block;
+    height: 80px;
+    line-height: 80px;
+
+    padding: 0 32px;
+}
+
+nav > div > input {
+    width: 238px;
+    height: 18px;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid darkgrey;
+    border-radius: 38px;
+    padding: 10px 30px;
+}
+
+nav > div#login {
+    float: right;
+}
+
+nav > div#login > a {
+    color: #333;
+    font-size: 18px;
+    padding: 0 15px;
+}
+footer{
+    width: 1349px;
+    height: 290px;
+    color: #999999;
+    background-color: rgb(51,51,51);
+}
+footer>ul{
+    float: left;
+    margin: 30px 100px 0 50px;
+}
+footer>ul>li{
+    list-style: none;
+    line-height: 22px;
+}
+footer>ul>li>p{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+footer>ul>li>a{
+    font-size: 14px;
+    text-decoration: none;
+    color: #888888;
+}
+#share{
+    float: left;
+    margin: 200px 0 0 100px;
+}
+#share>img{
+    margin-left: 10px;
+}
+#address {
+    clear: both;
+    width: 550px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    margin: 0 auto;
+}
+.banner{
+    width: 1349px;
+    height: 390px;
+    color: white;
+    /**/
+    text-align: center;
+    background: url("img/banner.jpg") no-repeat -400px 0;
+}
+.banner>h2{
+    width: 250px;
+    font-size: 24px;
+    font-weight: 400;
+    /*border: 1px solid red;*/
+    padding-top: 50px;
+    margin: 0 auto;
+}
+.banner>p{
+    /*border: 1px solid red;*/
+    width: 800px;
+    margin: 30px auto;
+}
+.link{
+    width: 66px;
+    height: 140px;
+    /*border: 1px solid red;*/
+    float: left;
+   margin: 0 10px;
+}
+.link>.img{
+    width: 66px;
+    height: 66px;
+    border-radius: 66px;
+    background-color: white;
+}
+#all{
+    /*border: 1px solid red;*/
+    height: 140px;
+    width: 530px;
+    margin: 10px auto 0;
+}
+.link>p{
+    margin-top: 20px;
+}
