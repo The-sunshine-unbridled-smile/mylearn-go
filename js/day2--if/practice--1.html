@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /* 1.用户户输入整数。
+     如果输入的是1～6 的整数，则程序输出:your number is in 1～6.  c=（用户输入的数）
+     如果输入的是其它数字，输出:Your number is too large. c=（用户输入的数）*/
+    /* var a = parseInt(window.prompt("请输入1-6的整数"));
+     if (a >= 1 && a <= 6) {
+     alert("Your number is:" + a)
+     } else {
+     alert("Your number is too large.")
+     };*/
+
+
+    /* 2.输入a ,b,c 三个个位数（0-9）之间，组成一个最大的三位数*/
+    /*  var a = parseInt(window.prompt("请输入第一个数"));
+     var b = parseInt(window.prompt("请输入第二个数"));
+     var c = parseInt(window.prompt("请输入第三个数"));
+     var max, mid, min;
+     if (a >= 0 && a <= 9 && b >= 0 && b <= 9 && c >= 0 && c <= 9) {
+     if (a > b) {
+     if (a > c) {
+     max = a;
+     } else {
+     max = c;
+     }
+     } else {
+     if (b > c) {
+     max = b;
+     } else {
+     max = c;
+     }
+     }
+     if (a < b) {
+     if (a < c) {
+     min = a;
+     } else {
+     min = c;
+     }
+     } else {
+     if (b < c) {
+     min = b;
+     } else {
+     min = c;
+     }
+     }
+     mid = a + b + c - max - min;
+     var num = max * 100 + mid * 10 + min;
+     alert("最大的三位数是" + num);
+     } else {
+     alert("输入错误");
+     }*/
+
+
+    /*3、判定2000-2500年中是闰年的年，输出闰年的条件是：
+     (1).能被4整除，但同时不能被100整除的年份都是闰年
+     (2).能被400整除的年份是闰年
+     其它情况都不是闰年*/
+    /*   var runnian = parseInt(window.prompt("请输入2000-2500年中的任意年份查看是否是闰年"));
+     if (runnian >= 2000 && runnian <= 2500) {
+     if (runnian % 4 == 0 && runnian % 100 != 0 || runnian % 400 == 0) {
+     alert("是闰年")
+     } else {
+     alert("不是闰年");
+     }
+     } else {
+     alert("输入有误");
+     }*/
+
+
+    /*4、编写代码:运输公司对用户计算运费.路程越远每公里运费越低。
+     每公里每吨货物的基本运费为10,货物重为w,距离为s,折扣为d,
+     则总运费f的计算公式为：f=10*w*s*(1-d)
+     s<250km        没有折扣
+     250<=s<500     2%折扣
+     500<=s<1000    5%折扣
+     1000<=s<2000   8%折扣
+     2000<=s<3000   10%折扣
+     3000<=s        15%折扣*/
+    var w = parseInt(window.prompt("请输入货物重量"));
+    var s = parseInt(window.prompt("请输入行驶距离"));
+    var d;
+    if (s < 250) {
+        d = 0;
+    } else if (s >= 250 && s <= 500) {
+        d = 0.02;
+    } else if (s >= 500 && s < 1000) {
+        d = 0.05;
+    } else if (s >= 1000 && s < 2000) {
+        d = 0.08;
+    } else if (s >= 2000 && s < 3000) {
+        d = 0.1;
+    } else if (s >= 3000) {
+        d = 0.15;
+    }
+    var f = 10 * w * s * (1 - d);
+    alert("你所享受的折扣是： " + d + "\n" + "你的总运费是：  " + f)
+
+
+</script>
+</body>
+</html>

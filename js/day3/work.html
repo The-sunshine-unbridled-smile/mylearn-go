@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /* 1.序列：1，2，3，5，8，13...。找出第20个数是多少?得出前20个数
+     x y
+     之和是多少？*/
+   /* var a = 1;
+    var b = 2;
+    var sum = 0;
+    var c;
+    for (var i = 1; i <=18; i++) {
+        c = a+b;
+        sum = sum +c;
+        a=b;
+        b=c;
+    }
+    document.write("第20个数是："+c+"</br>");
+    document.write("前20个数的和是："+sum);*/
+
+
+    /*2：用*画等腰三角形
+     提示：画空格用&nbsp;或者&ensp;
+     如：
+     */
+  /*  var tatol=parseInt(window.prompt("请输入行数"));
+    for (var i = 1; i <= tatol; i++) {
+        for (var j = tatol; j >= i; j--) {
+            document.write("&ensp;");
+        }
+        for (var k = 1; k <= 2 * i - 1; k++) {
+            document.write("*");
+        }
+        document.write("<br/>");
+    }*/
+
+
+    /* 3：计算饭钱
+     有30个人，其中有男人、女人和小孩，在一家饭馆里吃饭 共花了500元，每个男人各花30元，
+     每个女人各花20元，每个小孩各花10元，问男人、女人和小孩各有几人？*/
+  /*  for (var man = 1; man < 30; man++) {
+        for (var woman = 1; woman < 30; woman++) {
+            for (var child = 1; child < 30; child++) {
+                if (man + woman + child == 30 && man * 30 + woman * 20 + child * 10==500) {
+                    document.write("男人：" + man + "个，女人：" + woman + "个，小孩：" + child + "个，" + "<br/>")
+                }
+            }
+        }
+    }*/
+
+
+    /* 4.将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5。输入60=2*2*3*5。*/
+    var num = parseInt(window.prompt("请输入一个正整数："));
+    var str=num+"=";
+    for(var yz=2;yz<=num;){
+        if(num%yz==0){
+            num=num/yz;
+            if(num==1){
+                str+=yz;
+            }else {
+                str+=yz+"*";
+            }
+        }else {
+            yz++;
+        }
+    }
+    document.write(str);
+
+    /* 5.输入2个日期 （年月日），计算两个日期相差多少天？*/
+
+    var year1 = parseInt(window.prompt("开始年 "));
+    var month1 = parseInt(window.prompt("开始月 "));
+    var day1 = parseInt(window.prompt("开始日 "));
+    var year2 = parseInt(window.prompt("结束年"));
+    var month2 = parseInt(window.prompt("结束月"));
+    var day2 = parseInt(window.prompt("结束日"));
+
+   /* var year1 = parseInt(window.prompt("开始年 "));
+    var month1 = parseInt(window.prompt("开始月 "));
+    var day1 = parseInt(window.prompt("开始日 "));
+    var year2 = parseInt(window.prompt("结束年"));
+    var month2 = parseInt(window.prompt("结束月"));
+    var day2 = parseInt(window.prompt("结束日"));
+    var tatol1;
+    var tatol2;
+    switch (month1) {
+        case 1:
+            tatol1 = day1;
+            break;
+        case 2:
+            tatol1 = day1 + 31;
+            break;
+        case 3:
+            tatol1 = day1 + 59;
+            break;
+        case 4:
+            tatol1 = day1+ 90;
+            break;
+        case 5:
+            tatol1 = day1 + 120;
+            break;
+        case 6:
+            tatol1 = day1 + 151;
+            break;
+        case 7:
+            tatol1 = day1 + 181;
+            break;
+        case 8:
+            tatol1 = day1 + 212;
+            break;
+        case 9:
+            tatol1 = day1 + 243;
+            break;
+        case 10:
+            tatol1 = day1 + 273;
+            break;
+        case 11:
+            tatol1 = day1 + 304;
+            break;
+        case 12:
+            tatol1 = day1 + 334;
+            break;
+    }
+    if (year1 % 4 == 0 && year1 % 100 != 0 || year1 % 400 == 0) {
+        if (month1 > 2) {
+            tatol1++;
+        }
+    }
+    switch (month2) {
+        case 1:
+            tatol2 = day2;
+            break;
+        case 2:
+            tatol2 = day2 + 31;
+            break;
+        case 3:
+            tatol2 = day2 + 59;
+            break;
+        case 4:
+            tatol2 = day2 + 90;
+            break;
+        case 5:
+            tatol2 = day2 + 120;
+            break;
+        case 6:
+            tatol2 = day2 + 151;
+            break;
+        case 7:
+            tatol2 = day2 + 181;
+            break;
+        case 8:
+            tatol2 = day2 + 212;
+            break;
+        case 9:
+            tatol2 = day2 + 243;
+            break;
+        case 10:
+            tatol2 = day2 + 273;
+            break;
+        case 11:
+            tatol2 = day2 + 304;
+            break;
+        case 12:
+            tatol2 = day2 + 334;
+            break;
+    }
+    if (year2 % 4 == 0 && year2 % 100 != 0 || year2 % 400 == 0) {
+        if (month2 > 2) {
+            tatol2++;
+        }
+    }
+    if (year1 == year2) {
+        console.log("相差" + (tatol2 - tatol1) + "天")
+    } else {
+        var ruinian = 0;
+        for (var i = year1; i < year2; i++) {
+            if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
+                ruinian++;
+            }
+        }
+        console.log("相差" + ( 365 - tatol1 + tatol2 + (year2 - year1 - 1) * 365 + ruinian) + "天")
+    }*/
+
+</script>
+</body>
+</html>

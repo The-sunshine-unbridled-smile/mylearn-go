@@ -4,30 +4,41 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        span{
-            width: 100px;
-            /*height: 100px;*/
+        div {
+            width: 200px;
+            height: 200px;
             background-color: #2e91b3;
-            margin-top: 200px;
-            overflow: ;
+            position: relative;
+        }
+
+        p {
+            width: 1px;
+            /*height: 100px;*/
+           border-bottom: 1px solid red;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            -webkit-transition: all .3s linear;
+        }
+
+        div:hover{
+            /*width: 100px;*/
+            -webkit-transform: rotateZ(170deg);
         }
     </style>
 </head>
 <body>
 <div>
-    <span>
-        efnsdjfksaf
-    </span>
-    <h1>bjkasdf</h1>
+    <p></p>
 </div>
 
 <script>
-    var length=10;
-    function fn(){
+    var length = 10;
+    function fn() {
         console.log(this.length);
     }
     var obj = {
-        length:5,
+        length: 5,
         method: function (fn) {
 
             fn(console.log(this));
