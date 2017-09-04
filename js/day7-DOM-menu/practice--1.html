@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            list-style: none;
+            width: 200px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            border-bottom: 1px solid white;
+            color: white;
+            background-color: red;
+            overflow: hidden;
+        }
+        nav ul li ul li {
+            background-color: deeppink;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li onclick="_display(this)">首页
+                <ul>
+                    <li>登录</li>
+                    <li>注册</li>
+                </ul>
+            </li>
+            <li onclick="_display(this)">博客
+                <ul>
+                    <li>登录</li>
+                    <li>注册</li>
+                </ul>
+            </li>
+            <li onclick="_display(this)">技术支持</li>
+            <li onclick="_display(this)">操作
+                <ul>
+                    <li>登录</li>
+                    <li>注册</li>
+                </ul>
+            </li>
+            <li onclick="_display(this)">帮助
+                <ul>
+                    <li>在线客服</li>
+                    <li>联系我们</li>
+                </ul>
+            </li>
+            <li onclick="_display(this)">帮助
+                <ul>
+                    <li>在线客服</li>
+                    <li>联系我们</li>
+                </ul>
+            </li>
+            <li onclick="_display(this)">帮助</li>
+            <li onclick="_display(this)">帮助</li>
+        </ul>
+    </nav>
+</header>
+<script>
+    function _display(t) {
+        var myUl = t.getElementsByTagName("ul");
+        var myLi = myUl[0].getElementsByTagName("li");
+        if (myUl.length > 0) {
+            t.style.overflow = "visible";
+            t.style.height = (60 + (myLi.length) * 60) + "px";//改变高度
+        }
+    }
+</script>
+</body>
+</html>

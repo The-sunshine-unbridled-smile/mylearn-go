@@ -10,7 +10,7 @@
     //ALL学生信息数组
     var studentInfo = [[1, "test1", "男", "20", "s166"], [2, "test2", "女", "25", "s166"], [3, "test3", "男", "23", "s166"]];
     /**
-     * 获取最大的学号
+     * 获取最大的学号,新增的学号依次往后排
      */
     function getMaxStudentNo() {
         var max = 0;
@@ -67,7 +67,7 @@
 
     function update() {
         query();
-       var updateStudent=parseInt(window.prompt("请输入需要修改学员的学号"));
+        var updateStudent=parseInt(window.prompt("请输入需要修改学员的学号"));
         for (var i = 0; i < studentInfo.length; i++) {
             if( updateStudent == parseInt(studentInfo[i][0])){
                 alert(studentInfo[i]);
@@ -78,7 +78,10 @@
                 var student1 = [updateStudent, name1, sex1, age1, _class1];
                 studentInfo[i]=student1;
                 alert("修改成功，修改后学员信息为 \n"+student1);
-                showUI()
+                showUI();
+            }else {
+                alert("无此学号学生，请确认后重新输入");
+                showUI();
             }
         }
     }
@@ -92,7 +95,7 @@
         for (var i = 0; i < studentInfo.length; i++) {
             if(  deleteStudent== parseInt(studentInfo[i][0])){
                 if( confirm(studentInfo[i]+"\n 确认删除学生信息？")){
-                    studentInfo[i]="";
+                    studentInfo.splice(i,1);
                     alert("删除学员信息成功");
                     showUI();
                 }

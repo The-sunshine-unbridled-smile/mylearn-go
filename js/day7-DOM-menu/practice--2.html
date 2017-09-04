@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        @font-face {
+            src: url("iconfont.woff");
+            font-family: myfont;
+        }
+
+        a:before {
+            content: "\e6a6";
+            text-decoration: none;
+            font-family: myfont;
+            font-size: 18px;
+            float: right;
+            color: #333;
+        }
+        body>ul {
+            background-color: white;
+            border-radius: 5px;
+            width: 300px;
+            margin-left: 300px;
+            margin-top: 100px;
+
+        }
+
+        body>ul>li {
+            list-style: none;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            text-indent: 1em;
+            border-bottom: 2px solid rgba(128, 128, 128, .3);
+            font-size: 14px;
+            font-weight: bold;
+            font-family: "微软雅黑";
+            overflow: hidden;
+            cursor: pointer;
+            -webkit-transition: all .3s linear;
+        }
+        ul li ul li {
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            text-indent: 1em;
+            font-weight: 100;
+            background-color: #1c1c20;
+            color: white;
+            border-bottom: 1px solid darkgrey;
+        }
+        ul li ul li:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li onclick="menuShow(this)">Diseno web  <a href="" class="a"></a>
+        <ul>
+            <li>Photoshop</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Maquetacio0n web</li>
+        </ul>
+    </li>
+    <li onclick="menuShow(this)">Photoshop <a href="" class="a"></a>
+        <ul>
+            <li>Photoshop</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Maquetacio0n web</li>
+        </ul>
+    </li>
+    <li onclick="menuShow(this)">Disarrollo front-end  <a href="" class="a"></a>
+        <ul>
+            <li>Photoshop</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Maquetacio0n web</li>
+        </ul>
+    </li>
+    <li onclick="menuShow(this)">Diseno responsive  <a href="" class="a"></a>
+        <ul>
+            <li>Photoshop</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Maquetacio0n web</li>
+        </ul>
+    </li>
+</ul>
+<script>
+function menuShow(t) {
+    var myUl=t.getElementsByTagName("ul")[0];    //子 ul
+    var myLi=myUl.getElementsByTagName("li");    //子ul 下的li
+    for(var i=0;i<myLi.length;i++){        //打开 一个子菜单 关闭其他的子菜单
+        if(t!=myLi[i]) {
+            myLi[i].style.height="40px";
+        }                                        //将兄弟元素的高度设为默认的40px
+    }
+    if (t.style.height=="") {
+        t.style.height="40px";
+    }
+    var myHeight=parseInt(t.style.height);
+    var getDiv=myLi.length-1;
+    if(myHeight>40){
+        t.style.height="40px";           //关闭自己的字菜单
+    }else if(myHeight==40){
+        t.style.height=(getDiv+1)*40+"px";  //打开子菜单
+    }
+
+}
+</script>
+</body>
+</html>

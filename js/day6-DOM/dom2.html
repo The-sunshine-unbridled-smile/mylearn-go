@@ -15,37 +15,42 @@
     </div>
     <div id="big">
         <div class="little">
-            <span>John Doe</span><button onclick="myClick(this)">添加</button>
+            <span>John Doe</span>
+            <button onclick="myClick(this)">添加</button>
         </div>
         <div class="little">
-            <span>Jone Doe</span><button onclick="myClick(this)">添加</button>
+            <span>Jone Doe</span>
+            <button onclick="myClick(this)">添加</button>
         </div>
         <div class="little">
-            <span>Dan Doe</span><button onclick="myClick(this)">添加</button>
+            <span>Dan Doe</span>
+            <button onclick="myClick(this)">添加</button>
         </div>
         <div class="little">
-            <span>Danielle Doe</span><button onclick="myClick(this)">添加</button>
+            <span>Danielle Doe</span>
+            <button onclick="myClick(this)">添加</button>
         </div>
         <div class="little">
-            <span> Mike Doe </span><button onclick="myClick(this)">添加</button>
+            <span> Mike Doe </span>
+            <button onclick="myClick(this)">添加</button>
         </div>
         <div class="little">
-            <span>Leah Doe</span><button onclick="myClick(this)">添加</button>
+            <span>Leah Doe</span>
+            <button onclick="myClick(this)">添加</button>
         </div>
     </div>
 </div>
 <script>
 
     function myClick(t) {
-      // var myBtn = document.getElementsByTagName("button");
-        var myNull = document.getElementById("null");
-        var chils = t.previousSibling.innerHTML;     //添加他的上一个兄弟节点的innerHTML
+        var myNull = document.getElementById("null");    //白色背景的div装添加的
+        var chils = t.previousElementSibling.innerHTML;     //获取“添加”按钮上一个兄弟元素节点的innerHTML
         var newDiv= document.createElement("div");
-        newDiv.className = "newDiv";
+        newDiv.className = "newDiv";                 //创建绿色背景div
 
         var newText= document.createTextNode(chils);
         myNull.appendChild(newDiv);
-        newDiv.appendChild(newText);
+        newDiv.appendChild(newText);              //把上一个兄弟节点的innerHTML添加到绿的div
 
       //动态创建一个a标签 点击它删除其所在的div 即newDiv
         var newA=document.createElement("a");

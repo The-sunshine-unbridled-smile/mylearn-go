@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        @font-face {
+            src: url("iconfont.woff");
+            font-family: myfont;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #main {
+            background-color: orangered;
+            height: 260px;
+        }
+
+        #img {
+            height: 200px;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        #img img {
+            width: 800px;
+            height: 200px;
+
+        }
+
+        button {
+            font-family: myfont;
+            display: block;
+            width: 150px;
+            height: 54px;
+            font-size: 20px;
+            border: none;
+            color: orangered;
+            outline: none;
+            margin-right: 1px;
+            background-color: pink;
+            cursor: pointer;
+            -webkit-transition: all .5s linear;
+        }
+
+        #btn {
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="img">
+        <img src="img/1.png" alt="" id="img1">
+    </div>
+    <div id="btn">
+        <button onclick="change(this,1)">&#xe6a5;</button>
+        <button onclick="change(this,2)">&#xe6a5;</button>
+        <button onclick="change(this,3)">&#xe6a5;</button>
+        <button onclick="change(this,4)">&#xe6a5;</button>
+        <button onclick="change(this,5)">&#xe6a5;</button>
+    </div>
+</div>
+<script>
+    function change(t, myBu) {
+        var mtImg = document.getElementById("img1");
+        mtImg.src ="img/"+ myBu + ".png";  //这一步是改变图片
+        t.style.height = "65px";    //改变高度
+        var myBtn = document.getElementsByTagName("button");
+        for (var i = 0; i < myBtn.length; i++) {            //让其他没有被点击的button高度为默认
+            if (myBtn[i] != t) {                  //if条件还可以写为（ i+1 != myBu）
+                myBtn[i].style.height = "54px";
+            }
+        }
+        t.onmouseout=function () {
+            t.style.height = "54px";
+        }
+    }
+
+</script>
+</body>
+</html>
