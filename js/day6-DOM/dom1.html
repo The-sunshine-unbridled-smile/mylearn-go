@@ -53,6 +53,10 @@
     <img src="img/down-arr-16x16.png" alt="" id="img2" onclick="myOpen()"  >
 </div>
 <script>
+
+    /**
+     * 点击隐藏
+     */
     function myClose() {
        var myDiv1= document.getElementById("rectangle");
         myDiv1.style.marginTop="-30px";
@@ -63,6 +67,9 @@
         myImg2.style.opacity="1";
 
     }
+    /**
+     * 点击显示
+     */
     function myOpen() {
         var myDiv1= document.getElementById("rectangle");
         myDiv1.style.marginTop="0";

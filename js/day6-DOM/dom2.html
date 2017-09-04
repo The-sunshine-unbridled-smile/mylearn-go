@@ -39,7 +39,7 @@
     function myClick(t) {
       // var myBtn = document.getElementsByTagName("button");
         var myNull = document.getElementById("null");
-        var chils = t.previousSibling.innerHTML;
+        var chils = t.previousSibling.innerHTML;     //添加他的上一个兄弟节点的innerHTML
         var newDiv= document.createElement("div");
         newDiv.className = "newDiv";
 
@@ -53,7 +53,7 @@
         newA.appendChild(myA);
         newDiv.appendChild(newA);
 
-//删除我动态创建的div  下面两种办法都可以  呀呀  好开森 继续加油哦！！
+//删除我动态创建的div  下面两种办法都可以
         newA.onclick=function() {
             newA.parentNode.remove();
         }
