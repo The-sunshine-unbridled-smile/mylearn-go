@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #rectangle {
+            width: 1366px;
+            height:20px;
+            line-height: 27px;
+            font-size: 12px;
+            color: white;
+            text-align: center;
+            background-color: green;
+            box-shadow:1px 5px 3px 5px green ;
+            -webkit-transition: all .5s linear;
+        }
+        #img #img1{
+            height: 29px;
+            width: 25px;
+            line-height: 29px;
+            text-align: center;
+            background-color: green;
+            position: fixed;
+            right: 20px;
+            top: 0;
+            -webkit-transition: all .5s linear;
+        }
+        #img #img2{
+            height: 29px;
+            width: 25px;
+            line-height: 29px;
+            text-align: center;
+            background-color: green;
+            position: fixed;
+            right: 20px;
+            top: -30px;
+            -webkit-transition: all .5s linear;
+        }
+
+    </style>
+</head>
+<body>
+<div id="rectangle">
+    点击切换显示隐藏
+</div>
+<div id="img" >
+    <img src="img/close-16x16.png" alt="" id="img1" onclick="myClose()">
+    <img src="img/down-arr-16x16.png" alt="" id="img2" onclick="myOpen()"  >
+</div>
+<script>
+    function myClose() {
+       var myDiv1= document.getElementById("rectangle");
+        myDiv1.style.marginTop="-30px";
+        var myImg1= document.getElementById("img1");
+        myImg1.style.marginTop="-30px";
+        var myImg2= document.getElementById("img2");
+        myImg2.style.top="0";
+        myImg2.style.opacity="1";
+
+    }
+    function myOpen() {
+        var myDiv1= document.getElementById("rectangle");
+        myDiv1.style.marginTop="0";
+        var myImg1= document.getElementById("img1");
+        myImg1.style.marginTop="0";
+        var myImg2= document.getElementById("img2");
+        myImg2.style.top="-30px";
+
+    }
+
+
+
+</script>
+</body>
+</html>
