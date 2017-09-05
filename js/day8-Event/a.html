@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #main {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        #color {
+            width: 100%;
+            height: 768px;
+            background-color: black;
+            opacity: .2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="main" onmousedown="myMove()"></div>
+<div id="color"></div>
+<script>
+    function myMove() {
+        var myMain = document.getElementById("main");
+        var myAA=document.getElementById("color");
+        myAA.style.display="block";
+        document.body.style.overflow="hidden";
+
+        var e = window.event || arguments[0];
+
+        var myMainX = myMain.offsetLeft;          //div的初始位置获取
+        var myMainY = myMain.offsetTop;
+
+        var clickX=e.clientX;               //鼠标按下时的位置
+        var clickY=e.clientY;
+
+        var divX=clickX-myMainX;           //按下鼠标的位置到div边界的位置
+        var divY=clickY-myMainY;
+
+        myAA.onmousemove=function () {
+            var ee= window.event || arguments[0];
+
+            var upX=ee.clientX;               //鼠标移动后放开时的位置
+            var upY=ee.clientY;
+
+            var endMainX = upX- divX ;      //放开鼠标后div的位置
+            var endMainY = upY- divY;
+            myMain.style.position="absolute";
+            myMain.style.top=endMainY+"px";
+            myMain.style.left=endMainX+"px";
+
+        };
+        myAA.onmouseup=function () {      //鼠标放开取消遮罩层  取消移动
+            myAA.onmousemove=null;
+            myAA.style.display="none";
+            document.body.style.overflow="visible";
+        };
+
+        myAA.onmouseout=function () {          //鼠标移出了边界
+            myAA.onmousemove=null;
+            myAA.style.display="none";
+        }
+    }
+</script>
+</body>
+</html>
