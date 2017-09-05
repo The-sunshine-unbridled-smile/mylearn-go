@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+a{
+    text-decoration: none;
+}
+@font-face {
+    src:url("iconfont.woff");
+    font-family: myfont;
+}
+ul li{
+    list-style: none;
+}
+.banner{
+    width: 1349px;
+    height: 585px;
+    background: url("img/17.jpg") no-repeat;
+}
+.banner>div{
+    width: 260px;
+    height: 70px;
+    background-color: rgba(255,255,255,.5);
+    padding: 35px 50px;
+    margin: 0 auto;
+    -webkit-transition: all .2s linear;
+}
+.banner>div:hover{
+    background-color: rgba(255,255,255,1);
+}
+.banner>div>img{
+    box-sizing: content-box;
+    display: block;
+    width: 260px;
+    height: 70px;
+}
+.menu{
+    width: 1249px;
+    height: 128px;
+    padding-left: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    float: left;
+}
+.menu li a{
+    float: left;
+    display: block;
+
+}
+.link{
+    color: #888;
+    padding: 56px 12px;
+}
+.num{
+    color: #2e91b3;
+    font-size: 32px;
+    padding: 45px 12px;
+}
+#logo{
+    height: 130px;
+    width: 340px;
+    float: left;
+    border: 1px solid red ;
+}
+.logo-left{
+    width: 210px;
+    height: 57px;
+    padding: 37px 25px;
+    background-color: white;
+    float: left;
+}
+.logo-left img{
+    width: 210px;
+    height: 57px;
+}
+.logo-right{
+    width: 80px;
+    height: 130px;
+    background-color:#2e91b3;
+    float: left;
+}
+nav{
+    width: 1999px;
+}
+.allmenu{
+    width: 1349px;
+    overflow: hidden;
+}
+.main{
+    width: 1349px;
+    height: 486px;
+}
+.lside{
+    width: 486px;
+    height: 486px;
+    background: url("img/1.jpg") no-repeat;
+    margin-left: 60px;
+    float: left;
+}
+.rside{
+    width: 728px;
+    height: 486px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: all .6s linear;
+}
+.r-main{
+    width: 1456px;
+    height: 486px;
+}
+.r-main-text{
+    float: left;
+    position: relative;
+}
+.r-main-text img{
+    width: 728px;
+    height: 486px;
+    position: relative;
+    z-index: -1;
+
+}
+.page{
+    position: absolute;
+    top: 40px;;
+    right: 100px;
+    width: 440px;
+    text-align: right;
+    color: white;
+}
+.rside:hover .page{
+    top: 50px;;
+    right: 120px;
+}
+.text{
+    font-size: 24px;
+}
+.price{
+    font-size: 100px;
+}
+.r-main-text:before{
+    content: "";
+    width: 728px;
+    height: 486px;
+    background-color:rgba(46,145,179,.5) ;
+    position: absolute;
+    top:0;
+    left: 0;
+    cursor: pointer;
+    -webkit-transition: all .3s linear;
+}
+.control{
+    width: 828px;
+    /*border: 1px solid red;*/
+    color: white;
+    position: absolute;
+    top: 250px;
+    left: -50px;
+    font-size: 45px;
+}
+.rside:hover .control{
+    width: 678px;
+    left: 25px;
+}
+#prev{
+    float: left;
+    cursor: pointer;
+}
+#next{
+    float: right;
+    cursor: pointer;
+}
+.tags a{
+    display: inline-block;
+    background-color: rgba(46,145,179,1) ;
+    color: white;
+    padding: 5px ;
+    letter-spacing: 1px;
+}
+.tags{
+    position: absolute;
+    bottom: 22px;
+    right: 35px;
+}
+#main2{
+    width: 1079px;
+    height: 615px;
+    background: url("img/5.jpg") no-repeat;
+    margin-top: 90px;
+    overflow: hidden;
+}
+#prev2,#next2{
+    font-family: myfont;
+    color: white;
+    font-size: 44px;
+    margin-left: 5px;
+}
+#control1{
+margin: 430px 0 22px 820px;
+}
+#mybtn{
+    width: 240px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    color: grey;
+    background-color: white;
+    padding: 10px;
+    margin-left: 740px;
+}
+#text{
+    padding: 0 80px;
+}
+#text h1{
+    font-size: 62px;
+    font-weight: 400;
+    color: #2e91b3;
+}
+.word1{
+    font:100 24px/34px Roboto,arial;
+    color: #888;
+   margin: 30px 0;
+}
+.word2{
+   font: 300 16px/26px Roboto,arial;
+    color: #888;
+    margin-bottom: 80px;
+}
+#main3{
+    width: 1349px;
+    height: 540px;
+    background: url("img/12.jpg") no-repeat;
+    overflow: hidden;
+    margin-bottom: 200px;
+}
+#main3 p{
+    width: 340px;
+    height: 292px;
+    text-align: center;
+    padding: 80px 30px;
+    font:100 50px/70px Roboto,arial;
+    color: #2e91b3;
+    background-color: rgba(255,255,255,.8);
+    margin: 60px 0 0 60px;
+}
+.riside2{
+    margin-left: 80px;
+}
+.lside2{
+    margin-left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+

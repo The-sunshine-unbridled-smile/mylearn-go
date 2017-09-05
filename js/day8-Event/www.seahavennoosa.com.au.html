@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="www.seahavennoosa.com.au.css">
+</head>
+<body>
+<header>
+    <div class="banner">
+        <div>
+            <img src="img/logo.png" alt="">
+        </div>
+    </div>
+    <div class="allmenu">
+        <nav>
+            <ul class="menu">
+                <li><a class="link" href="">HOME</a></li>
+                <li><a class="link" href="">Accommodation</a></li>
+                <li><a class="link" href="">Services</a></li>
+                <li><a class="link" href="">Packages</a></li>
+                <li><a class="link" href="">Reviews</a></li>
+                <li><a class="link" href="">Location</a></li>
+                <li><a class="link" href="">News</a></li>
+                <li><a class="link" href="">Weddings</a></li>
+                <li><a class="link" href="">Gallery</a></li>
+                <li><a class="num" href="">07 5447 3422</a></li>
+            </ul>
+            <div id="logo">
+                <div class="logo-left">
+                    <img src="img/logo.png" alt="">
+                </div>
+                <div class="logo-right">
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<section>
+    <div class="main">
+        <div class="lside"></div>
+        <div class="rside">
+            <div class="r-main">
+                <div class="r-main-text">
+                    <img src="img/3.jpg" alt="">
+                    <div class="page">
+                        <p class="text">Family Group Reunion in Noosa</p>
+                        <p class="price">$666</p>
+                        <p class="text"> per night</p>
+                    </div>
+                </div>
+                <div class="r-main-text">
+                    <img src="img/2.jpg" alt="">
+                    <div class="page">
+                        <p class="text">Family Group Reunion in Noosa</p>
+                        <p class="price">$680</p>
+                        <p class="text"> per night(min.3.night)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="control">
+                <div id="prev" onclick="myPrev()">&lt;</div>
+                <div id="next" onclick="myNext()">&gt;</div>
+            </div>
+            <div class="tags">
+                <a href="">Book Now</a>
+                <a href="">Reviews</a>
+                <a href="">Pakeages</a>
+            </div>
+        </div>
+    </div>
+    <div id="main2">
+        <div id="control1">
+            <span id="prev2">&#xe61f;</span>
+            <span id="next2">&#xe60f;</span>
+        </div>
+        <div id="mybtn">
+            Two Bedroom Family
+        </div>
+    </div>
+    <div id="text">
+        <h1>Absolute Beachfront Apartments</h1>
+        <p class="word1">
+            Experience the ultimate Noosa holiday at Seahaven
+            Noosa, located with direct access to Noosa Main Beach
+            overlooking Laguna Bay. Located on the world famous
+            Hastings Street with its renowned restaurants, cafes
+            and boutique shopping you can enjoy the very best of
+            Noosa at your door. For a beachfront holiday in Noosa,
+            the perfect place to stay and relax is Seahaven Resort
+            overlooking the sparkling Laguna Bay.
+        </p>
+        <p class="word2">
+            The resort has undergone a complete makeover, now offering a sophisticated modern atmosphere, designed to
+            accommodate the requirements of families, couples and corporates working or holidaying in the region. The
+            contemporary design with luxurious furnishings and natural finishes create a feeling of relaxed
+            sophistication, serenity and understated luxury accommodation. With absolute beachfront access to Noosa's
+            Main Beach and street access to Hastings Street, Seahaven Resort provides a range of holiday accommodation
+            for couples and families in not only one of the best locations Noosa has to offer, but also great service.
+        </p>
+    </div>
+    <div id="main3">
+        <p>
+            Create precious memories that last a lifetime
+        </p>
+    </div>
+    <div class="main">
+        <div class="rside  riside2">
+            <div class="r-main">
+                <div class="r-main-text">
+                    <img src="img/14.jpg" alt="">
+                    <div class="page">
+                        <p class="text">
+                            Thinking of getting married in Noosa? Seahaven can offer a superb
+                            private beachfront   wedding!
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tags">
+                <a href="">Book Now</a>
+                <a href="">Reviews</a>
+                <a href="">Pakeages</a>
+            </div>
+        </div>
+        <div class="lside lside2"></div>
+
+    </div>
+    <div class="main4">
+
+
+    </div>
+
+</section>
+<footer>
+
+</footer>
+</body>
+<!--<script>
+    window.onscroll = function () {
+        var t = document.documentElement.scrollTop || document.body.scrollTop;
+
+    }
+
+
+
+
+    function myPrev() {
+        var myMain=document.getElementById("r-main");  //装有所有轮播图片的div
+        var  myList=document.getElementsByClassName("r-main-text");//单个轮播的图片清单
+        myMain.insertBefore(myList[1],myMain.firstChild);
+        myList[0].style.marginLeft="-728px";
+        setTimeout(function () {
+            myList[0].style.marginLeft="0";
+        },300)
+    }
+    function myNext() {
+        var myMain=document.getElementById("r-main");  //装有所有轮播图片的div
+        var  myList=document.getElementsByClassName("r-main-text");//单个轮播的图片清单
+        myList[0].style.marginLeft="-728px";
+        setTimeout(function () {
+            myList[0].style.marginLeft="0";
+            myMain.appendChild(myList[0])
+        },300)
+    }
+</script>-->
+</html>
