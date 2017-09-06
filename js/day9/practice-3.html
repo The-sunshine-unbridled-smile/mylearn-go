@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #lside, #rside {
+            width: 100px;
+            height: 200px;
+            border: 1px solid darkgrey;
+            float: left;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #btn {
+            width: 32px;
+            height: 100px;
+            /*border: 1px solid red;*/
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="lside">
+    <p>刘备</p>
+    <p>张飞</p>
+    <p>关羽</p>
+    <p>赵云</p>
+    <p>马超</p>
+</div>
+<div id="btn">
+    <button id="toright">&gt;</button>
+    <button id="alltoright">&gt;&gt;</button>
+    <button id="toleft">&lt;</button>
+    <button id="alltoleft">&lt;&lt;</button>
+</div>
+<div id="rside">
+</div>
+
+<script>
+    var alltoRight = document.getElementById("alltoright");
+    var alltoLeft = document.getElementById("alltoleft");
+    var lside = document.getElementById("lside");
+    var rside = document.getElementById("rside");
+    var plArr = lside.getElementsByTagName("p");
+    var prArr = rside.getElementsByTagName("p");
+
+    var toRight = document.getElementById("toright");
+    var toLeft = document.getElementById("toleft");
+
+    toRight.onclick = function () {
+
+    };
+
+    toLeft.onclick = function () {
+
+    };
+    alltoRight.onclick = function () {                   //全部内容到右边
+        for (var i = 0; i < plArr.length; i++) {
+            rside.innerHTML = rside.innerHTML + plArr[i].outerHTML;
+        }
+        lside.innerHTML = "";
+    };
+
+    alltoLeft.onclick = function () {                       //全部内容到左边
+        for (var i = 0; i < prArr.length; i++) {
+            lside.innerHTML = lside.innerHTML + prArr[i].outerHTML;
+        }
+        rside.innerHTML = "";
+    }
+
+</script>
+</body>
+</html>

@@ -40,28 +40,58 @@ ul li{
     height: 128px;
     padding-left: 100px;
     text-align: center;
-    text-transform: uppercase;
     float: left;
 }
-.menu li a{
-    float: left;
-    display: block;
-
-}
-.link{
-    color: #888;
+.menu>li{
+    position: relative;
     padding: 56px 12px;
+    float: left;
+    overflow: hidden;
+    /*border: 1px solid red;*/
 }
-.num{
+.menu>li:hover{
+    overflow: visible;
+}
+.menu>li>a{
+    color: #888;
+    text-transform: uppercase;
+}
+.menu>li a.num{
     color: #2e91b3;
     font-size: 32px;
-    padding: 45px 12px;
 }
+.childmenu{
+    position: absolute;
+    left: -20%;
+    bottom: 133px;
+    -webkit-transform: rotate(180deg);
+}
+.childmenu>li{
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    color: white;
+    background-color: #2e91b3;
+    font:300 14px/40px Roboto,arial;
+    -webkit-transition: all linear .1s;
+    -webkit-transform: rotate(180deg);
+}
+.childmenu>li:hover{
+    color: #2e91b3;
+    background-color: white;
+}
+
 #logo{
+    position: absolute;
+    top:0;
+    left: 1349px;
+    display: none;
     height: 130px;
     width: 340px;
     float: left;
-    border: 1px solid red ;
+    -webkit-transition: all linear .3s;
+    /*border: 1px solid red ;*/
+
 }
 .logo-left{
     width: 210px;
@@ -81,12 +111,26 @@ ul li{
     float: left;
 }
 nav{
-    width: 1999px;
+    width: 1349px;
+    height: 130px;
+    position: relative;
+    background-color: white;
+    /*border: 1px solid red;*/
+    -webkit-transition: all linear .3s;
 }
 .allmenu{
     width: 1349px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
+
+#bg1{
+    position: relative;
+    width: 1349px;
+    height: 1140px;
+    background: url("img/apartments-bg.jpg") no-repeat 0 350px;
+    margin-bottom: 70px;
+}
+
 .main{
     width: 1349px;
     height: 486px;
@@ -104,6 +148,7 @@ nav{
     float: left;
     overflow: hidden;
     position: relative;
+    z-index: 1;
     -webkit-transition: all .6s linear;
 }
 .r-main{
@@ -128,9 +173,10 @@ nav{
     width: 440px;
     text-align: right;
     color: white;
+    -webkit-transition: all linear .2s;
 }
 .rside:hover .page{
-    top: 50px;;
+    top: 50px;
     right: 120px;
 }
 .text{
@@ -152,12 +198,12 @@ nav{
 }
 .control{
     width: 828px;
-    /*border: 1px solid red;*/
     color: white;
     position: absolute;
     top: 250px;
     left: -50px;
     font-size: 45px;
+    -webkit-transition: all .3s linear;
 }
 .rside:hover .control{
     width: 678px;
@@ -276,10 +322,50 @@ margin: 430px 0 22px 820px;
     line-height: 100px;
     padding: 0 100px;
     color: #a3a3a2;
+    clear: both;
+}
+.imgshare{
+    width: 1349px;
+    margin-top: 80px;
+}
+.imgshare li{
+    list-style: none;
+    float: left;
+    width: 224px;
+    position: relative;
+}
+.imgshare li>img{
+    width: 224px;
+
+}
+.baise{
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    width: 94px;
+    height: 43px;
+    line-height: 43px;
+    color: #7F7F90;
+    background-color: rgba(255,255,255,.8);
+    overflow: hidden;
+    -webkit-transition: all linear .2s;
+}
+.baise img{
+    /*border: 1px solid red;*/
+    vertical-align: top;
+    -webkit-transition: all linear .2s;
 }
 
+.baise span{
+    font-size: 24px;
+    font-weight: 100;
+    margin-left: 5px;
 
-
-
-
-
+}
+.baise:hover{
+    color: white;
+    background-color: rgba(127,127,127,.8);
+}
+.baise:hover img{
+    margin-top: -37px;
+}

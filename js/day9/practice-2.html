@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    ul>li{
+        list-style: none;
+    }
+    ul{
+        float: left;
+        margin-right: 100px;
+    }
+    #main{
+        width: 700px;
+        height: 140px;
+        border: 1px solid green;
+    }
+</style>
+<body>
+<div id="main">
+    <ul>
+        <li><input type="checkbox"></li>
+        <li><input type="checkbox"></li>
+        <li><input type="checkbox"></li>
+        <li><input type="checkbox"></li>
+        <li><input type="checkbox"></li>
+    </ul>
+    <ul>
+        <li>学号</li>
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+    <ul>
+        <li>姓名</li>
+        <li>张三</li>
+        <li>李四</li>
+        <li>张三</li>
+        <li>李四</li>
+    </ul>
+    <ul>
+        <li>班级</li>
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+</div>
+<div id="btn">
+    <button id="select">全选</button>
+    <button id="reverse">反选</button>
+</div>
+
+<script>
+    var allSelect=document.getElementById("select");
+    var allReverse=document.getElementById("reverse");
+    var inputArr=document.getElementsByTagName("input");
+
+    allSelect.onclick=function () {
+        for(var i=0;i<inputArr.length;i++){
+                inputArr[i].checked = "checked";
+        }
+    };
+
+    allReverse.onclick=function () {
+        for(var i=0;i<inputArr.length;i++){
+            if(inputArr[i].checked==""){
+                inputArr[i].checked = "checked";
+            }else {
+                inputArr[i].checked = "";
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

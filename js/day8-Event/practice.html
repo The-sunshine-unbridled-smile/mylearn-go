@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        #back{
+        #back {
             background: url("img/p2.jpg");
-            background-size:100%;
+            background-size: 100%;
             width: 900px;
             height: 500px;
             position: relative;
         }
-        #img{
-            width: 840px;
+
+        #img {
+            width: 900px;
             height: 500px;
             opacity: .8;
         }
-        #btn{
+
+        #big {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 450px;
+
+        }
+
+        #btn {
             width: 30px;
             height: 30px;
             border-radius: 30px;
@@ -25,46 +35,42 @@
             color: white;
             background-color: red;
             z-index: 10;
-
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
         }
     </style>
 </head>
 <body>
 <div id="back">
-    <div id="">
-        <img  id="img" src="img/p1.jpg" alt="">
-        <button id="btn" onmousedown="myMove()" >&lt;&gt;</button>
+    <div id="big">
+        <img id="img" src="img/p1.jpg" alt="">
     </div>
+    <button id="btn" onmousedown="myMove()">&lt;&gt;</button>
 </div>
 <script>
     function myMove() {
-        var myImg=document.getElementById("img");
-        var myBtn=document.getElementById("btn");
-        var e=window.event||arguments[0];
-        var myClickX=e.clientX;    //鼠标点击的位置 鼠标按下时的位置
-        var myClickY=e.clientY;
-
-        var btnStartX=myBtn.offsetLeft;   //按钮的初始位置
-        var btnStartY=myBtn.offsetTop;
-
-        var divX=myClickX-btnStartX;           //按下鼠标的位置到div边界的位置
-        var divY=myClickY-btnStartY;
-
-        myBtn.onmousemove=function () {
-            var ee= window.event || arguments[0];
-
-            var upX=ee.clientX;               //鼠标移动后放开时的位置
-            var upY=ee.clientY;
-
-            var endMainX = upX- divX ;      //放开鼠标后按钮的位置
-            var endMainY = upY- divY;
-
-            myImg.style.width=endMainX+"px";
-            myBtn.onmouseup=function () {      //鼠标放开取消移动
-                myBtn.onmousemove=null;
+        var myImg = document.getElementById("big");
+        var myBtn = document.getElementById("btn");
+        var e = window.event || arguments[0];
+        var myClickX = e.clientX;    //鼠标点击的位置 鼠标按下时的位置
+        var btnStartX = myBtn.offsetLeft;   //按钮的初始位置
+        var divX = myClickX - btnStartX;           //按下鼠标的位置到按钮边界的位置
+        myBtn.onmousemove = function () {
+            var ee = window.event || arguments[0];
+            var upX = ee.clientX;               //鼠标移动后放开时的位置
+            var endMainX = upX - divX;      //放开鼠标后按钮的位置
+            myBtn.style.position = "absolute";
+            myBtn.style.left = endMainX + "px";
+            myImg.style.width = endMainX + "px";
+            myBtn.onmouseup = function () {      //鼠标放开取消移动
+                myBtn.onmousemove = null;
             };
-            myBtn.onmouseout=function () {          //鼠标移出了边界 停止移动
-                myBtn.onmousemove=null;
+            myBtn.onmouseout = function () {          //鼠标移出了边界 停止移动
+                myBtn.onmousemove = null;
             }
         }
     }
