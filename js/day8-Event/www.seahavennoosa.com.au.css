@@ -111,6 +111,26 @@ ul li{
     background-color:#2e91b3;
     float: left;
 }
+#xuanzhuan{
+    width: 40px;
+    height: 45px;
+    margin-top: 40px;
+    margin-left: 20px;
+    /*border: 1px solid red;*/
+    overflow: hidden;
+}
+#xuanzhuan>div{
+    width: 40px;
+    border-bottom: 2px solid white;
+    margin-top: 10px;
+    -webkit-transition: all linear .1s;
+}
+#xuanzhuan:hover div:nth-of-type(1){
+    -webkit-transform: rotate(90deg);
+}
+#xuanzhuan:hover div:nth-of-type(3){
+    -webkit-transform: rotate(-90deg);
+}
 nav{
     width: 1349px;
     height: 130px;
@@ -161,6 +181,8 @@ nav{
 .r-main-text{
     float: left;
     position: relative;
+    width: 728px;
+    height: 486px;
 }
 .r-main-text img{
     width: 728px;
@@ -238,6 +260,7 @@ nav{
     background: url("img/5.jpg") no-repeat;
     margin-top: 90px;
     overflow: hidden;
+    -webkit-transition: all linear .3s;
 }
 #prev2,#next2{
     font-family: myfont;
@@ -298,9 +321,8 @@ margin: 430px 0 22px 820px;
     margin-left: 80px;
 }
 .lside2{
-    margin-left: 0px;
+    margin-left: 0;
 }
-
 .menu .book{
     font-size: 16px;
     padding: 10px;
@@ -313,11 +335,34 @@ margin: 430px 0 22px 820px;
     border-top: 1px solid rgba(169,169,169,.3);
     border-bottom: 1px solid rgba(169,169,169,.3);
 }
+@font-face {
+    src:url("download/font_a7w5te42o9lik9/iconfont.woff");
+    font-family: myfonta;
+}
+.link.icon2 span{
+    font-family: myfonta;
+    color: #2e91b3;
+    font-size: 32px;
+    margin-left: 40px;
+    -webkit-transition: all linear .2s;
+}
+.link.icon2 span:hover{
+    color: rgba(46,145,179,.6);
+}
+.link.icon2{
+    display: inline-block;
+    width: 400px;
+    height: 50px;
+    margin-left: 60px;
+    margin-top: -20px;
+}
 .menu .numa{
     width: 220px;
-  padding: 40px 0;
+    height: 20px;
+    padding: 40px 0;
     float: right;
-    margin-right: 100px;
+    margin-left: 130px;
+    margin-top: -50px;
     font-size: 18px;
 }
 .adr{
@@ -339,7 +384,6 @@ margin: 430px 0 22px 820px;
 }
 .imgshare li>img{
     width: 224px;
-
 }
 .baise{
     position: absolute;
@@ -354,16 +398,13 @@ margin: 430px 0 22px 820px;
     -webkit-transition: all linear .2s;
 }
 .baise img{
-    /*border: 1px solid red;*/
     vertical-align: top;
     -webkit-transition: all linear .2s;
 }
-
 .baise span{
     font-size: 24px;
     font-weight: 100;
     margin-left: 5px;
-
 }
 .baise:hover{
     color: white;

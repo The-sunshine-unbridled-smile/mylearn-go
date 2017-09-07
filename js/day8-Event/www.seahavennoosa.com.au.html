@@ -86,6 +86,11 @@
                     <img src="img/logo.png" alt="">
                 </div>
                 <div class="logo-right">
+                    <div id="xuanzhuan">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
 
                 </div>
             </div>
@@ -252,17 +257,17 @@
         <li><a class="link" href="">contact us</a></li>
         <li><a class="link" href="">faqs</a></li>
         <li>
-            <a class="link" href="">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+            <a class="link  icon2" href="">
+                <span>&#xe61e;</span>
+                <span>&#xe66e;</span>
+                <span>&#xe736;</span>
+                <span>&#xe645;</span>
             </a>
 
         </li>
         <li>
             <a class="link numa" href="">
-                +61 7 544 3422
+                +61 7 544 3422 <br>
                 Freecall 1800 072 013
             </a>
 
@@ -278,36 +283,78 @@
 </footer>
 </body>
 <script>
+    /**
+     * 导航滚动条滚动后收缩和伸开
+     */
     window.onscroll = function () {
         var t = document.documentElement.scrollTop || document.body.scrollTop;
-        var myNav=document.getElementsByTagName("nav")[0];
-        var myLogo=document.getElementById("logo");
-        if(t>585){
+        var myNav = document.getElementsByTagName("nav")[0];
+        var myLogo = document.getElementById("logo");
+        var myRotate=document.getElementById("xuanzhuan");
+        var ulList=document.getElementsByClassName("menu")[0];
+        var liList=ulList.getElementsByTagName("li");
+        if (t > 585) {
             myNav.setAttribute("style", " position:fixed;left: 0;top:0; width:340px;z-index:20; overflow:hidden;");
-         myLogo.setAttribute("style", " opacity:1;  position:fixed;top:0;margin-left:0;");
-        }else {
+            myLogo.setAttribute("style", " opacity:1;  position:fixed;top:0;margin-left:0;");
+            myRotate.onclick=function () {
+                myNav.setAttribute("style", " position:fixed;top:0;left:0;width:1349px;z-index:12;");
+                myLogo.setAttribute("style", " opacity:0;  position:absolute;top:0;margin-left:1009px;");
+                liList[0].innerHTML="";
+                liList[liList.length-2].innerHTML="BOOK";
+            }
+        } else {
             myNav.setAttribute("style", " position:relative;width:1349px;");
             myLogo.setAttribute("style", " opacity:0;  position:absolute;top:0;margin-left:1009px;");
         }
+
+
+
+
     };
 
+
+
+    /**
+     * 点击切换到上一张
+     */
     function myPrev() {
-        var myMain=document.getElementById("r-main");  //装有所有轮播图片的div
-        var  myList=document.getElementsByClassName("r-main-text");//单个轮播的图片清单
-        myMain.insertBefore(myList[1],myMain.firstChild);
-        myList[0].style.marginLeft="-728px";
+        var myMain = document.getElementsByClassName("r-main")[0];  //装有所有轮播图片的div
+        var myList = document.getElementsByClassName("r-main-text");//单个轮播的图片清单
+        myMain.insertBefore(myList[1], myMain.firstChild);
+        myList[0].style.marginLeft = "-728px";
         setTimeout(function () {
-            myList[0].style.marginLeft="0";
-        },300)
+            myList[0].style.marginLeft = "0";
+
+        }, 300)
     }
+    /**
+     * 点击切换到下一张
+     */
     function myNext() {
-        var myMain=document.getElementById("r-main");  //装有所有轮播图片的div
-        var  myList=document.getElementsByClassName("r-main-text");//单个轮播的图片清单
-        myList[0].style.marginLeft="-728px";
+        var myMain = document.getElementsByClassName("r-main")[0];  //装有所有轮播图片的div
+        var myList = document.getElementsByClassName("r-main-text");//单个轮播的图片清单
+        myList[0].style.marginLeft = "-728px";
         setTimeout(function () {
-            myList[0].style.marginLeft="0";
+            myList[0].style.marginLeft = "0";
             myMain.appendChild(myList[0])
-        },300)
+        }, 300)
     }
+
+
+    /**
+     *自动轮播
+     */
+    var myMain2=document.getElementById("main2");
+    setInterval(function () {
+        myMain2.style.background="url('img/6.jpg') no-repeat";
+    },3000);
+    setInterval(function () {
+        myMain2.style.background="url('img/7.jpg') no-repeat";
+    },6000);
+    setInterval(function () {
+        myMain2.style.background="url('img/5.jpg') no-repeat";
+    },9000);
+
+
 </script>
 </html>

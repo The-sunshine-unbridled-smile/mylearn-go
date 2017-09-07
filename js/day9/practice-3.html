@@ -25,34 +25,38 @@
     </style>
 </head>
 <body>
-<div id="lside">
-    <p>刘备</p>
-    <p>张飞</p>
-    <p>关羽</p>
-    <p>赵云</p>
-    <p>马超</p>
-</div>
+<select id="lside" multiple="multiple">
+    <option>刘备</option>
+    <option>张飞</option>
+    <option>关羽</option>
+    <option>赵云</option>
+    <option>马超</option>
+</select>
 <div id="btn">
     <button id="toright">&gt;</button>
     <button id="alltoright">&gt;&gt;</button>
     <button id="toleft">&lt;</button>
     <button id="alltoleft">&lt;&lt;</button>
 </div>
-<div id="rside">
-</div>
+<select id="rside" multiple="multiple">
+</select>
 
 <script>
     var alltoRight = document.getElementById("alltoright");
     var alltoLeft = document.getElementById("alltoleft");
     var lside = document.getElementById("lside");
     var rside = document.getElementById("rside");
-    var plArr = lside.getElementsByTagName("p");
-    var prArr = rside.getElementsByTagName("p");
+    var plArr = lside.getElementsByTagName("option");
+    var prArr = rside.getElementsByTagName("option");
 
     var toRight = document.getElementById("toright");
     var toLeft = document.getElementById("toleft");
 
     toRight.onclick = function () {
+        for(var i=0;i<plArr.length;i++){
+            rside.innerHTML=rside.innerHTML+plArr[i].select;
+
+        }
 
     };
 
