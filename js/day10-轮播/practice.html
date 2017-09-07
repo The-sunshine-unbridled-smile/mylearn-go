@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="practice.css">
+</head>
+<body>
+<header>
+    <div id="main">
+        <div id="conten">
+            <img src="img/1.jpg" alt="" id="img">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+        </div>
+    </div>
+    <div id="prev">
+        &lt;&lt;
+    </div>
+    <ul>
+        <li>
+            <img src="img/11.png" alt="">
+        </li>
+        <li>
+            <img src="img/22.png" alt="">
+        </li>
+        <li>
+            <img src="img/33.png" alt="">
+        </li>
+        <li>
+            <img src="img/44.png" alt="">
+        </li>
+        <li>
+            <img src="img/55.png" alt="">
+        </li>
+    </ul>
+    <div id="next">
+        &gt;&gt;
+    </div>
+</header>
+<script>
+    var liList = document.getElementsByTagName("li");   //下面的小图片
+    var imgObj = document.getElementById("img");   //第一张图片
+    /**
+     * 点击小图片切换到对于的大图片
+     */
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].onclick = (function (j) {
+            return function () {
+                imgObj.src = "img/" + (j + 1) + ".jpg"
+            }
+        })(i);
+    }
+    var myPrev = document.getElementById("prev");  //上一张按钮
+    var myNext = document.getElementById("next");    //下一张按钮
+    var myConten = document.getElementById("conten");    //装有所有轮播图片的大框
+    var allImg = myConten.getElementsByTagName("img");   //图片清单
+
+    /**
+     * 点击切换到上一张
+     */
+    myPrev.onclick=function () {
+        myConten.insertBefore(allImg[allImg.length-1],myConten.firstChild);
+        allImg[0].style.marginLeft="-567px";
+        setTimeout(function () {
+            allImg[0].style.marginLeft="0"
+        },500)
+    };
+
+    /**
+     * 点击切换到下一张
+     */
+    myNext.onclick = function () {
+        allImg[0].style.marginLeft = "-567px";
+        setTimeout(function () {
+            allImg[0].style.marginLeft = "0";
+            myConten.appendChild(allImg[0]);
+        }, 500)
+    }
+
+</script>
+</body>
+</html>

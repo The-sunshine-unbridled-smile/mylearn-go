@@ -312,14 +312,13 @@
 
     };
 
-
+    var myMain = document.getElementsByClassName("r-main")[0];  //装有所有轮播图片的div
+    var myList = document.getElementsByClassName("r-main-text");//单个轮播的图片清单
 
     /**
      * 点击切换到上一张
      */
     function myPrev() {
-        var myMain = document.getElementsByClassName("r-main")[0];  //装有所有轮播图片的div
-        var myList = document.getElementsByClassName("r-main-text");//单个轮播的图片清单
         myMain.insertBefore(myList[1], myMain.firstChild);
         myList[0].style.marginLeft = "-728px";
         setTimeout(function () {
@@ -331,8 +330,6 @@
      * 点击切换到下一张
      */
     function myNext() {
-        var myMain = document.getElementsByClassName("r-main")[0];  //装有所有轮播图片的div
-        var myList = document.getElementsByClassName("r-main-text");//单个轮播的图片清单
         myList[0].style.marginLeft = "-728px";
         setTimeout(function () {
             myList[0].style.marginLeft = "0";
