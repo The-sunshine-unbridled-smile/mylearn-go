@@ -91,7 +91,6 @@
                         <div></div>
                         <div></div>
                     </div>
-
                 </div>
             </div>
         </nav>
@@ -290,28 +289,35 @@
         var t = document.documentElement.scrollTop || document.body.scrollTop;
         var myNav = document.getElementsByTagName("nav")[0];
         var myLogo = document.getElementById("logo");
-        var myRotate=document.getElementById("xuanzhuan");
-        var ulList=document.getElementsByClassName("menu")[0];
-        var liList=ulList.getElementsByTagName("li");
+        var myRotate = document.getElementById("xuanzhuan");
+        var chilidUl = document.getElementsByClassName("childmenu");
         if (t > 585) {
             myNav.setAttribute("style", " position:fixed;left: 0;top:0; width:340px;z-index:20; overflow:hidden;");
             myLogo.setAttribute("style", " opacity:1;  position:fixed;top:0;margin-left:0;");
-            myRotate.onclick=function () {
+            myRotate.onclick = function () {
                 myNav.setAttribute("style", " position:fixed;top:0;left:0;width:1349px;z-index:12;");
                 myLogo.setAttribute("style", " opacity:0;  position:absolute;top:0;margin-left:1009px;");
-                liList[0].innerHTML="";
-                liList[liList.length-2].innerHTML="BOOK";
+                for (var i = 0; i < chilidUl.length; i++) {
+                    chilidUl[i].setAttribute("style", "-webkit-transform:rotate(0);transform-origin:bottom;top:133px;");
+                   var childLi= chilidUl[i].getElementsByTagName("li");
+                   for(var j=0;j<childLi.length;j++){
+                       childLi[j].setAttribute("style", "-webkit-transform:rotate(0)");
+                   }
+                }
             }
         } else {
             myNav.setAttribute("style", " position:relative;width:1349px;");
             myLogo.setAttribute("style", " opacity:0;  position:absolute;top:0;margin-left:1009px;");
+            for (var i = 0; i < chilidUl.length; i++) {
+                chilidUl[i].setAttribute("style", "-webkit-transform:rotate(180deg);transform-origin:top;z-index:20;top:0");
+                var childLi= chilidUl[i].getElementsByTagName("li");
+                for(var j=0;j<childLi.length;j++){
+                    childLi[j].setAttribute("style", "-webkit-transform:rotate(180deg)");
+                }
+            }
+
         }
-
-
-
-
     };
-
     var myMain = document.getElementsByClassName("r-main")[0];  //装有所有轮播图片的div
     var myList = document.getElementsByClassName("r-main-text");//单个轮播的图片清单
 
@@ -336,21 +342,19 @@
             myMain.appendChild(myList[0])
         }, 300)
     }
-
-
     /**
      *自动轮播
      */
-    var myMain2=document.getElementById("main2");
+    var myMain2 = document.getElementById("main2");
     setInterval(function () {
-        myMain2.style.background="url('img/6.jpg') no-repeat";
-    },3000);
+        myMain2.style.background = "url('img/6.jpg') no-repeat";
+    }, 3000);
     setInterval(function () {
-        myMain2.style.background="url('img/7.jpg') no-repeat";
-    },6000);
+        myMain2.style.background = "url('img/7.jpg') no-repeat";
+    }, 6000);
     setInterval(function () {
-        myMain2.style.background="url('img/5.jpg') no-repeat";
-    },9000);
+        myMain2.style.background = "url('img/5.jpg') no-repeat";
+    }, 9000);
 
 
 </script>

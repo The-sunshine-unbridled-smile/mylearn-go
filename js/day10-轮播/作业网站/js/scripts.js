@@ -32,7 +32,7 @@ $(document).ready(function() {
     // show the close overlay button
     $(".close-overlay").removeClass("hidden");
     // handle the adding of hover class when clicked
-    $(".effects .img").click(function(e) {
+    $(".effects .img2").click(function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (!$(this).hasClass("hover")) {
@@ -43,13 +43,13 @@ $(document).ready(function() {
     $(".close-overlay").click(function(e) {
       e.preventDefault();
       e.stopPropagation();
-      if ($(this).closest(".img").hasClass("hover")) {
-        $(this).closest(".img").removeClass("hover");
+      if ($(this).closest(".img2").hasClass("hover")) {
+        $(this).closest(".img2").removeClass("hover");
       }
     });
   } else {
     // handle the mouseenter functionality
-    $(".effects .img").mouseenter(function() {
+    $(".effects .img2").mouseenter(function() {
       $(this).addClass("hover");
     })
     // handle the mouseleave functionality

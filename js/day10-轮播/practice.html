@@ -9,11 +9,11 @@
 <header>
     <div id="main">
         <div id="conten">
-            <img src="img/1.jpg" alt="" id="img">
-            <img src="img/2.jpg" alt="">
-            <img src="img/3.jpg" alt="">
-            <img src="img/4.jpg" alt="">
-            <img src="img/5.jpg" alt="">
+            <img src="img2/1.jpg" alt="" id="img">
+            <img src="img2/2.jpg" alt="">
+            <img src="img2/3.jpg" alt="">
+            <img src="img2/4.jpg" alt="">
+            <img src="img2/5.jpg" alt="">
         </div>
     </div>
     <div id="prev">
@@ -21,19 +21,19 @@
     </div>
     <ul>
         <li>
-            <img src="img/11.png" alt="">
+            <img src="img2/11.png" alt="">
         </li>
         <li>
-            <img src="img/22.png" alt="">
+            <img src="img2/22.png" alt="">
         </li>
         <li>
-            <img src="img/33.png" alt="">
+            <img src="img2/33.png" alt="">
         </li>
         <li>
-            <img src="img/44.png" alt="">
+            <img src="img2/44.png" alt="">
         </li>
         <li>
-            <img src="img/55.png" alt="">
+            <img src="img2/55.png" alt="">
         </li>
     </ul>
     <div id="next">
@@ -49,7 +49,7 @@
     for (var i = 0; i < liList.length; i++) {
         liList[i].onclick = (function (j) {
             return function () {
-                imgObj.src = "img/" + (j + 1) + ".jpg"
+                imgObj.src = "img2/" + (j + 1) + ".jpg"
             }
         })(i);
     }

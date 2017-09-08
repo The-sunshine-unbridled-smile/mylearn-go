@@ -165,7 +165,7 @@ section>h3{
     color: white;
 
     text-align: center;
-    background: url("img/banner.jpg") no-repeat -400px 0;
+    background: url("img2/banner.jpg") no-repeat -400px 0;
 }
 .banner>h2{
     width: 250px;
@@ -187,7 +187,7 @@ section>h3{
     float: left;
    margin: 0 10px;
 }
-.link>.img{
+.link>.img2{
     width: 66px;
     height: 66px;
     border-radius: 66px;

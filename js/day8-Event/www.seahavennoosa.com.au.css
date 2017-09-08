@@ -37,7 +37,7 @@ ul li{
 }
 .menu{
     width: 1249px;
-    height: 128px;
+    height: 125px;
     padding-left: 100px;
     text-align: center;
     float: left;
@@ -59,7 +59,10 @@ ul li{
 .menu>li a.num{
     color: #2e91b3;
     font-size: 32px;
+    display: block;
+    margin-top: -13px;
 }
+
 .childmenu{
     position: absolute;
     left: -20%;
@@ -73,12 +76,12 @@ ul li{
     color: white;
     background-color: #2e91b3;
     font:300 14px/40px Roboto,arial;
-    -webkit-transition: all linear .1s;
     -webkit-transform: rotate(180deg);
 }
 .childmenu>li:hover{
     color: #2e91b3;
     background-color: white;
+    cursor: pointer;
 }
 
 #logo{
@@ -107,7 +110,7 @@ ul li{
 }
 .logo-right{
     width: 80px;
-    height: 130px;
+    height: 133px;
     background-color:#2e91b3;
     float: left;
 }
@@ -133,7 +136,7 @@ ul li{
 }
 nav{
     width: 1349px;
-    height: 130px;
+    height: 133px;
     position: relative;
     background-color: white;
     /*border: 1px solid red;*/
@@ -141,7 +144,7 @@ nav{
 }
 .allmenu{
     width: 1349px;
-    height: 130px;
+    height: 133px;
     /*border: 1px solid red;*/
     /*overflow: hidden;*/
 }
@@ -177,12 +180,14 @@ nav{
 .r-main{
     width: 1456px;
     height: 486px;
+
 }
 .r-main-text{
     float: left;
     position: relative;
     width: 728px;
     height: 486px;
+    -webkit-transition: all linear .3s;
 }
 .r-main-text img{
     width: 728px;
