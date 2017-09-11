@@ -23,8 +23,6 @@ nav>ul>li{
     text-transform: uppercase;
     color: #4d4959;
     margin: 0 30px;
-    /*border: 1px solid red;*/
-    /*padding: 0 7px;*/
 }
 nav>ul>li:hover{
     color: #64c29e;
@@ -34,7 +32,6 @@ nav>ul>li:hover{
     width: 889px;
     height: 277px;
     text-align: center;
-    /*border: 1px solid red;*/
     padding: 0 230px;
     margin: 100px 0;
 }
@@ -55,13 +52,11 @@ nav>ul>li:hover{
 .main2{
     width: 1349px;
     height: 600px;
-    /*border: 1px solid red;*/
 }
 .lside{
     width: 899px;
     height: 600px;
     float: left;
-
 }
 .lside>img{
     width: 899px;
