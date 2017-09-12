@@ -4,32 +4,75 @@
 //全局变量 游戏区域
 var mainObj = document.getElementById("main");
 
-//存放敌机
-var diJiArr = [];
+//键盘事件
+var keyLeft = false;
+var keyRight = false;
+var keyUp = false;
+var keyDown = false;
+
+var playPlane;  //玩家飞机
+var diJiArr = [];//存放敌机
+var ziDanArr=[];//存放子弹
 
 //启用定时器，开始创建多个敌机
 var diJiCreate = setInterval(createDiJi, 1000);
 //敌机开始移动
 var diJiMove = setInterval(moveDiJi, 200);
+//玩家飞机开始移动
+var playMove = setInterval(movePlay, 100);
+//子弹移动
+var bullet=setInterval(moveBullet,100);
 
+createPlay();
 //移动敌机
 function moveDiJi() {
     for (var i = 0; i < diJiArr.length; i++) {
-        var top=parseInt(diJiArr[i].imgNodes.style.top);
-        if (top<=628){
+        var top = parseInt(diJiArr[i].imgNodes.style.top);
+        if (top <= 628) {
             diJiArr[i].move();
-        }else {
+        } else {
             //超过了游戏区域就删除敌机
             mainObj.removeChild(diJiArr[i].imgNodes);
-            diJiArr.splice(i,1);
+            diJiArr.splice(i, 1);
             i--;
         }
-
     }
-
 }
 
-//根据飞机原型创建敌机
+//移动玩家飞机
+function movePlay() {
+    if (playPlane == undefined) {
+        return;
+    }
+    if (keyUp) {
+        playPlane.moveUp();
+    }
+    if (keyDown) {
+        playPlane.moveDown();
+    }
+    if (keyLeft) {
+        playPlane.moveLeft();
+    }
+    if (keyRight) {
+        playPlane.moveRight();
+    }
+}
+
+//子弹的移动
+function moveBullet() {
+    for (var i=0;i<ziDanArr.length;i++){
+        var top=parseInt(ziDanArr[i].imgNode.style.top);
+        if(top==0){
+            mainObj.removeChild(ziDanArr[i].imgNode);
+            ziDanArr.splice(i,1);
+            i--;
+        }else {
+            ziDanArr[i].move();
+        }
+    }
+}
+
+//创建敌机
 function createDiJi() {
     var x = parseInt(Math.random() * 397);
     var y = 0;
@@ -38,8 +81,48 @@ function createDiJi() {
     diJiArr.push(diJi);
 }
 
+//创建玩家飞机
+function createPlay() {
+    playPlane = new playPrototype(156, 484, "feiji/GodPlane.png", 30);
+    playPlane.init();
+}
 
-//创建飞机原型
+//定义键盘事件  按下键盘的时候触发，松开键盘法时候取消触发
+document.onkeydown = function () {
+    var e = window.event || arguments[0];
+    if(e.keyCode == 32){
+       playPlane.shot();
+    }
+    if (e.keyCode == 38) {
+        keyUp = true;
+    }
+    if (e.keyCode == 40) {
+        keyDown = true;
+    }
+    if (e.keyCode == 37) {
+        keyLeft = true;
+    }
+    if (e.keyCode == 39) {
+        keyRight = true;
+    }
+};
+document.onkeyup = function () {
+    var e = window.event || arguments[0];
+    if (e.keyCode == 38) {
+        keyUp = false;
+    }
+    if (e.keyCode == 40) {
+        keyDown = false;
+    }
+    if (e.keyCode == 37) {
+        keyLeft = false;
+    }
+    if (e.keyCode == 39) {
+        keyRight = false;
+    }
+};
+
+//创建敌机原型
 function diPrototype(x, y, src, speed) {
     //属性
     this.x = x;
@@ -63,5 +146,97 @@ function diPrototype(x, y, src, speed) {
         this.imgNodes.style.left = x + "px";
         this.imgNodes.style.top = y + "px";
         mainObj.appendChild(this.imgNodes);
+    }
+}
+
+//创建玩家飞机原型
+function playPrototype(x, y, src, speed) {
+    //属性
+    this.x = x;
+    this.y = y;
+    this.src = src;
+    this.speed = speed;
+    this.imgNodes = document.createElement("img");
+
+    //方法
+    /**
+     * 子弹的发射
+     */
+    this.shot = function () {
+        var width = this.imgNodes.width;
+        var top = parseInt(this.imgNodes.style.top);
+        var left = parseInt(this.imgNodes.style.left);
+        var x = left + width/2 - 10;
+        var y = top - 40 - 10;
+        var bullet = new bulletPrototype(x, y, "feiji/bullet_03.png", 10);
+        bullet.init();
+        ziDanArr.push(bullet);
+    };
+    /**
+     * 移动：4个方向
+     */
+    this.moveUp = function () {
+        var top = parseInt(this.imgNodes.style.top) - this.speed;
+        if (top > 0) {
+            this.imgNodes.style.top = top + "px"
+        }
+    };
+    this.moveDown = function () {
+        var top = parseInt(this.imgNodes.style.top) + this.speed;
+        if (top < 534) {
+            this.imgNodes.style.top = top + "px"
+        }
+    };
+    this.moveLeft = function () {
+        var left = parseInt(this.imgNodes.style.left) - this.speed;
+        if (left > 0) {
+            this.imgNodes.style.left = left + "px"
+        }
+    };
+    this.moveRight = function () {
+        var left = parseInt(this.imgNodes.style.left) + this.speed;
+        if (left < 313) {
+            this.imgNodes.style.left = left + "px"
+        }
+    };
+    /**
+     *初始化(组装)
+     */
+    this.init = function () {
+        this.imgNodes.src = this.src;
+        this.imgNodes.style.left = x + "px";
+        this.imgNodes.style.top = y + "px";
+        mainObj.appendChild(this.imgNodes);
+    }
+}
+
+//创建子弹原型
+function bulletPrototype(x, y, src, speed) {
+    //属性
+    this.x = x;
+    this.y = y;
+    this.src = src;
+    this.speed = speed;
+    this.imgNode = document.createElement("img");
+    //方法
+    /**
+     * 移动：4个方向
+     */
+    this.move = function () {
+        var top = parseInt(this.imgNode.style.top) - this.speed;
+        if (top >= 0) {
+            this.imgNode.style.top = top + "px"
+        }else {
+            this.imgNode.style.top="0px";
+        }
+    };
+    /**
+     *初始化(组装)
+     */
+    this.init = function () {
+        this.imgNode.src = this.src;
+        this.imgNode.style.left = x + "px";
+        this.imgNode.style.top = y + "px";
+        mainObj.appendChild(this.imgNode);
     }
 }
