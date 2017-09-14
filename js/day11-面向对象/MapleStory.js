@@ -23,61 +23,122 @@ var keyLeft = false;
 var keyRight = false;
 var keyUp = false;
 var keyDown = false;
+var movePlayTime, moveBulletTime, createDiPlaneTime, createDiBirdTime, moveDiPlaneTime, moveDiBirdTime,
+    collisionPlayTime, corpsesDiTime,collisionDiTime,corpsesPlayTime,
+    createDiGhostTime, moveDiGhostTime, createDiBossTime, moveBossTime, moveBossBulletTime;
+startGame();
+function startGame() {
+    createPlay();
+    movePlayTime = setInterval(movePlay, 100);   //玩家的移动
+    moveBulletTime = setInterval(moveBullet, 30); //玩家子弹的移动
+    createDiPlane();
+    createDiPlaneTime = setInterval(createDiPlane, 9000); //敌方飞机
+    setTimeout(createDiBird, 2000);
+    createDiBirdTime = setInterval(createDiBird, 8000);  //敌方小鸟
+    moveDiPlaneTime = setInterval(moveDiPlane, 100);  //敌方飞机的移动
+    moveDiBirdTime = setInterval(moveDiBird, 200);  //敌方小鸟的移动
+    collisionPlayTime = setInterval(collisionPlay, 100);//玩家子弹与敌人小飞机的碰撞
+    corpsesDiTime = setInterval(corpsesDi, 2000); //敌方消失
+    createDiGhostTime = setInterval(createDiGhost, 10000);//敌方怪兽
+    moveDiGhostTime = setInterval(moveDiGhost, 200);//敌方怪兽的移动
+    createDiBossTime = setInterval(createDiBoss, 30000);//敌方boss
+    moveBossTime = setInterval(moveBoss, 300);  //敌方boss的移动
+    moveBossBulletTime = setInterval(moveBossBullet, 200); //敌方boss子弹的移动
+    collisionDiTime = setInterval(collisionDi, 100);  //敌机子弹与玩家的碰撞
+    corpsesPlayTime = setInterval(corpsesPlay, 300);  //玩家消失
+}
+//游戏结束，暂停游戏
+function gameOver() {
+    clearInterval(movePlayTime);
+    clearInterval(moveBulletTime);
+    clearInterval(createDiPlaneTime);
+    clearInterval(createDiBirdTime);
+    clearInterval(moveDiPlaneTime);
+    clearInterval(moveDiBirdTime);
+    clearInterval(collisionPlayTime);
+    clearInterval(corpsesDiTime);
+    clearInterval(collisionDiTime);
+    clearInterval(corpsesPlayTime);
+    clearInterval(createDiGhostTime);
+    clearInterval(moveDiGhostTime);
+    clearInterval(createDiBossTime);
+    clearInterval(moveBossTime);
+    clearInterval(moveBossBulletTime);
 
-createPlay();
-var movePlayTime = setInterval(movePlay, 100);   //玩家的移动
-var moveBulletTime = setInterval(moveBullet, 30); //玩家子弹的移动
-createDiPlane();
-var createDiPlaneTime = setInterval(createDiPlane, 9000); //敌方飞机
-setTimeout(createDiBird, 2000);
-var createDiBirdTime = setInterval(createDiBird, 8000);  //敌方小鸟
-var moveDiPlaneTime = setInterval(moveDiPlane, 100);  //敌方飞机的移动
-var moveDiBirdTime = setInterval(moveDiBird, 200);  //敌方小鸟的移动
-var collisionPlayTime = setInterval(collisionPlay, 100);//玩家子弹与敌人小飞机的碰撞
-var corpsesDiTime = setInterval(corpsesDi, 2000); //敌方消失
-var createDiGhostTime = setInterval(createDiGhost, 10000);//敌方怪兽
-var moveDiGhostTime = setInterval(moveDiGhost, 200);//敌方怪兽的移动
-var createDiBossTime = setInterval(createDiBoss, 30000);//敌方boss
-var moveBossTime = setInterval(moveBoss, 300);  //敌方boss的移动
-var moveBossBulletTime = setInterval(moveBossBullet, 200); //敌方boss子弹的移动
+}
+// setTimeout(exper, 30000);
+// //精力瓶
+// function exper() {
+//     myExper.src = "冒险岛/ui/expFull.gif";
+//     playPlane.src = playImg[1];
+//     playPlane.init();
+// for(var i=0;i<ziDanArr.length;i++){
+//     bullet.src=bullteImg[1];
 
-/*setTimeout(exper, 30000);
-//精力瓶
-function exper() {
-    myExper.src = "冒险岛/ui/expFull.gif";
-    playPlane.src = playImg[1];
-    playPlane.init();
-    for(var i=0;i<ziDanArr.length;i++){
-        ziDanArr[i].src= bullteImg[1];
-        ziDanArr[i] .init();
+// ziDanArr.push(bullet);
+// ziDanArr[i].src= bullteImg[1];
+// bullet .init();
+// }
+/*  bullet.src = bullteImg[1];
+ bullet.init();*/
+// }
+/*setTimeout(exper2, 50000);
+ //精力瓶
+ function exper2() {
+ myExper.src = "冒险岛/ui/expFull.gif";
+ playPlane.src = playImg[2];
+ playPlane.init();
+ for(var i=0;i<ziDanArr.length;i++){
+ ziDanArr[i].src= bullteImg[2];
+ bullet.init();
+ }
+
+ }
+ setTimeout(exper3, 80000);
+ //精力瓶
+ function exper3() {
+ myExper.src = "冒险岛/ui/expFull.gif";
+ playPlane.src = playImg[3];
+ playPlane.init();
+ bullet.src = bullteImg[3];
+ bullet.init();
+ }*/
+
+//敌人子弹与玩家的碰撞
+function collisionDi() {
+    for (var i = 0; i < bossBullteArr.length; i++) {
+        var dizidanLeft = parseInt(bossBullteArr[i].imgNodes.style.left);
+        var dizidanTop = parseInt(bossBullteArr[i].imgNodes.style.top);
+        var dizidanWidth = bossBullteArr[i].imgNodes.width;
+        var dizidanHeight = bossBullteArr[i].imgNodes.height;
+        var playPlaneLeft = parseInt(playPlane.imgNodes.style.left);
+        var playPlaneTop = parseInt(playPlane.imgNodes.style.top);
+        var playPlaneWidth = playPlane.imgNodes.width;
+        var playPlaneHeight = playPlane.imgNodes.height;
+        if (dizidanLeft > (playPlaneLeft - dizidanWidth) && dizidanLeft < (playPlaneLeft + playPlaneWidth)
+            && dizidanTop > (playPlaneTop - dizidanHeight) && dizidanTop < (playPlaneTop + playPlaneHeight)) {
+            playPlane.blood--;
+            if (playPlane.blood == 0) {
+                playPlane.imgNodes.src = "feiji/BeiJi_02.png";
+                playPlane.isdead = true;
+            }
+            //子弹消失
+            mainObj.removeChild(diziDanArr[i].imgNodes);
+            diziDanArr.splice(i, 1);
+            i--;
+            break
+        }
     }
-  /!*  bullet.src = bullteImg[1];
-    bullet.init();*!/
-}
-setTimeout(exper2, 50000);
-//精力瓶
-function exper2() {
-    myExper.src = "冒险岛/ui/expFull.gif";
-    playPlane.src = playImg[2];
-    playPlane.init();
-   for(var i=0;i<ziDanArr.length;i++){
-       ziDanArr[i].src= bullteImg[2];
-       bullet.init();
-   }
 
 }
-setTimeout(exper3, 80000);
-//精力瓶
-function exper3() {
-    myExper.src = "冒险岛/ui/expFull.gif";
-    playPlane.src = playImg[3];
-    playPlane.init();
-    bullet.src = bullteImg[3];
-    bullet.init();
-}*/
-
-
-
+//玩家消失
+function corpsesPlay() {
+    if (playPlane.isdead) {
+        mainObj.removeChild(playPlane.imgNodes);
+        gameOver();
+        alert("游戏结束");
+    }
+}
 
 //玩家子弹与敌人小飞机，小鸟的碰撞；其中飞机变为宝箱，小鸟消失
 function collisionPlay() {
@@ -200,31 +261,31 @@ function corpsesDi() {
 function createDiPlane() {
     var x = 1100;
     var y = parseInt(Math.random() * 500);
-    var diPlane = new diPrototype(x, y, "冒险岛/enemy/plane/move.gif", 10);
+    var diPlane = new diPrototype(x, y, "冒险岛/enemy/plane/move.gif", 10, 3);
     diPlaneArr.push(diPlane);
 }
 //创建敌人（小鸟）
 function createDiBird() {
     var x = 1100;
     var y = parseInt(Math.random() * 500);
-    var diBird = new diPrototype(x, y, "冒险岛/enemy/bird/move.gif", 10);
+    var diBird = new diPrototype(x, y, "冒险岛/enemy/bird/move.gif", 10, 4);
     diBirdArr.push(diBird);
 }
 //创建敌人（怪兽）
 function createDiGhost() {
     var x = 1242;
     var y = parseInt(Math.random() * 528);
-    var diGhost = new diPrototype(x, y, "冒险岛/enemy/ghost/move.gif", 10);
+    var diGhost = new diPrototype(x, y, "冒险岛/enemy/ghost/move.gif", 10, 8);
     diGhostArr.push(diGhost);
 }
 //创建敌人boss]
 function createDiBoss() {
     var x = 1003;
     var y = parseInt(Math.random() * 446);
-    var diBoss = new diPrototype(x, y, "冒险岛/enemy/boss/attack.gif", 10,20);
+    var diBoss = new diPrototype(x, y, "冒险岛/enemy/boss/attack.gif", 10, 20);
     diBossArr.push(diBoss);
     setTimeout(bossHit, 0);
-    bossPause= setInterval(bossHit, 4000);
+    bossPause = setInterval(bossHit, 4000);
     function bossHit() {
         diBoss.shot();
     }
@@ -453,13 +514,13 @@ function playPrototype(x, y, src, speed, score) {
 }
 
 //创建敌人原型
-function diPrototype(x, y, src, speed,blood) {
+function diPrototype(x, y, src, speed, blood) {
     //属性
     this.x = x;
     this.y = y;
     this.src = src;
     this.speed = speed;
-    blood=2;
+    // blood=2;
     this.blood = blood;
     this.isdead = false;
     this.imgNodes = document.createElement("img");
@@ -550,5 +611,3 @@ function bossbulletPrototype(x, y, src, speed) {
         mainObj.appendChild(this.imgNodes);
     }
 }
-
-

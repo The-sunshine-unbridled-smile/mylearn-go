@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        canvas#mycanvas {
+            /*让canvas显示在浏览器正中央 */
+            position: absolute;
+            margin: auto auto;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: url(feiji/bg1.png);
+            border: 1px solid #d3d3d3;
+
+        }
+        img{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<img src="feiji/GodPlane.png" id="playerImg" />
+<img src="feiji/bullet_03.png" id="bulletImg" />
+
+<!--
+你需要指定canvas的width，而不是在style里面声明。后者无效
+ -->
+<canvas id="mycanvas" width="400" height="600">
+</canvas>
+
+<script>
+    //涉及到移除数组某个元素，扩展下Array
+
+    Array.prototype.remove=function(obj){
+
+        var index=this.indexOf(obj);
+        if(index==-1){
+            return this;
+        }
+        delete obj;
+        this.splice(index,1);
+        return this;
+    }
+
+
+
+    /**
+     * 我把JS放在body的最后面，不然的话你要在window.onload事件后执行js. 代码可能像这个样子。 <code>
+     *  window.addEventListener("load",function(){
+ *   //todo put your code
+ *  });
+     *
+     *</code>
+     */
+    var mycanvas = document.getElementById("mycanvas");
+    var ctx = mycanvas.getContext("2d");
+    var playerImg = document.getElementById("playerImg");
+    var bulletImg = document.getElementById("bulletImg");
+
+    var canWidth = mycanvas.width;
+    var canHeight = mycanvas.height;
+
+    // 子弹容器
+    var bulletList = new Array();
+
+    /*
+     * 因为玩家飞机只有一个实例，所以我们直接创造这个player对象，而不是创造一个Player类。
+     */
+    var player = {
+        // 玩家飞机对象
+        imgObj : playerImg,
+        width : playerImg.width,
+        height : playerImg.height,
+        step : 5,// 当按住移动键（A,S,D,W）玩家飞机每次移动的距离。
+        position : {
+            x : 0,
+            y : 0
+        }
+    };
+
+    /*
+     * 飞机显示方法，将移到(x,y)处
+     */
+    player.display = function(x, y) {
+        this.position.x = x;
+        this.position.y = y;
+        // 画玩家飞机图片
+        ctx.drawImage(this.imgObj, x, y);
+    };
+    // 飞机移动方法
+    player.move = function(dir) {
+
+        switch (dir) {
+            case "up":
+                // 保证玩家飞机移动不出界
+                if (this.position.y <= 0)
+                    return;
+                this.position.y -= this.step;
+                break;
+            case "down":
+                if (this.position.y >= canHeight-this.height)
+                    return;
+                this.position.y += this.step;
+                break;
+            case "left":
+                if (this.position.x <= 0)
+                    return;
+                this.position.x -= this.step;
+                break;
+            case "right":
+                if (this.position.x >= canWidth-this.width)
+                    return;
+                this.position.x += this.step;
+                break;
+
+        }
+
+        // 先移走先前的图片，再重画
+        this.miss();
+        this.display(this.position.x, this.position.y);
+    };
+    // 移除玩家飞机对象
+    player.miss = function() {
+
+        // 不介意扩大Rectangle擦除
+        ctx.clearRect(this.position.x-5, this.position.y-5, this.width+10, this.height+10);
+    };
+
+    // 子弹会生成很多，所以声明子弹类
+    function Bullet(ctx) {
+        this.imgObj = bulletImg;
+        this.width = this.imgObj.width;
+        this.height = this.imgObj.height;
+        this.ctx = ctx;
+        // 每个子弹实例有自己的位置
+        this.x = 0;
+        this.y = 0;
+        // 子弹每次移动距离
+        this.step = 40;
+    }
+    /*
+     * 每只子弹实例有它们自己的属性，但是共享方法。用prototype声明方法将共享
+     */
+
+    // 显示子弹
+    Bullet.prototype.display = function(x, y) {
+
+        this.x = x;
+        this.y = y;
+        ctx.drawImage(bulletImg, this.x, this.y);
+    };
+
+    // 移除子弹
+    Bullet.prototype.miss = function() {
+
+        this.ctx.clearRect(this.x, this.y, this.width, this.height);
+    };
+    Bullet.prototype.move = function() {
+        // 如果子弹飞出界，移走，当然不显示了。
+        if(this.y<=0){
+            bulletList.remove(this);
+            return;
+        }
+
+        // 首先移走行前的子弹，再按新位置显示，子弹就移动了。
+        this.miss();
+        this.display(this.x, this.y - this.step);
+    };
+
+    // 玩家飞机发射子弹.
+    player.fire = function() {
+        var b = new Bullet(ctx);
+        // 从玩家飞机的中上方发出子弹
+        b.display(this.position.x + this.width / 2 - b.width / 2 + 1,
+            this.position.y - b.height);
+        bulletList.push(b);
+    };
+
+    // 在界面上底中部显示玩家飞机
+    player.display((canWidth - player.width) / 2, canHeight - player.height);
+
+    // 增加按键(A,S,D,W)时，玩家飞机移动事件
+    // keypress 事件会每隔33秒触发一次。我不知道其他浏览器和Java Swing里面是不是也是这样的。
+    window.addEventListener("keypress", function(e) {
+        var keyCode = e.keyCode;
+        var dir = "";
+        if (keyCode === 119) {
+            // w
+            dir = "up";
+        } else if (keyCode === 100) {
+            // d
+            dir = "right";
+        } else if (keyCode === 115) {
+            // s
+            dir = "down";
+        } else if (keyCode === 97) {
+            // a
+            dir = "left";
+
+        }
+        // 把方向传到player.move方法里
+        player.move(dir);
+    });
+
+    // 玩家飞机会一直发射子弹。
+    window.setInterval(function() {
+        // 玩家飞机发射
+        player.fire();
+        // 子弹移动
+
+        for ( var i = 0; i < bulletList.length; i++) {
+            bulletList[i].move();
+            console.log(bulletList.length);
+        }
+    }, 60);
+</script>
+</body>
+</html>

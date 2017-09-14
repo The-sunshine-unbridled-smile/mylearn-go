@@ -9,7 +9,7 @@ function createPlayer() {
     var y = 534;
     var feijiPlayer = new player(x, y, "feiji/GodPlane.png", 5);
     feijiPlayer.init();       //执行飞机的组装
-    feijiPlayer.onkeydown = movePlayer();
+    // feijiPlayer.movePlayer();
 }
 
 
@@ -33,14 +33,6 @@ function movePlayer() {
             alert("cuowu");
             break;
     }
-    /* if (e.keyCode==37)//左
-     alert('你按下了左');
-     if (e.keyCode==38)//上
-     alert('你按下了上');
-     if (e.keyCode==39)//右
-     alert('你按下了右');
-     if (e.keyCode==40)//下
-     alert('你按下了下');*/
 }
 //创建玩家飞机原型
 function player(x, y, src, speed) {
