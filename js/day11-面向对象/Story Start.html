@@ -4,23 +4,69 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
         body{
             width: 1349px;
             height: 620px;
             background: url("冒险岛/readyBg.jpg") no-repeat 0 -450px;
             background-size: 100%;
             position: relative;
+            font-size: 14px;
         }
         a{
             position: absolute;
             top: 400px;
             left: 300px;
         }
+        body>div{
+            position: absolute;
+            top: 50px;
+            left: 150px;
+            width: 202px;
+            height: 350px;
+        }
+        body>div>img{
+            vertical-align: middle;
+            margin-top: 10px;
+        }
+        .red{
+            color: red;
+        }
     </style>
 </head>
 <body>
-<a href="Maple Story.html">
-    <img src="冒险岛/start.gif" alt="">
+<div>
+    <img src="冒险岛/help/Help.png" alt="">
+    <img src="冒险岛/help/Help1.png" alt="">
+    <span> <span class="red">长按</span>空格键攻击！</span>
+    <img src="冒险岛/help/Help2.png" alt=""><span> 伤害有<span class="red">延迟！</span></span>
+    <p>开局送三个，且用切珍惜 <br>
+        <img src="冒险岛/ui/boom/boom3.png" alt="">
+        一个格子为一个大招
+    </p>
+    <p>
+        <img src="冒险岛/help/exp.gif" alt="">
+        此乃<span class="red">经验瓶</span>，经验满了后，宝贝龙会<span class="red">进化</span>，终极状态会有
+        <span class="red">龙卷风</span>等你来<span class="red">探索</span>！
+        <br>
+        <span class="red">游戏时间</span>为90秒哦
+    </p>
+</div>
+<a href="Maple Story.html" onmouseover="clickA()" onmouseout="upA()">
+    <img src="冒险岛/start.gif" alt="" id="myimg">
 </a>
+<script>
+    function clickA() {
+        var myImg=document.getElementById("myimg");
+        myImg.src="冒险岛/startOver.gif";
+    }
+    function upA() {
+        var myImg=document.getElementById("myimg");
+        myImg.src="冒险岛/start.gif";
+    }
+</script>
 </body>
 </html>
