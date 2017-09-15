@@ -66,10 +66,9 @@ function collisionDi() {
             mainObj.removeChild(diziDanArr[i].imgNodes);
             diziDanArr.splice(i, 1);
             i--;
-            break
+            break;
         }
     }
-
 }
 
 //玩家飞机的消失
@@ -290,7 +289,7 @@ function playPrototype(x, y, src, speed, score) {
     this.src = src;
     this.speed = speed;
     this.score = score;
-    this.blood = 5;
+    this.blood = 15;
     this.isdead = false;
     this.scoreNode = document.createElement("div");
     this.imgNodes = document.createElement("img");

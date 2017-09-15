@@ -7,7 +7,7 @@
         body{
             width: 1349px;
             height: 620px;
-            background: url("冒险岛/bg.jpg") no-repeat 0 -100px;
+            background: url("dao/bg.jpg") no-repeat 0 -100px;
             background-size: 100%;
             overflow: hidden;
             position: relative;
@@ -24,14 +24,41 @@
             top: 220px;
             left: 25px;
         }
+        #scroe{
+            position: absolute;
+            top:100px;
+            left: 500px;
+            width:217px;
+            height: 196px;
+            z-index: 10;
+            background: url("dao/ui/tipBg.png") no-repeat;
+            /*padding: 20px;*/
+            font-size: 24px;
+            display: none;
+        }
+        #scroe>p{
+            width:180px;
+            height: 196px;
+            margin-left: 20px;
+        }
+        #span{
+            color: red;
+        }
     </style>
 </head>
 <body id="main">
 <a href="Story%20Start.html">
-    <img src="冒险岛/ui/back.gif" alt="">
+    <img src="dao/ui/back.gif" alt="">
 </a>
-    <img id="experience" src="冒险岛/ui/exp0.png" alt="">
-    <img id="boom" src="冒险岛/ui/boom/boom3.png" alt="">
+    <img id="experience" src="dao/ui/exp0.png" alt="">
+    <img id="boom" src="dao/ui/boom/boom3.png" alt="">
+<div id="scroe">
+    <p id="scroep">
+        游戏结束！<br>
+        您的分数为：<br>
+        <span id="span"></span>
+    </p>
+</div>
 
 <script src="MapleStory.js"></script>
 

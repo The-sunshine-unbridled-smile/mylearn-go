@@ -1,9 +1,11 @@
 /**
  * Created by uid on 2017/9/13.
  */
-
 var mainObj = document.getElementById("main");
 var myExper = document.getElementById("experience");
+var scroeP=document.getElementById("scroep");
+var scroe=document.getElementById("scroe");
+var span=document.getElementById("span");
 
 var playPlane;   //玩家
 var bullet;  //玩家子弹
@@ -13,10 +15,12 @@ var diBirdArr = [];  //敌方小鸟
 var diGhostArr = [];  //敌方怪兽
 var diBossArr = [];  //敌方boss
 var bossBullteArr = []; //boss子弹
+var chestArr=[]; //宝箱
+
 //玩家的图片
-var playImg = ["冒险岛/dragon/small/magicmissile.gif", "冒险岛/dragon/middle/magicmissile.gif", "冒险岛/dragon/large/magicmissile.gif", "冒险岛/dragon/final/magicmissile.gif"];
+var playImg = ["dao/dragon/small/magicmissile.gif", "dao/dragon/middle/magicmissile.gif", "dao/dragon/large/magicmissile.gif", "dao/dragon/final/magicmissile.gif"];
 //玩家的子弹图片
-var bullteImg = ["冒险岛/dragon/small/att.gif", "冒险岛/dragon/middle/att.gif", "冒险岛/dragon/large/att.gif", "冒险岛/dragon/final/att.gif"];
+var bullteImg = ["dao/dragon/small/att.gif", "dao/dragon/middle/att.gif", "dao/dragon/large/att.gif", "dao/dragon/final/att.gif"];
 
 //键盘事件
 var keyLeft = false;
@@ -24,7 +28,7 @@ var keyRight = false;
 var keyUp = false;
 var keyDown = false;
 var movePlayTime, moveBulletTime, createDiPlaneTime, createDiBirdTime, moveDiPlaneTime, moveDiBirdTime,
-    collisionPlayTime, corpsesDiTime,collisionDiTime,corpsesPlayTime,
+    collisionPlayTime, corpsesDiTime, collisionDiTime, corpsesPlayTime,
     createDiGhostTime, moveDiGhostTime, createDiBossTime, moveBossTime, moveBossBulletTime;
 startGame();
 function startGame() {
@@ -45,7 +49,7 @@ function startGame() {
     moveBossTime = setInterval(moveBoss, 300);  //敌方boss的移动
     moveBossBulletTime = setInterval(moveBossBullet, 200); //敌方boss子弹的移动
     collisionDiTime = setInterval(collisionDi, 100);  //敌机子弹与玩家的碰撞
-    corpsesPlayTime = setInterval(corpsesPlay, 300);  //玩家消失
+    corpsesPlayTime = setInterval(corpsesPlay, 500);  //玩家消失
 }
 //游戏结束，暂停游戏
 function gameOver() {
@@ -66,43 +70,6 @@ function gameOver() {
     clearInterval(moveBossBulletTime);
 
 }
-// setTimeout(exper, 30000);
-// //精力瓶
-// function exper() {
-//     myExper.src = "冒险岛/ui/expFull.gif";
-//     playPlane.src = playImg[1];
-//     playPlane.init();
-// for(var i=0;i<ziDanArr.length;i++){
-//     bullet.src=bullteImg[1];
-
-// ziDanArr.push(bullet);
-// ziDanArr[i].src= bullteImg[1];
-// bullet .init();
-// }
-/*  bullet.src = bullteImg[1];
- bullet.init();*/
-// }
-/*setTimeout(exper2, 50000);
- //精力瓶
- function exper2() {
- myExper.src = "冒险岛/ui/expFull.gif";
- playPlane.src = playImg[2];
- playPlane.init();
- for(var i=0;i<ziDanArr.length;i++){
- ziDanArr[i].src= bullteImg[2];
- bullet.init();
- }
-
- }
- setTimeout(exper3, 80000);
- //精力瓶
- function exper3() {
- myExper.src = "冒险岛/ui/expFull.gif";
- playPlane.src = playImg[3];
- playPlane.init();
- bullet.src = bullteImg[3];
- bullet.init();
- }*/
 
 //敌人子弹与玩家的碰撞
 function collisionDi() {
@@ -119,7 +86,7 @@ function collisionDi() {
             && dizidanTop > (playPlaneTop - dizidanHeight) && dizidanTop < (playPlaneTop + playPlaneHeight)) {
             playPlane.blood--;
             if (playPlane.blood == 0) {
-                playPlane.imgNodes.src = "feiji/BeiJi_02.png";
+                playPlane.imgNodes.src = "dao/dragon/dead.gif";
                 playPlane.isdead = true;
             }
             //子弹消失
@@ -136,7 +103,8 @@ function corpsesPlay() {
     if (playPlane.isdead) {
         mainObj.removeChild(playPlane.imgNodes);
         gameOver();
-        alert("游戏结束");
+        span.innerHTML=playPlane.score;
+        scroe.style.display="block";
     }
 }
 
@@ -152,12 +120,16 @@ function collisionPlay() {
             var diplaneTop = parseInt(diPlaneArr[j].imgNodes.style.top);
             var diplaneWidth = diPlaneArr[j].imgNodes.width;
             var diplaneHeight = diPlaneArr[j].imgNodes.height;
-            if (zidanLeft > (diplaneLeft - zidanWidth) && zidanLeft < (diplaneLeft + diplaneWidth)
-                && zidanTop > (diplaneTop - zidanHeight) && zidanTop < (diplaneTop + diplaneHeight)) {
-                diPlaneArr[j].blood--;
-                if (diPlaneArr[j].blood == 0) {
-                    diPlaneArr[j].imgNodes.src = "冒险岛/enemy/thing.gif";
-
+                    if (zidanLeft > (diplaneLeft - zidanWidth) && zidanLeft < (diplaneLeft + diplaneWidth)
+                        && zidanTop > (diplaneTop - zidanHeight) && zidanTop < (diplaneTop + diplaneHeight)) {
+                        diPlaneArr[j].blood--;
+                        if (diPlaneArr[j].blood == 0) {
+                            diPlaneArr[j].imgNodes.src = "dao/enemy/plane/die.gif";
+                            diPlaneArr[j].isdead=true;
+                           createChest();
+                            // diPlaneArr[j].imgNodes.src = "dao/enemy/thing.gif";
+                    playPlane.score += 10;
+                    playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
                 }
                 //子弹消失
                 mainObj.removeChild(ziDanArr[i].imgNodes);
@@ -175,8 +147,10 @@ function collisionPlay() {
                 && zidanTop > (dibirdTop - zidanHeight) && zidanTop < (diplaneTop + dibirdHeight)) {
                 diBirdArr[k].blood--;
                 if (diBirdArr[k].blood == 0) {
-                    diBirdArr[k].imgNodes.src = "冒险岛/enemy/bird/die.gif";
+                    diBirdArr[k].imgNodes.src = "dao/enemy/bird/die.gif";
                     diBirdArr[k].isdead = true;
+                    playPlane.score += 20;
+                    playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
                 }
                 //子弹消失
                 mainObj.removeChild(ziDanArr[k].imgNodes);
@@ -194,8 +168,10 @@ function collisionPlay() {
                 && zidanTop > (ghostTop - zidanHeight) && zidanTop < (ghostTop + ghostHeight)) {
                 diGhostArr[m].blood--;
                 if (diGhostArr[m].blood == 0) {
-                    diGhostArr[m].imgNodes.src = "冒险岛/enemy/ghost/die.gif";
+                    diGhostArr[m].imgNodes.src = "dao/enemy/ghost/die.gif";
                     diGhostArr[m].isdead = true;
+                    playPlane.score += 30;
+                    playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
                 }
                 //子弹消失
                 mainObj.removeChild(ziDanArr[m].imgNodes);
@@ -204,7 +180,7 @@ function collisionPlay() {
                 break
             }
         }
-        for (var n = 0; n < diGhostArr.length; n++) {
+        for (var n = 0; n < diBossArr.length; n++) {
             var bossLeft = parseInt(diBossArr[n].imgNodes.style.left);
             var bossTop = parseInt(diBossArr[n].imgNodes.style.top);
             var bossWidth = diBossArr[n].imgNodes.width;
@@ -213,8 +189,10 @@ function collisionPlay() {
                 && zidanTop > (bossTop - zidanHeight) && zidanTop < (bossTop + bossHeight)) {
                 diBossArr[n].blood--;
                 if (diBossArr[n].blood == 0) {
-                    diBossArr[n].imgNodes.src = "冒险岛/enemy/boss/die.gif";
+                    diBossArr[n].imgNodes.src = "dao/enemy/boss/die.gif";
                     diBossArr[n].isdead = true;
+                    playPlane.score += 80;
+                    playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
                 }
                 //子弹消失
                 mainObj.removeChild(ziDanArr[n].imgNodes);
@@ -223,17 +201,62 @@ function collisionPlay() {
                 break
             }
         }
+        for (var b = 0; b < chestArr.length; b++) {
+            var chestLeft = parseInt(chestArr[b].imgNodes.style.left);
+            var chestTop = parseInt(chestArr[b].imgNodes.style.top);
+            var chestWidth = chestArr[b].imgNodes.width;
+            var chestHeight = chestArr[b].imgNodes.height;
+            if (zidanLeft > (zidanLeft - zidanWidth) && zidanLeft < (chestLeft + chestWidth)
+                && zidanTop > (chestTop - zidanHeight) && zidanTop < (chestTop + chestHeight)) {
+                chestArr[b].blood--;
+                if (chestArr[b].blood == 0) {
+                    chestArr[b].isdead = true;
+                    playPlane.score += 30;
+                    playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
+                }
+                //子弹消失
+                mainObj.removeChild(ziDanArr[b].imgNodes);
+                ziDanArr.splice(b, 1);
+                b--;
+                break
+            }
+        }
+        if (playPlane.score < 50) {
+            playPlane.imgNodes.src = playImg[0];
+            ziDanArr[i].imgNodes.src = bullteImg[0];
+        } else if (playPlane.score >= 50 && playPlane.score <= 200) {
+            playPlane.imgNodes.src = playImg[1];
+            ziDanArr[i].imgNodes.src = bullteImg[1];
+        } else if (playPlane.score > 200 && playPlane.score <= 400) {
+            playPlane.imgNodes.src = playImg[2];
+            ziDanArr[i].imgNodes.src =bullteImg[3];
+        } else if (playPlane.score > 400) {
+            playPlane.imgNodes.src = playImg[3];
+            ziDanArr[i].imgNodes.src =bullteImg[3];
+        }
     }
 }
 //敌人消失
 function corpsesDi() {
+    for(var b=0;b<chestArr.length;b++){
+        if (chestArr[b].isdead) {
+            mainObj.removeChild(chestArr[b].imgNodes);
+            chestArr.splice(b, 1);
+            b--;
+        }
+    }
+    for (var a = 0; a < diPlaneArr.length; a++) {
+        if (diPlaneArr[a].isdead) {
+            mainObj.removeChild(diPlaneArr[a].imgNodes);
+            diPlaneArr.splice(a, 1);
+            a--;
+        }
+    }
     for (var i = 0; i < diBirdArr.length; i++) {
         if (diBirdArr[i].isdead) {
             mainObj.removeChild(diBirdArr[i].imgNodes);
             diBirdArr.splice(i, 1);
             i--;
-            playPlane.score += 10;
-            playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
         }
     }
     for (var j = 0; j < diGhostArr.length; j++) {
@@ -241,8 +264,6 @@ function corpsesDi() {
             mainObj.removeChild(diGhostArr[j].imgNodes);
             diGhostArr.splice(j, 1);
             j--;
-            playPlane.score += 20;
-            playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
         }
     }
     for (var k = 0; k < diBossArr.length; k++) {
@@ -251,41 +272,48 @@ function corpsesDi() {
             diBossArr.splice(k, 1);
             clearInterval(bossPause);
             k--;
-            playPlane.score += 50;
-            playPlane.scoreNode.innerHTML = "分数：" + playPlane.score;
         }
     }
 }
 
+//创建宝箱
+function createChest() {
+    for(var i=0;i<diPlaneArr.length;i++){
+        var x =1300- parseInt(diPlaneArr[i].imgNodes.style.left);
+        var y = parseInt(diPlaneArr[i].imgNodes.style.top);
+    }
+    var Chest = new diPrototype(x, y, "dao/enemy/thing.gif", 10, 1);
+    chestArr.push(Chest);
+}
 //创建敌人（小飞机）
 function createDiPlane() {
     var x = 1100;
     var y = parseInt(Math.random() * 500);
-    var diPlane = new diPrototype(x, y, "冒险岛/enemy/plane/move.gif", 10, 3);
+    var diPlane = new diPrototype(x, y, "dao/enemy/plane/move.gif", 10, 3);
     diPlaneArr.push(diPlane);
 }
 //创建敌人（小鸟）
 function createDiBird() {
     var x = 1100;
     var y = parseInt(Math.random() * 500);
-    var diBird = new diPrototype(x, y, "冒险岛/enemy/bird/move.gif", 10, 4);
+    var diBird = new diPrototype(x, y, "dao/enemy/bird/move.gif", 10, 4);
     diBirdArr.push(diBird);
 }
 //创建敌人（怪兽）
 function createDiGhost() {
     var x = 1242;
     var y = parseInt(Math.random() * 528);
-    var diGhost = new diPrototype(x, y, "冒险岛/enemy/ghost/move.gif", 10, 8);
+    var diGhost = new diPrototype(x, y, "dao/enemy/ghost/move.gif", 10, 8);
     diGhostArr.push(diGhost);
 }
 //创建敌人boss]
 function createDiBoss() {
     var x = 1003;
     var y = parseInt(Math.random() * 446);
-    var diBoss = new diPrototype(x, y, "冒险岛/enemy/boss/attack.gif", 10, 20);
+    var diBoss = new diPrototype(x, y, "dao/enemy/boss/attack.gif", 10, 20);
     diBossArr.push(diBoss);
     setTimeout(bossHit, 0);
-    bossPause = setInterval(bossHit, 4000);
+    bossPause = setInterval(bossHit, 6000);
     function bossHit() {
         diBoss.shot();
     }
@@ -390,10 +418,6 @@ function moveBullet() {
         }
     }
 }
-
-/*function daZhao() {
- mainObj.innerHTML+="<img src='冒险岛/skill.gif' style='position: absolute;top: -20px;left: 80px'/>";
- }*/
 
 //定义键盘事件  按下键盘的时候触发，松开键盘法时候取消触发
 document.onkeydown = function () {
@@ -531,7 +555,7 @@ function diPrototype(x, y, src, speed, blood) {
         var left = parseInt(this.imgNodes.style.left);
         var x = left;
         var y = top;
-        var bossbullet = new bossbulletPrototype(x, y, "冒险岛/enemy/boss/attackBall.gif", 30);
+        var bossbullet = new bossbulletPrototype(x, y, "dao/enemy/boss/attackBall.gif", 30);
         bossbullet.init();
         bossBullteArr.push(bossbullet);
     };
