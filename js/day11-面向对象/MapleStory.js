@@ -3,9 +3,12 @@
  */
 var mainObj = document.getElementById("main");
 var myExper = document.getElementById("experience");
-var scroeP=document.getElementById("scroep");
 var scroe=document.getElementById("scroe");
 var span=document.getElementById("span");
+var resultNum=document.getElementById("result");
+var numImg=resultNum.getElementsByTagName("img");
+var num=["dao/num/0.gif","dao/num/1.gif","dao/num/2.gif","dao/num/3.gif","dao/num/4.gif","dao/num/5.gif","dao/num/6.gif","dao/num/7.gif","dao/num/8.gif","dao/num/9.gif","dao/num/d.png"];
+
 
 var playPlane;   //玩家
 var bullet;  //玩家子弹
@@ -70,6 +73,18 @@ function gameOver() {
     clearInterval(moveBossBulletTime);
 
 }
+
+// setInterval(countDown,1000);
+countDown();
+//时间倒计时
+function countDown() {
+    for(var i=num.length-1;i>0;i--){
+        numImg[4].src=num[i-1];
+       /* numImg[3].src=num[2];
+        numImg[1].src=num[0];*/
+    }
+}
+
 
 //敌人子弹与玩家的碰撞
 function collisionDi() {
@@ -419,12 +434,17 @@ function moveBullet() {
     }
 }
 
+//大招
+function daZhao() {
+    mainObj.innerHTML+="<img src='dao/skill.gif' style='top:-50px;left:100px;'/>"
+}
+
 //定义键盘事件  按下键盘的时候触发，松开键盘法时候取消触发
 document.onkeydown = function () {
     var e = window.event || arguments[0];
-    /*   if(e.keyCode==13){
-     daZhao();
-     }*/
+       if(e.keyCode==13){
+       daZhao();
+     }
     if (e.keyCode == 32) {
         playPlane.shot();
     }
