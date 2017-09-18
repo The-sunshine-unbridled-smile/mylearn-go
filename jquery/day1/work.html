@@ -52,6 +52,7 @@
                 <a href="javascript:" class="deleteone">删除</a>
             </div>
         </div>
+
         <textarea type="text" placeholder="评论..."></textarea>
         <button class="btn">回复</button>
     </div>
@@ -93,11 +94,12 @@
                     <p class="times">2014-02-19 14:36</p>
                 </div>
             </div>
-            <!--<div class="rside">
+            <div class="rside">
                 <img src="images/bg2.jpg" alt="">
-                <a href="javascript:">1</a>
-                <a href="javascript:">赞</a>
-            </div>-->
+                <span class="count">1</span>
+                <a href="javascript:" class="good">赞</a>
+                <a href="javascript:" class="deleteone">删除</a>
+            </div>
         </div>
         <textarea type="text" placeholder="评论..."></textarea>
         <button class="btn">回复</button>
@@ -189,10 +191,14 @@
      * 点击回复将评论的内容添加到评论区
      */
     $(".btn").click(function () {
-        $(".comment").clone(true).insertAfter(".comment");
+        var myComment = $(this).prev().prev();
+        var newCon=myComment.get(0).outerHTML;
+        var newCo=$(newCon);
+
         $(".idea").text($(this).prev("textarea").val());
         $(this).prev("textarea").css({"height": "10px"});
         $(this).prev("textarea").val("");
+        myComment.after(newCo);
     });
 </script>
 </body>
