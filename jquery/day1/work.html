@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="work.css">
+</head>
+<body>
+<div class="main">
+    <div class="delete">X</div>
+    <div class="lside">
+        <img src="images/1.jpg" alt="">
+    </div>
+    <div class="rside">
+        <p>
+            <a calss="username" href="javascript:">Andy:</a>
+            轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。
+        </p>
+        <div class="showimg">
+            <img src="images/img1.jpg" alt="">
+        </div>
+        <div class="datetime">
+            <p class="lside">
+                <img src="images/bg1.jpg" alt="">
+                <span class="times">02-14 23:01</span>
+            </p>
+            <p class="rside">
+                <img src="images/bg2.jpg" alt="">
+                <a href="javascript:">赞</a>
+            </p>
+        </div>
+        <div class="personNum">
+            <img src="images/bg2.jpg" alt="">
+            <span>
+                4个人觉得很赞
+            </span>
+        </div>
+        <div class="comment">
+            <div class="lside">
+                <div class="lside">
+                    <img src="images/my.jpg" alt="">
+                </div>
+                <div class="rside">
+                    <p><a href="javascript:">我：</a> <span class="idea">写的太好了。</span></p>
+                    <p class="times">2014-02-19 14:36</p>
+                </div>
+            </div>
+            <div class="rside">
+                <img src="images/bg2.jpg" alt="">
+                <span class="count">1</span>
+                <a href="javascript:" class="good">赞</a>
+                <a href="javascript:" class="deleteone">删除</a>
+            </div>
+        </div>
+        <textarea type="text" placeholder="评论..."></textarea>
+        <button class="btn">回复</button>
+    </div>
+</div>
+<div class="main">
+    <div class="delete">X</div>
+    <div class="lside">
+        <img src="images/2.jpg" alt="">
+    </div>
+    <div class="rside">
+        <p>
+            <a calss="username" href="javascript:">人在旅途:</a>
+            三亚的海滩很漂亮。
+        </p>
+        <div class="showimg">
+            <img src="images/img5.jpg" alt="">
+        </div>
+        <div class="datetime">
+            <p class="lside">
+                <img src="images/bg1.jpg" alt="">
+                <span class="times">02-14 23:01</span>
+            </p>
+            <p class="rside">
+                <img src="images/bg2.jpg" alt="">
+                <a href="javascript:">赞</a>
+            </p>
+        </div>
+        <!-- <div class="personNum">
+             <span>
+             </span>
+         </div>-->
+        <div class="comment">
+            <div class="lside">
+                <div class="lside">
+                    <img src="images/4.jpg" alt="">
+                </div>
+                <div class="rside">
+                    <p><a href="javascript:">老鹰：</a>我也想去三亚。</p>
+                    <p class="times">2014-02-19 14:36</p>
+                </div>
+            </div>
+            <!--<div class="rside">
+                <img src="images/bg2.jpg" alt="">
+                <a href="javascript:">1</a>
+                <a href="javascript:">赞</a>
+            </div>-->
+        </div>
+        <textarea type="text" placeholder="评论..."></textarea>
+        <button class="btn">回复</button>
+    </div>
+</div>
+<div class="main">
+    <div class="delete">X</div>
+    <div class="lside">
+        <img src="images/3.jpg" alt="">
+    </div>
+    <div class="rside">
+        <p>
+            <a calss="username" href="javascript:">小Y:</a>
+            英国艺术家Jane Perkins 能利用很多不起眼的东西进行创作，甚至是垃圾。
+            收拾、纽扣、玩具等等都可以作为他创作的工具并创作出惟妙惟肖的画作，四号不逊于色彩丰富丰富的颜料。
+        </p>
+        <div class="datetime">
+            <p class="lside">
+                <img src="images/bg1.jpg" alt="">
+                <span class="times">02-14 23:01</span>
+            </p>
+            <p class="rside">
+                <img src="images/bg2.jpg" alt="">
+                <a href="javascript:">赞</a>
+            </p>
+        </div>
+        <textarea type="text" placeholder="评论..."></textarea>
+        <button class="btn">回复</button>
+    </div>
+</div>
+<script src="jquery.min.js"></script>
+<script>
+
+    /**
+     * 删除这一条大的说说
+     */
+    $(".delete").click(function () {
+        $(this).parent().remove();
+    });
+
+    /**
+     * 点击输入评论内容
+     */
+    $("textarea").focus(function () {
+        $(this).css({"height": "50px"});
+        $(this).next().css({"opacity": "1"});
+    });
+    //    $("textarea").blur(function () {
+    //        $(this).css({"height": "10px"});
+    //        $(this).next().css({"opacity": "0"});
+    //    });
+    /**
+     * 给这条动态点赞和取消赞
+     */
+    $("p.rside a").click(function () {
+        var html = "";
+        if ($(".personNum>span").hasClass("newnum")) {
+            html = "我和4个人觉得很赞";
+            $(this).text("取消赞");
+        } else {
+            html = "4个人觉得很赞";
+            $(this).text("赞");
+        }
+        $(".personNum>span").toggleClass("newnum").text(html);
+    });
+    /**
+     * 评论区的点赞和取消赞
+     */
+    $(".good").click(function () {
+        var html = "";
+        if ($(".count").hasClass("new")) {
+            $(this).text("取消赞");
+            html = "2";
+        } else {
+            $(this).text("赞");
+            html = "1";
+        }
+        $(".count").toggleClass("new").text(html);
+    });
+    /**
+     * 点击删除该条评论
+     */
+    $("a.deleteone").click(function () {
+        $(this).parents(".comment").remove();
+    });
+
+
+    /**
+     * 点击回复将评论的内容添加到评论区
+     */
+    $(".btn").click(function () {
+        $(".comment").clone(true).insertAfter(".comment");
+        $(".idea").text($(this).prev("textarea").val());
+        $(this).prev("textarea").css({"height": "10px"});
+        $(this).prev("textarea").val("");
+    });
+</script>
+</body>
+</html>

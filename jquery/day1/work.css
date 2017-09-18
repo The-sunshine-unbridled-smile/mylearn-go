@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.lside{
+    float: left;
+}
+.rside{
+    float: right;
+}
+.main{
+    width: 580px;
+    padding: 30px 30px 30px 0;
+    margin:30px auto;
+   border-top:1px solid  #EFEFEF;
+    overflow: hidden;
+    position: relative;
+}
+.delete{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color:#D5D5D5 ;
+    background-color:#F6F6F6 ;
+    cursor: pointer;
+}
+.main>.rside{
+    width: 465px;
+}
+a,span.count{
+    color:#59728A;
+    font-size: 14px;
+    text-decoration: none;
+}
+p{
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+.showimg{
+    margin: 15px 0;
+}
+.datetime{
+
+    height: 20px;
+    line-height: 20px;
+}
+.times{
+    color:#B0B0B0;
+    font-size: 12px;
+}
+.personNum{
+    height: 30px;
+    line-height:30px;
+    background-color:#EFEFEF ;
+    margin:15px 0;
+}
+.comment{
+    height:50px;
+    padding:10px 40px 0 0;
+    border-top:1px solid #EFEFEF;
+}
+.com1{
+    display: none;
+}
+.comment>.rside{
+    opacity: 0;
+}
+.comment:hover .rside{
+    opacity: 1;
+}
+.comment:hover{
+    background-color: #EFEFEF ;
+}
+.comment .lside .lside>img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+textarea{
+    width: 96%;
+    height: 10px;
+    outline: none;
+    padding: 10px;
+    border: 1px solid #EFEFEF;
+    text-indent: 5px;
+    margin-top: 10px;
+    resize: none;
+    overflow: hidden;
+}
+button{
+    width: 50px;
+    height: 30px;
+    border: none;
+    color: rgba(0,0,0,.5);
+    background-color: rgb(52,163,234);
+    float: right;
+    opacity: 0;
+}
+img{
+    cursor: pointer;
+}
