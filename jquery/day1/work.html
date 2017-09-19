@@ -36,24 +36,23 @@
             </span>
         </div>
         <div class="comment">
+        <div class="lside">
             <div class="lside">
-                <div class="lside">
-                    <img src="images/my.jpg" alt="">
-                </div>
-                <div class="rside">
-                    <p><a href="javascript:">我：</a> <span class="idea">写的太好了。</span></p>
-                    <p class="times">2014-02-19 14:36</p>
-                </div>
+                <img src="images/my.jpg" alt="">
             </div>
             <div class="rside">
-                <img src="images/bg2.jpg" alt="">
-                <span class="count">1</span>
-                <a href="javascript:" class="good">赞</a>
-                <a href="javascript:" class="deleteone">删除</a>
+                <p><a href="javascript:">我：</a> <span class="idea">写的太好了。</span></p>
+                <p class="times">2014-02-19 14:36</p>
             </div>
         </div>
-
-        <textarea type="text" placeholder="评论..."></textarea>
+        <div class="rside">
+            <img src="images/bg2.jpg" alt="">
+            <span class="count">1</span>
+            <a href="javascript:" class="good">赞</a>
+            <a href="javascript:" class="deleteone">删除</a>
+        </div>
+    </div>
+    <textarea type="text" placeholder="评论..."></textarea>
         <button class="btn">回复</button>
     </div>
 </div>
@@ -100,6 +99,7 @@
                 <a href="javascript:" class="good">赞</a>
                 <a href="javascript:" class="deleteone">删除</a>
             </div>
+
         </div>
         <textarea type="text" placeholder="评论..."></textarea>
         <button class="btn">回复</button>
@@ -147,10 +147,6 @@
         $(this).css({"height": "50px"});
         $(this).next().css({"opacity": "1"});
     });
-    //    $("textarea").blur(function () {
-    //        $(this).css({"height": "10px"});
-    //        $(this).next().css({"opacity": "0"});
-    //    });
     /**
      * 给这条动态点赞和取消赞
      */
@@ -180,25 +176,39 @@
         $(".count").toggleClass("new").text(html);
     });
     /**
-     * 点击删除该条评论
+     * 点击删除该条评论。利用委托方式为还不存在的元素添加事件
      */
-    $("a.deleteone").click(function () {
-        $(this).parents(".comment").remove();
+    $(".main>.rside").on("click","a.deleteone",function () {
+        $(this).parent().parent().remove();
     });
-
 
     /**
      * 点击回复将评论的内容添加到评论区
      */
     $(".btn").click(function () {
+        var text = $(this).prev("textarea").val();
         var myComment = $(this).prev().prev();
-        var newCon=myComment.get(0).outerHTML;
-        var newCo=$(newCon);
-
-        $(".idea").text($(this).prev("textarea").val());
+        var str = '  <div class="comment">' +
+            '<div class="lside">' +
+            '<div class="lside">' +
+            '<img src="images/my.jpg" alt="">' +
+            '</div>' +
+            '<div class="rside">' +
+            '<p><a href="javascript:">我：</a> <span class="idea">' + text + '</span></p>' +
+            '<p class="times">2014-02-19 14:36</p>' +
+            '</div>' +
+            '</div>' +
+            '<div class="rside">' +
+            '<img src="images/bg2.jpg" alt="">' +
+            '<span class="count">1</span>' +
+            '<a href="javascript:" class="good">赞</a>' +
+            '<a href="javascript:" class="deleteone">删除</a>' +
+            '</div>' +
+            '</div>';
+        myComment.after(str);
         $(this).prev("textarea").css({"height": "10px"});
         $(this).prev("textarea").val("");
-        myComment.after(newCo);
+        $(this).css("opacity","0");
     });
 </script>
 </body>

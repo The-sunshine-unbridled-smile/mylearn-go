@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="pratice--1%20轮播.css">
+</head>
+<body>
+<div id="main">   <!-- 固定框-->
+
+    <div id="more">
+        <div id="menu">
+        </div>
+        <div>更多</div>
+        <ul>
+            <li><span></span>jquery</li>
+            <li><span></span>赚钱宝</li>
+            <li><span></span>新闻动态</li>
+            <li><span></span>人力资源</li>
+            <li><span></span>投资关系</li>
+            <li><span></span>关于jquery</li>
+            <li><span></span>联系我们</li>
+            <li><span></span>关于jquerry</li>
+            <li><span></span>公司简介</li>
+        </ul>
+    </div>
+
+    <div id="dot">
+        <div class="dot1">
+            <span>&#xe601;</span>
+            <div class="hr"></div>
+        </div>
+        <div class="dot2">
+            <span>&#xe612;</span>
+            <div class="hr"></div>
+        </div>
+        <div class="dot3">
+            <span>&#xe604;</span>
+            <div class="hr"></div>
+        </div>
+        <div class="dot4">
+            <span>&#xe607;</span>
+            <div class="hr"></div>
+        </div>
+        <div class="dot5">
+            <span>&#xe608;</span>
+            <div class="hr"></div>
+        </div>
+    </div>    <!-- 移入的-->
+    <div id="contant">   <!-- 放图片的轮播框-->
+        <div class="list list1">
+            <img src="img/1.jpg" alt="" class="img">
+            <img src="img/txt_1.png" alt="" class="txt txt1">
+            <button class="btn btn1">查看详情</button>
+        </div>
+        <div class="list list2">
+            <img src="img/2.jpg" alt="" class="img">
+            <img src="img/txt_2.png" alt="" class="txt txt2">
+            <button class="btn btn2">查看详情</button>
+        </div>
+        <div class="list list3">
+            <img src="img/3.jpg" alt="" class="img">
+            <img src="img/txt_3.png" alt="" class="txt txt3">
+            <button class="btn btn3">查看详情</button>
+        </div>
+        <div class="list list4">
+            <img src="img/4.jpg" alt="" class="img">
+            <img src="img/txt_4.png" alt="" class="txt4">
+            <button class="btn btn4">查看详情</button>
+        </div>
+        <div class="list list5">
+            <img src="img/5.jpg" alt="" class="img">
+            <img src="img/txt_5.png" alt="" class="txt txt5">
+            <button class="btn btn5">查看详情</button>
+        </div>
+    </div>
+</div>
+
+<script src="jquery-1.11.3.js"></script>
+
+<script>
+    var myList = $(".list");
+    var now = 0;
+    var Play=setInterval(myPlay,3000);
+    $("#dot").mouseenter(function () {
+      clearInterval(Play)
+    });
+    $("#dot").mouseleave(function () {
+     setInterval(myPlay,3000);
+    });
+    function myPlay() {
+        now++;
+        if (now > myList.length - 1) {
+            now = 0
+        }
+        myList.each(function () {
+            $(this).css("opacity", "0")
+        });
+        $(myList[now]).css("opacity", "1");
+    }
+
+
+    $(".dot1").mouseenter(function () {
+        $(".list1").css("opacity", "1");
+        $(".list1").siblings().css("opacity", "0");
+    });
+    $(".dot2").mouseenter(function () {
+        $(".list2").css("opacity", "1");
+        $(".list2").siblings().css("opacity", "0");
+    });
+    $(".dot3").mouseenter(function () {
+        $(".list3").css("opacity", "1");
+        $(".list3").siblings().css("opacity", "0");
+    });
+    $(".dot4").mouseenter(function () {
+        $(".list4").css("opacity", "1");
+        $(".list4").siblings().css("opacity", "0");
+    });
+    $(".dot5").mouseenter(function () {
+        $(".list5").css("opacity", "1");
+        $(".list5").siblings().css("opacity", "0");
+    })
+
+
+</script>
+</body>
+</html>

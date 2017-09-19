@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#main {
+    width: 1349px;
+    height: 660px;
+    position: relative;
+    overflow: hidden;
+}
+
+.list {
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.img {
+    width: 1349px;
+    height: 660px;
+    position: relative;
+}
+.txt1 {
+    position: absolute;
+    top: 150px;
+    left: 550px;
+    max-width: 300px;
+    -webkit-transition: all .5s linear;
+}
+
+.txt2{
+    position: absolute;
+    top: 90px;
+    left: 550px;
+    max-width: 300px;
+}
+.txt3{
+    position: absolute;
+    top: 120px;
+    left: 530px;
+    max-width: 300px;
+}
+.txt4{
+    position: absolute;
+    top: 120px;
+    left: 550px;
+    max-width: 300px;
+}
+.txt5{
+    position: absolute;
+    top: 100px;
+    left: 665px;
+    max-width: 50px;
+}
+.btn{
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    color: white;
+    border: 1px solid white;
+    background-color: rgba(255,355,355,0);
+    outline: none;
+}
+.btn1{
+    top: 220px;
+    left: 645px;
+    -webkit-transition: all .5s linear;
+}
+.btn2{
+    top: 200px;
+    left: 645px;
+    color: black;
+    border-color: black;
+}
+
+.btn3{
+    top: 170px;
+    left: 620px;
+}
+
+.btn4{
+    top: 180px;
+    left: 640px;
+    color: black;
+    border-color: black;
+}
+
+.btn5{
+    top: 420px;
+    left: 640px;
+}
+
+@font-face {
+    src:url("iconfont.woff");
+    font-family: myfont;
+}
+#dot{
+   position: absolute;
+    left:500px;
+    bottom: 50px;
+    z-index: 100;
+    font-family: myfont;
+    font-size:30px;
+
+}
+#dot>div{
+    color: rgba(255,255,255,.3);
+    width: 70px;
+    height: 40px;
+    text-align: center;
+    float: left;
+    border-bottom: 2px solid rgba(255,255,255,.3);
+    -webkit-transition: all .2s linear;
+}
+#dot>div:hover{
+    color: rgba(255,255,255,1);
+    border-bottom: 2px solid rgba(255,255,255,1);
+}
+
+#more{
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    right:0;
+    top: 0;
+    z-index: 120;
+    color: white;
+    overflow: hidden;
+}
+#more:hover{
+    background-color: rgba(0,0,0,.3);
+    overflow: visible;
+}
+#menu{
+    width: 50px;
+    height: 30px;
+    background: url("img/head_spr.png") no-repeat 15px -20px;
+    float: left;
+    margin-left: 60px;
+    margin-top: 13px;
+}
+#more div:nth-of-type(2){
+    float: left;
+}
+#more ul{
+    width: 200px;
+    clear: both;
+}
+#more ul li{
+    list-style: none;
+    height: 68px;
+    line-height: 68px;
+    background-color: rgba(0,0,0,.3);
+    position: relative;
+}
+#more ul li span{
+    display: inline-block;
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    top: 13px;
+    left: 20px;
+}
+#more ul li:hover span{
+    background: url("img/head_spr.png") no-repeat -30px 15px
+}
