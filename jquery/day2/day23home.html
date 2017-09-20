@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'iconfont';
+        }
+        @font-face {
+            font-family: 'iconfont';
+            src: url('iconfont.woff');
+        }
+        #warp{
+            width: 100%;
+            height: 645px;
+            background-image: url("img/1.jpg");
+            background-size:100% 100% ;
+            overflow: hidden;
+        }
+        .title{
+            width: 380px;
+            text-align: center;
+            margin-left: 480px;
+            margin-top: 100px;
+        }
+        .title>img{
+            -webkit-transition: all  .5s linear;
+        }
+        .title>div{
+           width: 97px;
+            height: 28px;
+            border: 1px solid black;
+           margin-top: 20px;
+            margin-left: 150px;
+            line-height: 28px;
+            font-size: 14px;
+        }
+        .list{
+            position: absolute;
+            top: 520px;
+            left: 480px;
+        }
+        .list>ul>li{
+            float: left;
+            list-style: none;
+            color: white;
+            font-size: 40px;
+            margin-left: 30px;
+        }
+        .sline{
+            border: 2px solid white;
+            width: 50px;
+            margin-top: 60px;
+            margin-left: 20px;
+        }
+        .line{
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin-top: -4px;
+            margin-left: 20px;
+        }
+        .nav{
+            width:162px;
+            height: 645px;
+            background-color: rgba(0, 0, 0, 0.47);
+            position: absolute;
+            top: 0;
+            right: -162px;
+            font-size: 18px;
+            text-align: center;
+            -webkit-transition: all  .5s linear;
+        }
+        .menu{
+            width: 140px;
+            height: 42px;
+            border: 2px solid white;
+            color: white;
+            text-align: center;
+            line-height: 42px;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        #warp>p{
+            position: absolute;
+            top: 35px;
+            right: 50px;
+            color: white;
+            z-index: 999;
+        }
+        .nav>ul>li{
+            list-style: none;
+            margin-top: 40px;
+            color: #b8b8b8;
+        }
+        .ball{
+            width: 13px;
+            height: 13px;
+            border-radius: 13px;
+            background-color: #00a9e3;
+            position: absolute;
+            margin-top: 48px;
+            margin-left: 20px;
+            -webkit-transition: all  .3s linear;
+        }
+    </style>
+</head>
+<body>
+<div id="warp">
+    <div class="title">
+        <img src="img/5.jpg" alt="">
+        <div>查看详情</div>
+    </div>
+    <div class="list">
+        <ul>
+            <li>
+                &#xe612;
+            </li>
+            <li>&#xe601;
+            </li>
+            <li>
+                &#xe604;
+            </li>
+            <li>
+                &#xe607;
+            </li>
+            <li>
+                &#xe608;
+            </li>
+        </ul>
+        <div class="sline"></div>
+        <div class="line"></div>
+    </div>
+    <p>&#xe729; 更多</p>
+    <div class="nav">
+        <div class="menu">
+
+        </div>
+        <div class="ball"></div>
+        <ul>
+            <li>jquery</li>
+            <li>赚钱宝</li>
+            <li>新闻动态</li>
+            <li>人力资源</li>
+            <li>投资关系</li>
+            <li>关于jquery</li>
+            <li>联系我们</li>
+            <li>关于jquery</li>
+            <li>公司简介</li>
+        </ul>
+    </div>
+</div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    function gg(i,x,y) {
+        $(".list>ul>li").eq(i).hover(x,y);
+    }
+    gg(0,a1,a11);gg(1,a2,a22);gg(2,a3,a33);gg(3,a4,a44);gg(4,a5,a55);
+  function a1(){
+        $("#warp").css("background-image", "url('img/1.jpg')");
+        $(".list>ul>li").eq(0).css("color","black");
+        $(".sline").css("margin-left","20px");
+        $(".title>img").attr("src","img/txt_1.png");
+        $(".title>img").css("margin-top","30px");
+        $(" .title>div").css({"border-color":"black","color":"black"})
+    }
+    function a11() {
+        $(".list>ul>li").eq(0).css("color","white");
+        $(".title>img").css("margin-top","0");
+    }
+    function a2() {
+        $("#warp").css("background-image", "url('img/2.jpg')");
+        $(".list>ul>li").eq(1).css("color","black");
+        $(".sline").css("margin-left","100px");
+        $(".title>img").attr("src","img/txt_2.png");
+        $(".title>img").css("margin-top","30px");
+        $(" .title>div").css({"border-color":"white","color":"white"})
+    }
+    function a22() {
+        $(".list>ul>li").eq(1).css("color","white");
+        $(".title>img").css("margin-top","0");
+    }
+    function a3() {
+        $("#warp").css("background-image", "url('img/1.jpg')");
+        $(".list>ul>li").eq(2).css("color","black");
+        $(".sline").css("margin-left","170px");
+        $(".title>img").attr("src","img/txt_3.png");
+        $(".title>img").css("margin-top","30px");
+        $(" .title>div").css({"border-color":"white","color":"white"})
+    }
+    function a33() {
+        $(".list>ul>li").eq(2).css("color","white");
+        $(".title>img").css("margin-top","0");
+    }
+   function a4() {
+        $("#warp").css("background-image", "url('img/4.jpg')");
+        $(".list>ul>li").eq(3).css("color","black");
+        $(".sline").css("margin-left","240px");
+        $(".title>img").attr("src","img/txt4.png");
+        $(".title>img").css("margin-top","30px");
+        $(" .title>div").css({"border-color":"black","color":"black"});
+    }
+    function a44() {
+        $(".list>ul>li").eq(3).css("color","white");
+        $(".title>img").css("margin-top","0");
+    }
+   function a5() {
+        $("#warp").css("background-image", "url('img/5.jpg')");
+        $(".list>ul>li").eq(4).css("color","black");
+        $(".sline").css("margin-left","300px");
+        $(".title>img").attr("src","img/txt_5.png");
+        $(".title>img").css("margin-top","30px");
+        $(" .title>div").css({"border-color":"white","color":"white"})
+    }
+    function a55() {
+        $(".list>ul>li").eq(4).css("color","white");
+        $(".title>img").css("margin-top","0");
+    }
+    function b1() {
+        a1();
+        a55();
+        setTimeout("b2()",2000)
+    }
+    function b2() {
+        a2();
+        a11();
+        setTimeout("b3()",2000)
+    }
+    function b3() {
+        a3();
+        a22();
+        setTimeout("b4()",2000)
+    }function b4() {
+        a4();
+        a33();
+        setTimeout("b5()",2000)
+    }function b5() {
+        a5();
+        a44();
+        setTimeout("b1()",2000)
+    }
+    window.onload=b1();
+    //导航
+    $("#warp>p").mouseenter(c1);
+    $(".nav").mouseleave(c11);
+    function c1() {
+        $(".nav").css("right","0")
+    }
+    function c11() {
+        $(".nav").css("right","-162px")
+    }
+    function e(num) {
+        $(".ball").css("margin-top",num)
+    }
+    $(".nav>ul>li").on("mouseenter",function () {
+        for(var i=0;i<$(".nav>ul>li").length;i++){
+            if(this==$(".nav>ul>li")[i]){
+                e(""+(48+64*i)+"px")
+            }
+        }
+    });
+
+    //    function change(num,src,dist) {
+    //        $(".list>ul>li").eq(num).hover(function () {
+    //            $("#warp").css("background-image", "url(''+src+'')");
+    //            $(".list>ul>li").eq(num).css("color","black");
+    //            $(".sline").css("margin-left",""+dist+"");
+    //            $(".title>img").css("margin-top","30px");
+    //        },function () {
+    //            $(".list>ul>li").eq(num).css("color","white");
+    //            $(".title>img").css("margin-top","0");
+    //        })
+    //    }
+
+
+    //    $(document).ready(function(){
+    //        b1()
+    //    })
+
+
+    //    $(".list>ul>li").hover(function () {
+    //        for(var i=0;i<$(".list>ul>li").length;i++){
+    //            if(this== $(".list>ul>li").eq(1)){
+    //                $("#warp").css("background-image", "url('img/bg_shoulei.jpg')");
+    //                $(".list>ul>li").eq(i).css("color","black");
+    //                $(".sline").css("margin-left","20px")
+    //            }
+    //        }
+    //
+    //    },function () {
+    //        $(".list>ul>li").eq(i).css("color","white");
+    //    })
+</script>
+</body>
+</html>

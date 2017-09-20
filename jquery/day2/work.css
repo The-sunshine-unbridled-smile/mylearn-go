@@ -96,13 +96,15 @@
     font-family: myfont;
 }
 #dot{
-   position: absolute;
+    position: absolute;
     left:500px;
     bottom: 50px;
-    z-index: 100;
+    z-index: 20;
     font-family: myfont;
     font-size:30px;
-
+    /*border: 1px solid red;*/
+    width: 350px;
+    height: 42px;
 }
 #dot>div{
     color: rgba(255,255,255,.3);
