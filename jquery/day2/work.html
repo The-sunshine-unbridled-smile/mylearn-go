@@ -76,11 +76,24 @@
 </div>
 
 <script src="jquery-1.11.3.js"></script>
-
+<script src="jquery.mousewheel.js"></script>
 <script>
     var myList = $(".list");
     var now = 0;
     var Play=setInterval(myPlay,3000);
+    jQuery(function ($) {
+        $("#main").bind('mousewheel', function (event, delta) {
+            var dir = delta > 0 ? 'Up' : 'Down';
+            if (dir == 'Up') {
+                $("#dot").css("bottom","50px");
+               //console.log("向上滚动， www.imiansha.com");
+            } else {
+                $("#dot").css("bottom","100px");
+              // console.log("向下滚动， http: //blog.csdn.net/u011627980");
+            }
+            return false;
+        });
+    });
     $("#dot").mouseenter(function () {
       clearInterval(Play);
     });
