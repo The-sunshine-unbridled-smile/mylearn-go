@@ -1,0 +1,21 @@
+.main{
+    width: 50%;
+    height: 200px;
+    /*padding: 5%;*/
+    line-height: 1.5em;
+    text-align: center;
+}
+.mmain{
+    padding:5% 0;
+}
+.main>p{
+    color: #fb4b4b;
+    font-size: 1.5em;
+    line-height: 1.8em;
+}
+#about{
+    width: 100%;
+    height: 525px;
+    background-color: #f2f0ec;
+
+}
