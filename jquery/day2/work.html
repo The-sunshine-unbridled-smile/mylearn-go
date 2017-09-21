@@ -23,29 +23,31 @@
             <li><span></span>公司简介</li>
         </ul>
     </div> <!-- 固定框-->
+    <div id="big_dot">
+        <div id="dot">
+            <div class="dot1">
+                <span>&#xe601;</span>
+                <div class="hr"></div>
+            </div>
+            <div class="dot2">
+                <span>&#xe612;</span>
+                <div class="hr"></div>
+            </div>
+            <div class="dot3">
+                <span>&#xe604;</span>
+                <div class="hr"></div>
+            </div>
+            <div class="dot4">
+                <span>&#xe607;</span>
+                <div class="hr"></div>
+            </div>
+            <div class="dot5">
+                <span>&#xe608;</span>
+                <div class="hr"></div>
+            </div>
+        </div>    <!-- 移入的-->
+    </div>
 
-    <div id="dot">
-        <div class="dot1">
-            <span>&#xe601;</span>
-            <div class="hr"></div>
-        </div>
-        <div class="dot2">
-            <span>&#xe612;</span>
-            <div class="hr"></div>
-        </div>
-        <div class="dot3">
-            <span>&#xe604;</span>
-            <div class="hr"></div>
-        </div>
-        <div class="dot4">
-            <span>&#xe607;</span>
-            <div class="hr"></div>
-        </div>
-        <div class="dot5">
-            <span>&#xe608;</span>
-            <div class="hr"></div>
-        </div>
-    </div>    <!-- 移入的-->
     <div id="contant">   <!-- 放图片的轮播框-->
         <div class="list list1">
             <img src="img/1.jpg" alt="" class="img">
@@ -80,70 +82,70 @@
 <script>
     var myList = $(".list");
     var now = 0;
-    var Play=setInterval(myPlay,3000);
+    var Play = setInterval(myPlay, 3000);
     jQuery(function ($) {
         $("#main").bind('mousewheel', function (event, delta) {
             var dir = delta > 0 ? 'Up' : 'Down';
             if (dir == 'Up') {
-                $("#dot").css("bottom","50px");
-               //console.log("向上滚动， www.imiansha.com");
+                $("#dot").css("bottom", "50px");
+              $("#big_dot").css("height","0px");
             } else {
-                $("#dot").css("bottom","100px");
-              // console.log("向下滚动， http: //blog.csdn.net/u011627980");
+                $("#dot").css("bottom", "100px");
+                $("#big_dot").css("height","200px");
             }
             return false;
         });
     });
     $("#dot").mouseenter(function () {
-      clearInterval(Play);
+        clearInterval(Play);
     });
     $("#dot").mouseleave(function () {
-     setInterval(myPlay,3000);
+        setInterval(myPlay, 3000);
     });
     function myPlay() {
         if (now > myList.length - 1) {
             now = 0;
         }
         myList.each(function () {
-           $(this).css("opacity", "0");
+            $(this).css("opacity", "0");
         });
-      $(myList[now]).css("opacity", "1");
+        $(myList[now]).css("opacity", "1");
         now++;
     }
 
-  /*  var pic_index = 0;
-    //函数控制如果为大于4返回第一个
-    function slide_pic() {
-        if (pic_index < 4) {
-            pic_index = pic_index + 1
-        }
-        else {
-            pic_index = 0
-        }
-    }
-    //函数申明主体，以及图片切换函数
-    slide_pic.prototype = {
-        pic_num: '5',
-        pic_slide: function () {
-            myList.eq(pic_index).show().siblings(".list").hide()
-        }
-    };
-    //实例化函数。以及调用函数
-    function slide() {
-        var obj = new slide_pic();
-        obj.pic_slide(pic_index);
-    }
-    // 函数计时器
-    var slide_index = setInterval(slide, 3000);*/
+    /*  var pic_index = 0;
+     //函数控制如果为大于4返回第一个
+     function slide_pic() {
+     if (pic_index < 4) {
+     pic_index = pic_index + 1
+     }
+     else {
+     pic_index = 0
+     }
+     }
+     //函数申明主体，以及图片切换函数
+     slide_pic.prototype = {
+     pic_num: '5',
+     pic_slide: function () {
+     myList.eq(pic_index).show().siblings(".list").hide()
+     }
+     };
+     //实例化函数。以及调用函数
+     function slide() {
+     var obj = new slide_pic();
+     obj.pic_slide(pic_index);
+     }
+     // 函数计时器
+     var slide_index = setInterval(slide, 3000);*/
 
 
-   /* $(".dot").each(function () {
-        $(this).mouseenter(function (i) {
-            /!*myList.eq(i).show().siblings(".list").hide()*!/
-        })
-    });*/
+    /* $(".dot").each(function () {
+     $(this).mouseenter(function (i) {
+     /!*myList.eq(i).show().siblings(".list").hide()*!/
+     })
+     });*/
 
-   $(".dot1").mouseenter(function () {
+    $(".dot1").mouseenter(function () {
         $(".list1").css("opacity", "1");
         $(".list1").siblings().css("opacity", "0");
     });
