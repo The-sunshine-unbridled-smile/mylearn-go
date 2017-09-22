@@ -51,67 +51,222 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <nav class="container-fluid bigmenu">
-        <ul class="nav nav-pills">
-            <li role="presentation" class="active">HOME</li>
-            <li role="presentation">SERVICE</li>
-            <li role="presentation">ABOUT</li>
-            <li role="presentation">MENUS</li>
-            <li role="presentation">EVENT</li>
-            <li role="presentation">TESTS</li>
-            <li role="presentation">LOCATION</li>
-        </ul>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav center-block">
+                    <li role="presentation"><a href="">HOME</a></li>
+                    <li role="presentation"><a href="">SERVICE</a></li>
+                    <li role="presentation"><a href="">ABOUT</a></li>
+                    <li role="presentation"><a href="">MENUS</a></li>
+                    <li role="presentation"><a href="">EVENT</a></li>
+                    <li role="presentation"><a href="">TESTS</a></li>
+                    <li role="presentation"><a href="">LOCATION</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
+    <!-- <nav class="container-fluid bigmenu">
+         <ul class="nav nav-pills">
+             <li role="presentation" class="active"><a href="">HOME</a></li>
+             <li role="presentation"><a href="">SERVICE</a></li>
+             <li role="presentation"><a href="">ABOUT</a></li>
+             <li role="presentation"><a href="">MENUS</a></li>
+             <li role="presentation"><a href="">EVENT</a></li>
+             <li role="presentation"><a href="">TESTS</a></li>
+             <li role="presentation"><a href="">LOCATION</a></li>
+         </ul>
+     </nav>-->
 </header>
 <section>
-    <div class="service-section mmain" id="service">
-        <div class="container center-block main">
+    <div class="mmain" >
+        <div class="container main">
             <h2>RECEIVE GREAT FOOD AND HIGH QUALITY SERVICE</h2>
             <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore.</p>
-            <a href="#" class="button1">learn more</a>
+            <button type="button" class="btn" id="btn">learn more</button>
         </div>
     </div>
-    <div class="video-wrapper">
-        <div class="video" data-thumb="https://i.vimeocdn.com/video/224691124.webp?mw=1400&amp;mh=519"
-             data-thumb-width="1400"
-             style="background-image: url(&quot;https://i.vimeocdn.com/video/224691124.webp?mw=1400&amp;mh=519&quot;);">
-            <div class="telecine invisible">
-                <video preload="metadata" src="https://07-lvl3-pdl.vimeocdn.com/01/1626/1/33132310/75288680.mp4?expires=1505996700&amp;token=00cc1630e8fac7e2c338e"></video>
-            </div>
-        </div>
+    <div id="video" class="container-fluid">
+        <video autoplay="autoplay" class="center-block">
+            <source src="https://07-lvl3-pdl.vimeocdn.com/01/1626/1/33132310/75288680.mp4?expires=1506073859&token=05fc599071b5e44e82bb2">
+        </video>
     </div>
-    <div class="about-section" id="about">
-        <div class="container">
+    <div class="about-section ">
+        <div class="container" id="about">
             <h3>about us </h3>
             <div class="row">
-                <div class="img-thumbnail col-lg-4">
-                    <img src="images/p1.jpg" class=img-responsive">
-                   <!-- <div class="mask">
-                        <h2>Break Fast</h2>
-                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                    </div>-->
+                <div class="img-thumbnail col-lg-4 clo-xs-12">
+                    <img src="images/p1.jpg" class="img-responsive col-lg-12 ">
+                    <!-- <div class="mask">
+                         <h2>Break Fast</h2>
+                         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                     </div>-->
                 </div>
-                <div class="img-thumbnail col-lg-4">
-                    <img src="images/p2.jpg" class=img-responsive">
-                   <!-- <div class="mask">
-                        <h2>Lunch</h2>
-                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
-                    </div>-->
+                <div class="img-thumbnail col-lg-4 clo-xs-12">
+                    <img src="images/p2.jpg" class="img-responsive col-lg-12">
+                    <!-- <div class="mask">
+                         <h2>Lunch</h2>
+                         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+                     </div>-->
                 </div>
-                <div class="img-thumbnail col-lg-4">
-                    <img src="images/p3.jpg" class=img-responsive">
+                <div class="img-thumbnail col-lg-4 clo-xs-12">
+                    <img src="images/p3.jpg" class="mg-responsive col-lg-12">
                     <!--<div class="mask">
                         <h2>Desserts</h2>
                         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
                     </div>-->
                 </div>
 
-              <!--  <div class="clearfix"></div>-->
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
-
+   <!-- <div class="menu-section">
+        <div class="container">
+            <h3> featured menu</h3>
+            <div class="menu-grids wow bounceIn animated animated" data-wow-delay="0.4s"
+                 style="visibility: visible; animation-delay: 0.4s; animation-name: bounceIn;">
+                <div class="col-md-3 menu-grid">
+                    <img src="images/p4.jpg" class="img-responsive" alt="">
+                    &lt;!&ndash;<div class="menu-info">
+                        <h4>$04.<sup>99</sup></h4>
+                        <h5>CUM SOCIIS NATOQUE .</h5>
+                    </div>&ndash;&gt;
+                </div>
+                <div class="col-md-3 menu-grid ">
+                    <img src="images/p5.jpg" class="img-responsive" alt="">
+                    &lt;!&ndash;<div class="menu-info">
+                        <h4>$05.<sup>99</sup></h4>
+                        <h5>Lorem ipsum dolo .</h5>
+                    </div>&ndash;&gt;
+                </div>
+                <div class="col-md-3 menu-grid menu1 ">
+                    <img src="images/p6.jpg" class="img-responsive" alt="">
+                    &lt;!&ndash; <div class="menu-info">
+                         <h4>$09.<sup>99</sup></h4>
+                         <h5>CUM SOCIIS NATOQUE .</h5>
+                     </div>&ndash;&gt;
+                </div>
+                <div class="col-md-3 menu-grid menu1">
+                    <img src="images/p7.jpg" class="img-responsive" alt="">
+                    &lt;!&ndash;<div class="menu-info">
+                        <h4>$19.<sup>99</sup></h4>
+                        <h5>Lorem ipsum dolo .</h5>
+                    </div>&ndash;&gt;
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>-->
+   <!-- <div class="events-section">
+        <div class="container">
+            <h3>our events</h3>
+            <div class="event-grids  wow bounceInRight animated animated" data-wow-delay="0.4s"
+                 style="visibility: visible; animation-delay: 0.4s; animation-name: bounceInRight;">
+                <div class="col-md-6 event-left">
+                    <div class="even-info">
+                        <div class="icon can ">
+                            <img src="images/icon1.png" alt="">
+                        </div>
+                        <div class="event-info">
+                            <h4>dolor sit amet conse cterut </h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus, sem eget
+                                sagittis sagittis, nisl magna sodales eros, ut feugiat velit velit non turpis. Cras eu
+                                nibh dapibus justo fringilla </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 event-right">
+                    <div class="even-info1">
+                        <div class="icon1 can">
+                            <img src="images/icon2.png" alt="">
+                        </div>
+                        <div class="event-info1">
+                            <h4>consectetur adipiscing elit </h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus, sem eget
+                                sagittis sagittis, nisl magna sodales eros, ut feugiat velit velit non turpis. Cras eu
+                                nibh dapibus justo fringilla </p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="butt">
+                <a href="" class="button2">veiw all events</a>
+            </div>
+        </div>
+    </div>-->
+   <!-- <div class="test-section" id="tests">
+        <div class="container">
+            <h3>TESTIMONIALS</h3>
+            <div class="test-grids ">
+                <div class="">
+                    <div class="col-md-5 test-left test1">
+                        <img src="images/p8.jpg" class="img-responsive" alt="">
+                        &lt;!&ndash;<div class="textbox">
+                            <p>Aenean nonummyen</p>
+                            <h4>$ 09.<sup>95</sup></h4>
+                        </div>&ndash;&gt;
+                    </div>
+                    <div class="col-md-7 test-right">
+                        <h4>"Suspendisse consequat purus</h4>
+                        <p>Quisque varius, nibh ac feugiat interdum, libero massa laoreet tellus, nec congue lorem arcu
+                            a nunc. Praesent quis felis eget elit semper pharetra sollicitudin id nibh. Praesent
+                            venenatis lectus ornare, porta risus quis, commodo nulla. Nunc adipiscing ipsum lacinia diam
+                            pulvinar aliquet. Mauris sit </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="">
+                    <div class="col-md-7 test-left01">
+                        <h4>"Cras elementum sed mi sit</h4>
+                        <p>Vestibulum et consequat justo. Maecenas ultrices malesuada leo porta venenatis. Sed sit amet
+                            diam facilisis, interdum tellus nec, dignissim massa. Vestibulum ante ipsum primis in
+                            faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse consequat purus est, nec
+                            venenatis est sagittis in. </p>
+                    </div>
+                    <div class="col-md-5 test-right01 test1">
+                        <img src="images/p9.jpg" class="img-responsive" alt="">
+                        &lt;!&ndash;<div class="textbox textbox1">
+                            <p>Natoque penatibus</p>
+                            <h4>$ 19.<sup>95</sup></h4>
+                        </div>&ndash;&gt;
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="">
+                    <div class="col-md-5 test-left test1">
+                        <img src="images/p10.jpg" class="img-responsive" alt="">
+                        &lt;!&ndash; <div class="textbox">
+                             <p>Aenean nonummyen</p>
+                             <h4>$ 29.<sup>95</sup></h4>
+                         </div>&ndash;&gt;
+                    </div>
+                    <div class="col-md-7 test-right">
+                        <h4>"Praesent venenatis lectus</h4>
+                        <p>Quisque varius, nibh ac feugiat interdum, libero massa laoreet tellus, nec congue lorem arcu
+                            a nunc. Praesent quis felis eget elit semper pharetra sollicitudin id nibh. Praesent
+                            venenatis lectus ornare, porta risus quis, commodo nulla. Nunc adipiscing ipsum lacinia diam
+                            pulvinar aliquet. Mauris sit </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>-->
 
 </section>
 
@@ -119,7 +274,7 @@
 
 </footer>
 
-<script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
