@@ -1,6 +1,56 @@
 body{
     font-size: 26.5%;
 }
+
+.wz h2{
+    font-size: 4vw;
+    font-weight: 900;
+    color: #fff;
+    font-family:"微软雅黑";
+    margin:auto;
+}
+.wz p{
+    font-weight: 700;
+    color: #fff;
+    font-size: 2vw;
+    margin-bottom: 5em;
+}
+.wz{
+    position: absolute;
+    width: 30vw;
+    height: 12vmax;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    border-top:7px solid #eee;
+    border-bottom: 7px solid #eee;
+    margin: auto;
+    padding-top: -10px;
+}
+.carousel-inner .item:nth-of-type(1) .wz{
+    animation: my 1s;
+    animation-iteration-count:1;
+}
+.carousel-inner .item:nth-of-type(1) .wz{
+    animation: my 1s;
+    animation-iteration-count:1;
+}
+@keyframes my {
+    0%{
+        transform: scale(0);
+    }
+    70%{
+        transform: scale(1);
+    }
+    90%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
 nav.navbar-default{
     border: none;
 }
@@ -13,10 +63,39 @@ nav.navbar-default{
     color: white;
     line-height: 7vw;
 }
+.collapse.navbar-collapse>ul{
+    margin-left: 20%;
+}
 .navbar-collapse>ul>li>a:hover{
     color: #1B242F;
     background-color: transparent;
 }
-
-
+footer.container-fluid{
+    background-color: #1f2a36;
+  padding: 6em 0;
+}
+.icon.text-center>div>span{
+    font-size: 4vw;
+    color: #1B242F;
+}
+.icon.text-center>div{
+    display: inline-block;
+    border-radius: 50%;
+     padding: 1em;
+}
+.icon.text-center>div:nth-of-type(1){
+    background-color: rgb(57,86,148);
+}
+.icon.text-center>div:nth-of-type(2){
+    background-color: rgb(58,135,194);
+}
+.icon.text-center>div:nth-of-type(3){
+    background-color: rgb(254,0,0);
+}
+.container-fluid>p.text-center{
+    color: #d5d6d7;
+    font-size: 2vw;
+font-weight: 400;
+    margin-top: 1em;
+}
 
