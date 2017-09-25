@@ -1,0 +1,48 @@
+/*header{
+    background: url("../img/share_mobile.png") no-repeat;
+}*/
+.bg-dark {
+    background-color: #2D2D2D;
+}
+
+.text-orange {
+    color: #ee593e !important;
+}
+
+.frodo-heading {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: 300;
+    font-size: 3vw;
+    line-height: 43px;
+}
+
+@media (min-width: 991px) {
+    .frodo-text {
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-weight: 100;
+        color: #313131;
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+.text-white {
+    color: #ffffff !important;
+    margin-top: 20px;
+}
+
+.mt24 {
+    margin-top: 15%;
+}
+
+#editing-styles {
+    padding: 100px 0;
+}
+
+#icongrap {
+    margin-top: 5%;
+}
+
+.grad-orange {
+    background-color: #ee593e;
+}

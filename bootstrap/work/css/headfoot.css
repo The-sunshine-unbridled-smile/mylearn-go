@@ -1,0 +1,119 @@
+header {
+    background: url("../img/mobile_banner_frodo (1).png") no-repeat 50% 50%;
+    background-size: 50%;
+}
+
+#now {
+    background-color: rgb(235, 20, 120);
+    border-radius: 3em;
+}
+
+#main-nav > li > a {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #666;
+}
+
+#main-nav > li > a:hover {
+    background-color: transparent;
+}
+
+#main-nav > li#now > a {
+    color: white;
+}
+
+nav.navbar-default.navbar#top-nav {
+    border: none;
+    background-color: white;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#btn1 {
+    color: white;
+    background-color: rgb(235, 20, 120);
+    text-transform: uppercase;
+    margin-top: 35vw;
+    padding: 1em;
+    border-radius: 3em;
+}
+
+#down {
+    display: inline-block;
+    -webkit-transform: rotate(90deg);
+    font-size: 3vw;
+    font-weight: 100;
+    color: #444;
+    /*border: 1px solid red;*/
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.mylist {
+    font-size: 3vw;
+    height: 2em;
+    line-height: 2em;
+    font-weight: 400;
+    color: #313131;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    -webkit-transition: all .3s linear;
+}
+
+.mylist:hover {
+    color: white;
+    background-color: #ee593e;
+}
+
+
+.footer{
+    width: 100%;
+    background: #2d2d2d;
+    padding: 96px 0 30px;
+}
+.bt-a{
+    color:#ee593e;
+    margin-left: 1em;
+}
+.bt-a:hover{
+    background: none;
+    color: #ee593e;
+    text-decoration: none;
+}
+.footer .nav li a{
+    color: #a7a7a7;
+}
+.footer .nav li a:hover{
+    background: none;
+    color:#a7a7a7;
+}
+.footer .nav-a{
+    white-space: nowrap;
+}
+.footer .nav-a li a{
+    color: #ee593e;
+}
+.footer .nav-a li a:hover{
+    color: #ee593e;
+}
+.bt-as{
+    margin-left: 2em;
+}
+hr{
+    width: 97%;
+    border-color: #555;
+    margin: 2em auto;
+}
+.footer-imglg{
+    max-height: 30px;
+}
+.product a{
+    color: #a7a7a7;
+}
+.product{
+    padding-top: 1em;
+}
+.product span{
+    color: #a7a7a7;
+}
+.product a:hover{
+    text-decoration: none;
+}

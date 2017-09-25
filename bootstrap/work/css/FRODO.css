@@ -3,70 +3,7 @@
     padding: 0;
 }
 
-header {
-    /*height: 600px;*/
-    background: url("../img/mobile_banner_frodo (1).png") no-repeat 50% 50%;
-    background-size: 50%;
-}
 
-#now {
-    background-color: rgb(235, 20, 120);
-    border-radius: 3em;
-}
-
-#main-nav > li > a {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #666;
-}
-
-#main-nav > li > a:hover {
-    background-color: transparent;
-}
-
-#main-nav > li#now > a {
-    color: white;
-}
-
-nav.navbar#top-nav {
-    border: none;
-    background-color: white;
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-#btn1 {
-    color: white;
-    background-color: rgb(235, 20, 120);
-    text-transform: uppercase;
-    margin-top: 30%;
-    padding: 1em;
-    border-radius: 3em;
-}
-
-#down {
-    display: inline-block;
-    -webkit-transform: rotate(90deg);
-    font-size: 3vw;
-    font-weight: 100;
-    /*border: 1px solid red;*/
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.mylist {
-    font-size: 3vw;
-    height: 2em;
-    line-height: 2em;
-    font-weight: 400;
-    color: #313131;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-    -webkit-transition: all .3s linear;
-}
-
-.mylist:hover {
-    color: white;
-    background-color: #ee593e;
-}
 #myvideo{
     width: 100%;
 }
@@ -142,5 +79,7 @@ nav.navbar#top-nav {
 #mynav>ul>li img{
     width:100% ;
 }
+
+
 
 
