@@ -19,5 +19,4 @@ studentInfo=[
     {"classNo":"139","No":4,"name":"小红","sex":"女","phone":"22534","QQ":"4565","gradTime":"2017","edu":"专科","gradSchool":"农业大学","conNum":"2013","fiPre":"陈涛","fiTime":"2017-6-25"},
     {"classNo":"139","No":5,"name":"小武","sex":"男","phone":"1452","QQ":"789","gradTime":"2017","edu":"本科","gradSchool":"四川大学","conNum":"1234","fiPre":"陈涛","fiTime":"2017-6-25"},
     {"classNo":"139","No":6,"name":"小杨","sex":"男","phone":"85663","QQ":"456","gradTime":"2017","edu":"本科","gradSchool":"农业大学","conNum":"1234","fiPre":"陈涛","fiTime":"2017-6-25"}
-
 ];
