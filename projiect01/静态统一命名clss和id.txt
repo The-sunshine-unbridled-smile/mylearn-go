@@ -1,0 +1,55 @@
+命名方式统一采用驼峰命名规则: var myMenu        单个类名和id，首字母用大写: var Menu
+
+所有的类名和id统一用英语的前三个字母。
+ 登陆:Login            用户名:userName    密码:Pwd     忘记密码:forgetPwd   (forgetPassword)    管理员:Admain    退出:Out
+ 左边菜单用Menu       上一次登陆:lastDate
+
+
+ 
+ 班级管理:claMan    
+                    班级管理内容:班级编号:claNo   班级名称:claName  项目经理:proMan  班主任:claTea   查询:Search  新增班级按钮:addClassbtn
+                    操作:Operate   保存:Conserce
+                    新增班级:addClass
+
+
+
+
+ 学生管理:stuMan    
+                    学生管理内容:输入学生内容:inpStuNam   输入学生学号:inpStuNo 输入学生班级:inpStuclass 搜索:search  新增学生按钮:addStudetnbtn
+                    选择:Choice  全选:allChoice     删除:Del   操作:Operate
+                    新增学生:addStudent 
+
+
+
+
+ 课程管理:couMan   
+                    课程管理内容:新增课程按钮:addCoursebtn   选择:choice 全选allChoise 上一页:Prev 下一页:Next      删除Del
+
+
+
+
+
+ 排课管理:lisMan    部门下拉列表:derList 员工下拉列表:staList  班级下拉列表:claList      导出课时表:Leading-out  导入报备表Leading-in
+                    日历:Kalendar
+                    日历上一页按钮:prvedateBtn  日历下一页按钮:lastdateBtn
+
+
+
+
+ 基础管理:basMan    人员管理:perManager  
+                             员工姓名:staName 联系电话phone QQ号码:QQ 岗位角色下拉列表:postList 查询:search  新增人员按钮:addPersonalbtn  
+                    新增人员:addPersonal    
+                             保存:Conserve
+                    人员详情:perDetails 
+                             编辑:Edit 删除:Del
+                    角色管理:roleManager 新增角色按钮:addRolebtn   操作:operate 删除Del 上一页:Prev 下一页Next 
+                             新增角色:addRole        保存:Conserve
+                    部门管理:DerpManager 新增部门按钮:addDerpartmentbtn  搜索框:Search  全选:allChoice  选择:Choice 上一页Prev 下一页Next 删除Del
+                             新增部门:addDerpartment       保存:Conserve  取消:Cancel       添加主管:addManager   选择主管:choiceManager
+
+ 日历管理:kalMan    日历管理按钮:上一页 Prevbtn       下一页Nextbtn  保存:Conserve
+
+
+每个id和方法地方要写上详细注释。这个项目对以后工作中有用，经常遇到。望各位努力加油,互相帮助
+
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/stuMen.css">
+</head>
+<body>
+<section class="container stuMen">
+    <div class="row">
+        <div>
+            <div class="inpStu">
+                <div class="inpStuNan">
+                    <label for="">学生编号：</label>
+                    <input type="text">
+                </div>
+                <div class="inpStuNO">
+                    <label for="">学生姓名：</label>
+                    <input type="text">
+                </div>
+                <div class="inpStuClass">
+                    <label for="">学生班级：</label>
+                    <input type="text">
+                </div>
+                <div class="search">
+                    <button>查询</button>
+                </div>
+
+            </div>
+            <div id="addStudetnbtn">
+                新增学生
+            </div>
+        </div>
+        <div id="stuTab">
+            <table class="table">
+                <tr>
+                    <th><input type="checkbox" id="allChoice"></th>
+                    <th>班级</th>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>联系电话</th>
+                    <th>毕业时间</th>
+                    <th>学历</th>
+                    <th>毕业学校</th>
+                    <th>紧急联系人电话</th>
+                    <th>添加人</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="Choice"></td>
+                    <td>140</td>
+                    <td>01</td>
+                    <td>小生意</td>
+                    <td>123456789101</td>
+                    <td>2016</td>
+                    <td>本科</td>
+                    <td>农业大学</td>
+                    <td>12345678963</td>
+                    <td>小草</td>
+                    <td>2017-07-17</td>
+                    <td class="Del">删除</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="Choice"></td>
+                    <td>140</td>
+                    <td>02</td>
+                    <td>小生意</td>
+                    <td>123456789101</td>
+                    <td>2016</td>
+                    <td>本科</td>
+                    <td>农业大学</td>
+                    <td>12345678963</td>
+                    <td>小草</td>
+                    <td>2017-07-17</td>
+                    <td class="Del">删除</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="Choice"></td>
+                    <td>140</td>
+                    <td>03</td>
+                    <td>小生意</td>
+                    <td>123456789101</td>
+                    <td>2016</td>
+                    <td>本科</td>
+                    <td>农业大学</td>
+                    <td>12345678963</td>
+                    <td>小草</td>
+                    <td>2017-07-17</td>
+                    <td class="Del">删除</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="Choice"></td>
+                    <td>140</td>
+                    <td>04</td>
+                    <td>小生意</td>
+                    <td>123456789101</td>
+                    <td>2016</td>
+                    <td>本科</td>
+                    <td>农业大学</td>
+                    <td>12345678963</td>
+                    <td>小草</td>
+                    <td>2017-07-17</td>
+                    <td class="Del">删除</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="Choice"></td>
+                    <td>140</td>
+                    <td>05</td>
+                    <td>小生意</td>
+                    <td>123456789101</td>
+                    <td>2016</td>
+                    <td>本科</td>
+                    <td>农业大学</td>
+                    <td>12345678963</td>
+                    <td>小草</td>
+                    <td>2017-07-17</td>
+                    <td class="Del">删除</td>
+                </tr>
+            </table>
+        </div>
+        <div id="DelAll">
+            删除
+        </div>
+        <div class="Flip">
+        <button id="Prevbtn">上一页</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>..</button>
+        <button id="Nextbtn">下一页</button>
+    </div>
+
+    </div>
+
+
+</section>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script>
+
+$(".Del").each(function () {
+    $(this).click(function () {
+//        console.log($(this).parent().html());
+       $(this).parent().html("");
+    })
+})
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url("../images/3.jpg") no-repeat;
+    color: white;
+}
+.stuMeg{
+    border: 1px solid white;
+    padding: .5vw 1vw;
+    width:10vw;
+  margin-bottom: 3vw;
+}
+.myMain{
+    padding: 3vw 15vw;
+    overflow: hidden;
+}
+.inpStuNam{
+    float: left;
+    margin-right: 5vw;
+    margin-bottom: 2vw;
+}
+.inpStuNam input{
+    border:1px solid transparent;
+    background: none;
+    padding: 0 .5vw;
+    outline: none;
+    width: 8vw;
+
+}
+.inpStuNam textarea{
+    background: none;
+    border: 1px solid white;
+    width: 45vw;
+    height: 10vw;
+    outline: none;
+}
+.inpStuNam>span{
+    float: left;
+}
+#Conserve button{
+    border: 1px solid white;
+    background: none;
+    border-radius: 3px;
+    padding:.3vw 1.5vw;
+    outline: none;
+}

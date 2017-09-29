@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url("../images/3.jpg") no-repeat;
+}
+.stuMen{
+    color: white;
+    padding-top: 3vw;
+}
+.inpStu{
+    border: 1px solid white;
+    overflow: hidden;
+    float: left;
+    font-size: 1vw;
+    padding: 2vw;
+    margin-bottom: 3vw;
+}
+.inpStu input{
+    border: 1px solid white;
+    background: none;
+    outline: none;
+    width: 10vw;
+    padding: 5px;
+}
+.inpStu>div{
+    float: left;
+    margin-right: 5vw;
+}
+.inpStu>div.search{
+    float: right;
+    margin-right: 0;
+}
+.inpStu>div.search button{
+    border: 1px solid white;
+    background: none;
+    padding: 2px 30px;
+    border-radius: 3px;
+}
+
+#addStudetnbtn{
+    border: 1px solid white;
+    float: right;
+    padding: .5vw 3.5vw;
+    margin-top: 1.5vw;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#stuTab{
+    margin-top: 5em;
+}
+#DelAll {
+    width: 8vw;
+    border: 1px solid white;
+    text-align: center;
+    padding: .5vw;
+    margin-bottom: 2vw;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.Flip button{
+    border: 1px solid white;
+    background: none;
+    border-radius: 3px;
+    padding: 0 .5vw;
+}
+button{
+    outline: none;
+}
