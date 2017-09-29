@@ -15,8 +15,9 @@
 
 
  学生管理:stuMan    
-                    学生管理内容:输入学生内容:inpStuNam   输入学生学号:inpStuNo 输入学生班级:inpStuclass 搜索:search  新增学生按钮:addStudetnbtn
-                    选择:Choice  全选:allChoice     删除:Del   操作:Operate
+                    学生管理内容:输入学生内容:inpStuNam   输入学生学号:inpStuNo 输入学生班级:inpStuclass 搜索:search 
+                    新增学生按钮:addStudetnbtn
+                    选择:Choice  全选:allChoice     删除:Del   操作:Ope
                     新增学生:addStudent 
 
 
