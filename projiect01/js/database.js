@@ -111,15 +111,13 @@ stageArr=[
  *classNo:班级编号,No:学号,name：姓名,sex：性别，phone:联系电话，QQ：联系qq，gradTime:毕业时间，edu:学历,gradSchool:毕业学校，conNum:紧急联系电话，fiPre:添加人，fiTime:添加时间
  */
 studentArr=[
-    [
-        {"classNo":"126","No":1,"name":"雷云凯","phone":"1234","gradTime":"2017","edu":"本科","gradSchool":"四川大学","conNum":"1234","fiPre":"娜姐","fiTime":"2017-7-17"},
-        {"classNo":"126","No":2,"name":"袁铭","phone":"25134","gradTime":"2017","edu":"本科","gradSchool":"农业大学","conNum":"4567","fiPre":"娜姐","fiTime":"2017-7-17"},
-        {"classNo":"126","No":3,"name":"岳勇静","phone":"1364","gradTime":"2017","edu":"专科","gradSchool":"四川大学","conNum":"5678","fiPre":"娜姐","fiTime":"2017-7-17"},
-        {"classNo":"126","No":4,"name":"李红燕","phone":"22534","gradTime":"2017","edu":"专科","gradSchool":"农业大学","conNum":"2013","fiPre":"娜姐","fiTime":"2017-7-17"},
-        {"classNo":"126","No":5,"name":"武文斌","phone":"1452","gradTime":"2017","edu":"本科","gradSchool":"四川大学","conNum":"1234","fiPre":"娜姐","fiTime":"2017-7-17"},
-        {"classNo":"126","No":6,"name":"杨胜","phone":"85663","gradTime":"2017","edu":"本科","gradSchool":"农业大学","conNum":"1234","fiPre":"娜姐","fiTime":"2017-7-17"},
-    ]
-];
+        {"classNo":"126","No":1,"name":"雷云凯","phone":"12345896321","gradTime":"2017","edu":"本科","gradSchool":"四川大学","conNum":"12348963457","fiPre":"娜姐","fiTime":"2017-7-17"},
+        {"classNo":"126","No":2,"name":"袁铭","phone":"25134258965","gradTime":"2017","edu":"本科","gradSchool":"农业大学","conNum":"45677852365","fiPre":"娜姐","fiTime":"2017-7-17"},
+        {"classNo":"126","No":3,"name":"岳勇静","phone":"13645789632","gradTime":"2017","edu":"专科","gradSchool":"四川大学","conNum":"56784852103","fiPre":"娜姐","fiTime":"2017-7-17"},
+        {"classNo":"126","No":4,"name":"李红燕","phone":"22534456231","gradTime":"2017","edu":"专科","gradSchool":"农业大学","conNum":"20132501369","fiPre":"娜姐","fiTime":"2017-7-17"},
+        {"classNo":"126","No":5,"name":"武文斌","phone":"14527896321","gradTime":"2017","edu":"本科","gradSchool":"四川大学","conNum":"12347852140","fiPre":"娜姐","fiTime":"2017-7-17"},
+        {"classNo":"126","No":6,"name":"杨胜","phone":"85663796254","gradTime":"2017","edu":"本科","gradSchool":"农业大学","conNum":"12348635475","fiPre":"娜姐","fiTime":"2017-7-17"},
+ ];
 
 
 //班级编号：classNo 班级名字：className 班级开班日期：classStartDay  班级总人数:classStuUs 班级qq群名字：classQQ 班级备注：classBz

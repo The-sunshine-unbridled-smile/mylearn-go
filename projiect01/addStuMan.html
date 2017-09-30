@@ -15,59 +15,139 @@
             <div class="stuMeg">学生基本信息</div>
             <div class="inpStuNam">
                 <label for="">班级：　　</label>
-                <input type="text">
+                <input type="text" id="inpStuClass" value="nihaas">
             </div>
             <div class="inpStuNam">
                 <label for="">学号：　　</label>
-                <input type="text">
+                <input type="text" id="inpStuNo">
             </div>
             <div class="inpStuNam">
                 <label for="">学生姓名：</label>
-                <input type="text">
+                <input type="text" id="inpStuNam">
             </div>
             <div class="inpStuNam">
                 <label for="">联系电话：</label>
-                <input type="text">
+                <input type="text" id="inpStuNum">
             </div>
             <div class="inpStuNam">
                 <label for="">毕业时间：</label>
-                <input type="text">
+                <input type="text" id="inpStuTime">
             </div>
             <div class="inpStuNam">
                 <label for="">学历：　　</label>
-                <input type="text">
+                <input type="text" id="inpStuEdu">
             </div>
             <div class="inpStuNam">
                 <label for="">毕业学校：</label>
-                <input type="text">
+                <input type="text" id="inpStuSch">
             </div>
             <div class="inpStuNam">
                 <label for="">紧急联系人电话：</label>
-                <input type="text">
+                <input type="text" id="inpConNum">
             </div>
             <div class="inpStuNam">
                 <label for="">添加人：</label>
-                <input type="text">
+                <input type="text" id="stuAddPer">
             </div>
             <div class="inpStuNam">
                 <label for="">添加时间：</label>
-                <input type="text">
+                <input type="text" id="stuAddTime">
             </div>
 
             <div class="inpStuNam">
                 <span>备注：</span>
-                <textarea></textarea>
+                <textarea id="stuRem"></textarea>
             </div>
             <div class="clearfix"></div>
-            <div id="Conserve" class="text-center">
-                <button>保存</button>
+            <div class="text-center">
+                <button id="Conserve">保存</button>
             </div>
         </div>
     </div>
 </section>
+<script src="js/database.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/jquery.params.js"></script>
+
 <script>
+    /**
+     *获取的输入的学生信息
+     */
+   var inpStuClass = $("#inpStuClass").val();
+    console.log(inpStuClass);
+
+    var inpStuNo = $("#inpStuNo").val();
+    var inpStuNam = $("#inpStuNam").val();
+    var inpStuNum = $("#inpStuNum").val();
+    var inpStuTime = $("#inpStuTime").val();
+    var inpStuEdu = $("#inpStuEdu").val();
+    var inpStuSch = $("#inpStuSch").val();
+    var inpConNum = $("#inpConNum").val();
+    var stuAddPer = $("#stuAddPer").val();
+    var stuAddTime = $("#stuAddTime").val();
+    var stuRem = $("#stuRem").val();
+    /**
+     *将学生的每条信息添加到对象
+     */
+    var arrAdd = {
+        "classNo": inpStuClass,
+        "No": inpStuNo,
+        "name": inpStuNam,
+        "phone": inpStuNum,
+        "gradTime": inpStuTime,
+        "edu": inpStuEdu,
+        "gradSchool": inpStuSch,
+        "conNum": inpConNum,
+        "fiPre": stuAddPer,
+        "fiTime": stuAddTime
+    };
+
+    /**
+     *单击保存将新增学生信息添加到学生列表
+     */
+    $("#Conserve").click(function () {
+        /*for (var i = 0; i < studentArr.length; i++) {
+            if (inpStuNo == studentArr[i].No) {
+                alert("该学号已经存在，请重新输入");
+                return;
+            }
+        }*/
+        studentArr.push(arrAdd);               //将新增的学生对象添加到学生数组
+
+        //  window.location.href="stuMan.html";   //跳转到学生了列表页
+    });
+
+
+    /**
+     * 单击保存，把用户输入的数据添加到数组
+     */
+    /*    $("#Conserve").click(function () {
+
+     });*/
+
+
+
+    /*for (var i = 0; i < studentArr.length; i++) {
+     $.each(studentArr[i], function (e) {
+     if (inpStuNo == studentArr[i][e]) {
+     studentArr[i].classNo = inpStuclass;
+     studentArr[i].No = inpStuNo;
+     studentArr[i].name = inpStuNam;
+     studentArr[i].phone = inpStuNum;
+     studentArr[i].gradTime = inpStuTime;
+     studentArr[i].edu = inpStuEdu;
+     studentArr[i].gradSchool = inpStuSch;
+     studentArr[i].conNum = inpConNum;
+     studentArr[i].fiPre = stuAddPer;
+     studentArr[i].fiTime = stuAddTime;
+     }
+     })
+     }*/
+    /*点击修改的跳转
+     window.location.href = "stuMan.html?inpStuclass=" + inpStuclass + "&inpStuNo=" + inpStuNo + "&inpStuNam=" + inpStuNam + "&inpStuNum=" +
+     inpStuNum + "&inpStuTime=" + inpStuTime + "&inpStuEdu=" + inpStuEdu + "&inpStuSch=" + inpStuSch + "&inpConNum=" + inpConNum + "&stuAddPer=" +
+     stuAddPer + "&stuAddTime=" + stuAddTime;*/
 
 </script>
 

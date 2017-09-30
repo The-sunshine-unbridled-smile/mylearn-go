@@ -36,6 +36,7 @@
         </div>
         <div id="stuTab">
             <table class="table">
+                <thead>
                 <tr>
                     <th><input type="checkbox" id="allChoice"></th>
                     <th>班级</th>
@@ -50,105 +51,100 @@
                     <th>添加时间</th>
                     <th>操作</th>
                 </tr>
-                <tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+                <!--<tr>
                     <td><input type="checkbox" class="Choice"></td>
-                    <td>140</td>
-                    <td>01</td>
-                    <td>小生意</td>
-                    <td>123456789101</td>
-                    <td>2016</td>
-                    <td>本科</td>
-                    <td>农业大学</td>
-                    <td>12345678963</td>
-                    <td>小草</td>
-                    <td>2017-07-17</td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
+                    <td class="ct"></td>
                     <td class="Del">删除</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="Choice"></td>
-                    <td>140</td>
-                    <td>02</td>
-                    <td>小生意</td>
-                    <td>123456789101</td>
-                    <td>2016</td>
-                    <td>本科</td>
-                    <td>农业大学</td>
-                    <td>12345678963</td>
-                    <td>小草</td>
-                    <td>2017-07-17</td>
-                    <td class="Del">删除</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="Choice"></td>
-                    <td>140</td>
-                    <td>03</td>
-                    <td>小生意</td>
-                    <td>123456789101</td>
-                    <td>2016</td>
-                    <td>本科</td>
-                    <td>农业大学</td>
-                    <td>12345678963</td>
-                    <td>小草</td>
-                    <td>2017-07-17</td>
-                    <td class="Del">删除</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="Choice"></td>
-                    <td>140</td>
-                    <td>04</td>
-                    <td>小生意</td>
-                    <td>123456789101</td>
-                    <td>2016</td>
-                    <td>本科</td>
-                    <td>农业大学</td>
-                    <td>12345678963</td>
-                    <td>小草</td>
-                    <td>2017-07-17</td>
-                    <td class="Del">删除</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="Choice"></td>
-                    <td>140</td>
-                    <td>05</td>
-                    <td>小生意</td>
-                    <td>123456789101</td>
-                    <td>2016</td>
-                    <td>本科</td>
-                    <td>农业大学</td>
-                    <td>12345678963</td>
-                    <td>小草</td>
-                    <td>2017-07-17</td>
-                    <td class="Del">删除</td>
-                </tr>
+                </tr>-->
+
+
             </table>
         </div>
         <div id="DelAll">
             删除
         </div>
         <div class="Flip">
-        <button id="Prevbtn">上一页</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>..</button>
-        <button id="Nextbtn">下一页</button>
+            <button id="Prevbtn">上一页</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>..</button>
+            <button id="Nextbtn">下一页</button>
+        </div>
     </div>
-
-    </div>
-
-
 </section>
+<script src="js/database.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/jquery.params.js"></script>
 <script>
+    /**
+     * 初始的学生数据，（从初始的js文件中添加过来）
+     */
+    var s = -1;
+    var liebiao = 0;
+    var studentArr = window.top.studentArr;
+    for (var i = 0; i < studentArr.length; i++) {
+        liebiao++;
+        var str = '<tr>' +
+            '<td><input type="checkbox" class="Choice"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="ct"></td>' +
+            '<td class="Del">删除</td>' +
+            '</tr>';
+        $("#tbody").append(str);
+        $.each(studentArr[i], function (key) {
+            s++;
+            $(".ct")[s].innerText = studentArr[i][key];
+        });
+    }
+    /**
+     * 单击操作下面的删除，删除对应学生的数据
+     */
+    $(document).on("click", ".Del", function () {
+        if (confirm("确认删除吗？")) {
+            $(this).parent().remove();
+            var Nso = $(this).parent().children(":eq(2)").text();
+            for (var i = 0; i < studentArr.length; i++) {
+                if (Nso == studentArr[i].No) {
+                    studentArr.splice(studentArr[i], 1);
+                    break;
+                }
+            }
+        }
+    });
 
-$(".Del").each(function () {
-    $(this).click(function () {
-//        console.log($(this).parent().html());
-       $(this).parent().html("");
+
+    /**
+     * 单击新增学生跳转到新增页面
+     */
+    $("#addStudetnbtn").click(function () {
+        window.location.href = "addStuMan.html"
     })
-})
+
+
 </script>
 
 </body>
