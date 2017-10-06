@@ -15,17 +15,17 @@
             <div class="inpStu">
                 <div class="inpStuNan">
                     <label for="">学生编号：</label>
-                    <input type="text">
+                    <input type="text" class="num">
                 </div>
                 <div class="inpStuNO">
                     <label for="">学生姓名：</label>
-                    <input type="text">
+                    <input type="text" class="name">
                 </div>
-                <div class="inpStuClass">
-                    <label for="">学生班级：</label>
-                    <input type="text">
-                </div>
-                <div class="search">
+                <!-- <div class="inpStuClass">
+                     <label for="">学生班级：</label>
+                     <input type="text" class="stucla">
+                 </div>-->
+                <div id="search">
                     <button>查询</button>
                 </div>
 
@@ -53,24 +53,7 @@
                 </tr>
                 </thead>
                 <tbody id="tbody">
-
                 </tbody>
-                <!--<tr>
-                    <td><input type="checkbox" class="Choice"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="ct"></td>
-                    <td class="Del">删除</td>
-                </tr>-->
-
-
             </table>
         </div>
         <div id="DelAll">
@@ -87,7 +70,6 @@
         </div>
     </div>
 </section>
-<script src="js/database.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.params.js"></script>
@@ -98,6 +80,7 @@
     var s = -1;
     var liebiao = 0;
     var studentArr = window.top.studentArr;
+    console.log(studentArr)
     for (var i = 0; i < studentArr.length; i++) {
         liebiao++;
         var str = '<tr>' +
@@ -112,7 +95,10 @@
             '<td class="ct"></td>' +
             '<td class="ct"></td>' +
             '<td class="ct"></td>' +
-            '<td class="Del">删除</td>' +
+            '<td>' +
+            '<span class="Ope">修改</span>&nbsp; &nbsp;' +
+            '<span  class="Del">删除</span>' +
+            '</td>' +
             '</tr>';
         $("#tbody").append(str);
         $.each(studentArr[i], function (key) {
@@ -125,13 +111,126 @@
      */
     $(document).on("click", ".Del", function () {
         if (confirm("确认删除吗？")) {
-            $(this).parent().remove();
-            var Nso = $(this).parent().children(":eq(2)").text();
+            $(this).parent().parent().remove();
+            var Nso = $(this).parent().parent().children(":eq(2)").text();
             for (var i = 0; i < studentArr.length; i++) {
                 if (Nso == studentArr[i].No) {
                     studentArr.splice(studentArr[i], 1);
                     break;
                 }
+            }
+        }
+    });
+
+    /**
+     *选中对应的学生  全选和多选
+     */
+    $("#allChoice").click(function () {
+        if($(this).prop("checked")){
+            $(".Choice").prop("checked",true);
+            $(".Choice").attr("checked",true);
+        }else {
+            $(".Choice").prop("checked",false);
+            $(".Choice").attr("checked",false);
+        }
+    });
+    $(".Choice").click(function () {
+        if($(this).prop("checked")){
+            $(this).prop("checked",true);
+            $(this).attr("checked",true);
+            if($(".Choice[checked]").length==$(".Choice").length){
+                $("#allChoice").prop("checked",true);
+            }
+        }else {
+            $(this).prop("checked",false);
+            $(this).attr("checked",false);
+            $("#allChoice").prop("checked",false);
+        }
+    });
+    /**
+     *删除选中的学生数据
+     */
+    $("#DelAll").click(function () {
+        if (($(".Choice[checked]").length == 0)) {
+            alert("请选择要删除的项");
+            return false;
+        }
+        if (confirm("确认要删除吗？")) {
+            $(".Choice").each(function () {
+                if (($(this).attr("checked"))) {
+                    $(this).parent().parent().remove();
+                    var No=$(this).parent().siblings(":eq(1)").text();
+                    console.log(No)
+                    for(var i=0;i<studentArr.length;i++){
+                        if(No==studentArr[i].No){
+                            studentArr.splice(i,1);
+                        }
+                    }
+                }
+            })
+        }
+    });
+
+    /**
+     * 点击修改，获取修改数据的值
+     */
+    var Operate = $(".Ope");
+    Operate.each(function () {
+        $(document).on("click", ".Ope", function () {
+            var classNo = $(this).parent().parent().children(":eq(1)").text();
+            var No = $(this).parent().parent().children(":eq(2)").text();
+            var Name = $(this).parent().parent().children(":eq(3)").text();
+            var Phone = $(this).parent().parent().children(":eq(4)").text();
+            var gradTime = $(this).parent().parent().children(":eq(5)").text();
+            var edu = $(this).parent().parent().children(":eq(6)").text();
+            var gradSchool = $(this).parent().parent().children(":eq(7)").text();
+            var conNum = $(this).parent().parent().children(":eq(8)").text();
+            var fiPre = $(this).parent().parent().children(":eq(9)").text();
+            var fiTime = $(this).parent().parent().children(":eq(10)").text();
+            window.location.href = "addStuMan.html?classNo=" + classNo + "&No=" + No + "&Name=" + Name +
+                "&Phone=" + Phone + "&gradTime=" + gradTime + "&edu=" + edu +
+                "&gradSchool=" + gradSchool + "&conNum=" + conNum + "&fiPre=" + fiPre + "&fiTime=" + fiTime;
+        })
+    });
+
+
+    /**
+     * 查询学生信息
+     */
+    $("#search>button").click(function () {
+        var num = $(".num").val();     //获取查询信息框输入的值
+        var stuname = $(".name").val();
+        var stucla = $(".stucla").val();
+        var count = 0;
+        for (var i = 0; i < studentArr.length; i++) {
+            $.each(studentArr[i], function () {
+                if (num == studentArr[i].No || stuname == studentArr[i].name/* || stucla == studentArr[i].classNo*/) {
+                    var str = '<tr>' +
+                        '<td><input type="checkbox" class="Choice"></td>' +
+                        '<td class="ct" >' + studentArr[i].classNo + '</td>' +
+                        '<td class="ct" >' + studentArr[i].No + '</td>' +
+                        '<td class="ct" >' + studentArr[i].name + '</td>' +
+                        '<td class="ct" >' + studentArr[i].phone + '</td>' +
+                        '<td class="ct" >' + studentArr[i].gradTime + '</td>' +
+                        '<td class="ct" >' + studentArr[i].edu + '</td>' +
+                        '<td class="ct" >' + studentArr[i].gradSchool + '</td>' +
+                        '<td class="ct" >' + studentArr[i].conNum + '</td>' +
+                        '<td class="ct" >' + studentArr[i].fiPre + '</td>' +
+                        '<td class="ct" >' + studentArr[i].fiTime + '</td>' +
+                        '<td>' +
+                        '<span class="Ope">修改</span>&nbsp; &nbsp;' +
+                        '<span  class="Del">删除</span>' +
+                        '</td>' +
+                        '</tr>';
+                    $("#tbody").html(str);
+                    return false;
+                } else {
+                    count++;
+                    return false;
+                }
+            });
+            if (count == studentArr.length) {
+                alert("查无此人");
             }
         }
     });

@@ -28,11 +28,11 @@ body{
     float: left;
     margin-right: 5vw;
 }
-.inpStu>div.search{
+.inpStu>#search{
     float: right;
     margin-right: 0;
 }
-.inpStu>div.search button{
+.inpStu>div#search button{
     border: 1px solid white;
     background: none;
     padding: 2px 30px;
@@ -67,4 +67,7 @@ body{
 }
 button{
     outline: none;
+}
+table tr th,table tr td{
+    text-align: center;
 }

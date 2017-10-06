@@ -9,8 +9,9 @@ body{
 .stuMeg{
     border: 1px solid white;
     padding: .5vw 1vw;
-    width:10vw;
+    width:12vw;
     margin: 3vw 0;
+    text-align: center;
 }
 .myMain{
     padding: 3vw 15vw;
@@ -38,7 +39,7 @@ body{
     height: 10vw;
     outline: none;
 }
-#Conserve{
+#Conserve,#new{
     border: 1px solid white;
     background: none;
     border-radius: 3px;
