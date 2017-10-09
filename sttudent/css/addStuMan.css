@@ -14,7 +14,7 @@ body{
     text-align: center;
 }
 .myMain{
-    padding: 3vw 15vw;
+
     overflow: hidden;
 }
 .inpStuNam{
@@ -35,7 +35,7 @@ body{
 .inpStuNam textarea{
     background: none;
     border: 1px solid white;
-    width: 45vw;
+    width: 75vw;
     height: 10vw;
     outline: none;
 }

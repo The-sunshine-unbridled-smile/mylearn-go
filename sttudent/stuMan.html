@@ -80,7 +80,6 @@
     var s = -1;
     var liebiao = 0;
     var studentArr = window.top.studentArr;
-    console.log(studentArr)
     for (var i = 0; i < studentArr.length; i++) {
         liebiao++;
         var str = '<tr>' +
@@ -107,7 +106,7 @@
         });
     }
     /**
-     * 单击操作下面的删除，删除对应学生的数据
+     * 单击操作下面的删除，删除对应学生的数据  委托绑定事件
      */
     $(document).on("click", ".Del", function () {
         if (confirm("确认删除吗？")) {
@@ -160,7 +159,6 @@
                 if (($(this).attr("checked"))) {
                     $(this).parent().parent().remove();
                     var No=$(this).parent().siblings(":eq(1)").text();
-                    console.log(No)
                     for(var i=0;i<studentArr.length;i++){
                         if(No==studentArr[i].No){
                             studentArr.splice(i,1);
