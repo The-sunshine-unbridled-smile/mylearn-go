@@ -25,23 +25,23 @@
     </div> <!-- 固定框-->
     <div id="big_dot">
         <div id="dot">
-            <div class="dot1">
+            <div class="dot">
                 <span>&#xe601;</span>
                 <div class="hr"></div>
             </div>
-            <div class="dot2">
+            <div class="dot">
                 <span>&#xe612;</span>
                 <div class="hr"></div>
             </div>
-            <div class="dot3">
+            <div class="dot">
                 <span>&#xe604;</span>
                 <div class="hr"></div>
             </div>
-            <div class="dot4">
+            <div class="dot">
                 <span>&#xe607;</span>
                 <div class="hr"></div>
             </div>
-            <div class="dot5">
+            <div class="dot">
                 <span>&#xe608;</span>
                 <div class="hr"></div>
             </div>
@@ -80,91 +80,87 @@
 <script src="jquery-1.11.3.js"></script>
 <script src="jquery.mousewheel.js"></script>
 <script>
-    var myList = $(".list");
-    var now = 0;
-    var Play = setInterval(myPlay, 3000);
+    /**
+     * 鼠标下滚从下面出现阴影
+     */
     jQuery(function ($) {
         $("#main").bind('mousewheel', function (event, delta) {
             var dir = delta > 0 ? 'Up' : 'Down';
             if (dir == 'Up') {
                 $("#dot").css("bottom", "50px");
-              $("#big_dot").css("height","0px");
+                $("#big_dot").css("height", "0px");
             } else {
                 $("#dot").css("bottom", "100px");
-                $("#big_dot").css("height","200px");
+                $("#big_dot").css("height", "200px");
             }
             return false;
         });
     });
-    $("#dot").mouseenter(function () {
-        clearInterval(Play);
-    });
-    $("#dot").mouseleave(function () {
-        setInterval(myPlay, 3000);
-    });
+
+
+    /**
+     * 自动轮播
+     */
+    var Play = setInterval(myPlay, 3000);
+    var myList = [$(".list1"), $(".list2"), $(".list3"), $(".list4"), $(".list5")];
+    var i = 0;
     function myPlay() {
-        if (now > myList.length - 1) {
-            now = 0;
-        }
-        myList.each(function () {
-            $(this).css("opacity", "0");
-        });
-        $(myList[now]).css("opacity", "1");
-        now++;
+        i++;
+        myList[i % 5].fadeToggle(1000);
+        myList[(i - 1) % 5].fadeToggle(1000);
     }
 
-    /*  var pic_index = 0;
-     //函数控制如果为大于4返回第一个
-     function slide_pic() {
-     if (pic_index < 4) {
-     pic_index = pic_index + 1
-     }
-     else {
-     pic_index = 0
-     }
-     }
-     //函数申明主体，以及图片切换函数
-     slide_pic.prototype = {
-     pic_num: '5',
-     pic_slide: function () {
-     myList.eq(pic_index).show().siblings(".list").hide()
-     }
-     };
-     //实例化函数。以及调用函数
-     function slide() {
-     var obj = new slide_pic();
-     obj.pic_slide(pic_index);
-     }
-     // 函数计时器
-     var slide_index = setInterval(slide, 3000);*/
+    /**
+     * 鼠标移入显示对应图片
+     */
+    $.each($(".dot"),function (e) {
+        $(this).mouseenter(function () {
+            Play=clearInterval(Play);
+            myList[e].fadeIn().siblings().fadeOut();
+        }
+        )
+
+    });
+    $.each($(".dot"), function (e) {
+        $(this).mouseleave(function () {
+            Play= setInterval(myPlay, 3000);
+            i=e;
+        }
+        )
+    });
 
 
-    /* $(".dot").each(function () {
-     $(this).mouseenter(function (i) {
-     /!*myList.eq(i).show().siblings(".list").hide()*!/
-     })
+
+
+
+
+
+    /*    $("#dot").mouseenter(function () {
+     clearInterval(Play);
+     });
+     $("#dot").mouseleave(function () {
+     setInterval(myPlay, 3000);
      });*/
-
-    $(".dot1").mouseenter(function () {
-        $(".list1").css("opacity", "1");
-        $(".list1").siblings().css("opacity", "0");
-    });
-    $(".dot2").mouseenter(function () {
-        $(".list2").css("opacity", "1");
-        $(".list2").siblings().css("opacity", "0");
-    });
-    $(".dot3").mouseenter(function () {
-        $(".list3").css("opacity", "1");
-        $(".list3").siblings().css("opacity", "0");
-    });
-    $(".dot4").mouseenter(function () {
-        $(".list4").css("opacity", "1");
-        $(".list4").siblings().css("opacity", "0");
-    });
-    $(".dot5").mouseenter(function () {
-        $(".list5").css("opacity", "1");
-        $(".list5").siblings().css("opacity", "0");
-    });
+    /*    $(".dot1").mouseenter(function () {
+     $(".list1").css("opacity", "1");
+     $(".list1").siblings().css("opacity", "0");
+     });
+     $(".dot2").mouseenter(function () {
+     $(".list2").css("opacity", "1");
+     $(".list2").siblings().css("opacity", "0");
+     });
+     $(".dot3").mouseenter(function () {
+     $(".list3").css("opacity", "1");
+     $(".list3").siblings().css("opacity", "0");
+     });
+     $(".dot4").mouseenter(function () {
+     $(".list4").css("opacity", "1");
+     $(".list4").siblings().css("opacity", "0");
+     });
+     $(".dot5").mouseenter(function () {
+     $(".list5").css("opacity", "1");
+     $(".list5").siblings().css("opacity", "0");
+     });*/
 
 </script>
 </body>
