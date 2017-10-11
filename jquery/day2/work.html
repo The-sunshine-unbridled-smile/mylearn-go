@@ -117,16 +117,13 @@
         $(this).mouseenter(function () {
             Play=clearInterval(Play);
             myList[e].fadeIn().siblings().fadeOut();
-        }
-        )
-
+        })
     });
     $.each($(".dot"), function (e) {
         $(this).mouseleave(function () {
             Play= setInterval(myPlay, 3000);
             i=e;
-        }
-        )
+        })
     });
 
 

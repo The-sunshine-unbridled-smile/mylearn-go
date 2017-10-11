@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+body {
+    font-family: "Times New Roman";
+}
+
+header {
+    position: relative;
+    width: 1349px;
+    height: 630px;
+    overflow: hidden;
+}
+
+#dot {
+    position: absolute;
+    left: 50px;
+    top: 220px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .3);
+    margin-bottom: 30px;
+}
+
+.dot:hover {
+    /*background-color: #e50000;*/
+    cursor: pointer;
+}
+
+.alllist {
+    position: relative;
+}
+
+.list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1349px;
+    height: 630px;
+    overflow: hidden;
+    color: white;
+    display: none;
+}
+
+.list.list1 {
+    display: block;
+}
+
+.text {
+    width: 520px;
+    height: 250px;
+    /*border: 1px solid red;*/
+    position: absolute;
+    left: 200px;
+    top: 200px;
+}
+
+.text p {
+    font-size: 16px;
+
+}
+
+.text h3 {
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.text .little {
+    margin-top: 10px;
+}
+
+.little .t-left {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid white;
+    float: left;
+    margin-right: 20px;
+}
+
+@-webkit-keyframes mymove {
+    0% {
+        margin-left: 0;
+
+    }
+    50% {
+        margin-left:18px;
+    }
+    70% {
+        margin-left:0;
+    }
+    100%{
+        margin-left:-18px;
+    }
+}
+
+.little:hover span{
+    cursor: pointer;
+    -webkit-animation: mymove 1s linear infinite forwards alternate;
+}
+
+.little p {
+    font-size: 14px;
+    line-height: 20px;
+    font-style: italic;
+}
+
+nav {
+    width: 1149px;
+    height: 70px;
+    padding: 0 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+    -webkit-transition: all linear .2s;
+}
+
+nav:hover {
+    color: rgba(52, 52, 52, 0.84);
+    background-color: white;
+}
+
+nav:hover a {
+    color: rgba(52, 52, 52, 0.84);
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-right {
+    float: right;
+}
+
+nav > div > ul > li {
+    position: relative;
+    height: 70px;
+    line-height: 70px;
+    float: left;
+    margin-right: 50px;
+    overflow: hidden;
+    -webkit-transition: all linear .2s;
+}
+
+nav > div > ul > li:hover {
+    overflow: visible;
+}
+
+nav > div > ul > li > a {
+    color: white;
+    font-style: italic;
+}
+
+nav > div > ul > li > a:hover {
+    color: #e50000;
+}
+
+.menu {
+    position: absolute;
+    left: -430px;
+    top: 70px;
+    z-index: 2;
+    width: 1349px;
+    height: 560px;
+    background: url("images/perspective.jpg") no-repeat;
+    color: white;
+}
+
+.menu-left {
+    float: left;
+    width: 200px;
+    /*border:1px solid red;*/
+    margin-left: 300px;
+    margin-top: 100px;
+}
+
+.menu-left h3 {
+    line-height: 35px;
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.menu-left .little {
+    height: 50px;
+    line-height: 50px;
+
+}
+
+.menu-left .little .t-right {
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    float: left;
+
+}
+
+.menu-left .little .t-right:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    -webkit-transition: all linear .2s;
+    cursor: pointer;
+}
+
+.menu-right {
+    float: left;
+    /*border: 1px solid red;*/
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.menu-right > ul > li {
+    width: 200px;
+    line-height: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    font-style: italic;
+    font-size: 18px;
+    margin-bottom: 30px;
+    -webkit-transition: all linear .2s;
+}
+
+.menu-right > ul > li:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    cursor: pointer;
+}
+
+.menu2 {
+    position: absolute;
+    left: -680px;
+    top: 70px;
+    z-index: 2;
+    width: 1149px;
+    height: 560px;
+    padding: 100px 100px 0 100px;
+    background: url("images/offices.jpg") no-repeat;
+    color: white;
+}
+
+.menu2 > ul {
+    width: 285px;
+    float: left;
+}
+
+.menu2 > ul > li {
+    line-height: 20px;
+    margin-bottom: 32px;
+}
+
+.menu2 > ul > li > a {
+    color: white;
+    display: inline-block;
+    -webkit-transition: all linear .2s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+.menu2 > ul > li > a:hover {
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+
+.news {
+    width: 1349px;
+    height: 90px;
+    /*border: 1px solid red;*/
+    padding: 30px 0;
+}
+
+.news-main {
+    padding-left: 200px;
+}
+
+.news-main h3 {
+    width: 150px;
+    /*border:1px solid red;*/
+    font-size: 40px;
+    float: left;
+    margin-right: 100px;
+}
+
+.blackword {
+    width: 500px;
+    /*border: 1px solid red;*/
+    float: left;
+}
+
+.little .h-left {
+    float: left;
+    width: 420px;
+    /*border: 1px solid red;*/
+    font-size: 20px;
+    font-style: normal;
+    color: #4e4e4e;
+    line-height: 25px;
+}
+
+.blackword > p {
+    font-size: 12px;
+    color: #a9a9a9;
+    margin: 10px 0;
+
+}
+
+.blackword .little .t-left {
+    border: 1px solid black;
+    float: left;
+}
+
+.weAre {
+    width: 1349px;
+    height: 500px;
+    background: url("images/arup_bim_model.png") no-repeat 1080px 100px;
+    background-size: 30%;
+    background-color: rgb(233, 233, 233);
+    overflow: hidden;
+}
+
+.weAre-main {
+    padding-left: 200px;
+}
+
+.weAre-main-test {
+    border: 1px solid red;
+    width: 500px;
+    height: 300px;
+    margin-top: 100px;
+}
+
+.weWork {
+    width: 1349px;
+    height: 400px;
+    overflow: hidden;
+    background: url("images/bridge(1).png") no-repeat -60px -100px;
+}
+
+.arup {
+    width: 1347px;
+    height: 70px;
+    line-height: 100px;
+    /*border: 1px solid red;*/
+}
+
+.arup > nav {
+    position: relative;
+}
+
+.arup > nav > div > ul > li > h1 {
+    color: #3c3c3c;
+}
+
+.arup > nav > .nav-left a {
+    font-style: normal;
+}
+
+.arup > nav > div > ul > li > a {
+    color: #3c3c3c;
+}
+
+footer {
+    width: 949px;
+    height: 50px;
+    background-color: rgb(233, 233, 233);
+    padding: 10px 200px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #3c3c3c;
+    line-height: 25px;
+}
+
+footer p span {
+    color: #0f0f0f;
+
+}
+

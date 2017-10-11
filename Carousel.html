@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #main{
+            width: 728px;
+            height: 485px;
+            border:1px solid blue;
+            overflow: hidden;
+        }
+        #content{
+            width: 3000px;
+            height: 485px;
+            border: 1px solid red;
+        }
+        #content>.item{
+            width: 728px;
+            height: 485px;
+            float: left;
+            -webkit-transition: all .3s linear;
+        }
+        .item1{
+            background-color: #00a9e3;
+        }
+        .item2{
+            background-color: #ba9be3;
+        }
+        .item3{
+            background-color: #e38386;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="content">
+            <div class="item item1">1</div>
+            <div class="item item2">2</div>
+            <div class="item item3">3</div>
+        </div>
+    </div>
+    <button onclick="prevPage()">上一页</button>
+    <button onclick="nextPage()">下一页</button>
+    <script>
+
+        function prevPage(){
+        var content=document.getElementById("content");  //装有所有的轮播图
+        var itemList =document.getElementsByClassName("item");  //轮播的图片
+        content.insertBefore(itemList[2],content.firstChild);
+        itemList[0].style.marginLeft="-728px";
+        setTimeout(function() {
+        itemList[0].style.marginLeft = "0px";
+        },300)
+        }
+        function nextPage(){
+            var content=document.getElementById("content");
+            var itemList =document.getElementsByClassName("item");
+            itemList[0].style.marginLeft="-728px";
+            setTimeout(function(){
+                itemList[0].style.marginLeft="0px";
+                content.appendChild(itemList[0]);
+            },300)
+        }
+    </script>
+</body>
+</html>
