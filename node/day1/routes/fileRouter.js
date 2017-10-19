@@ -13,7 +13,7 @@ module.exports.fileRouter = function (request, response) {    //function里面�
     let mypath = request.url;    //收到的是什么文件类型，之后判断
     let myNewPath = mypath.split(".");
     let len = myNewPath.length - 1;
-    if(myNewPath[len]=="html"){
+    if(myNewPath[len].substring(0,4)=="html"){
         console.log("发送给sedHTML");
         fileController.sendHTML(request,response);
     }else if(myNewPath[len]=="css"){
