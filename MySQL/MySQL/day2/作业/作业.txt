@@ -1,0 +1,78 @@
+-- 商品类别表 --
+CREATE TABLE category(
+   cat_id INT PRIMARY KEY AUTO_INCREMENT,#类别编号
+   cat_name VARCHAR(30) NOT NULL#类别名称
+);
+
+-- 商品表 --
+CREATE TABLE goods(
+    goods_id INT PRIMARY KEY AUTO_INCREMENT,#商品编号
+    goods_name VARCHAR(30) NOT NULL,#商品名称
+    goods_price DOUBLE,#商品进价
+    shop_price DOUBLE,#商品卖价
+    market_price DOUBLE,#市场价
+    cat_id INT,#商品类别
+    goods_number INT,#商品数量
+   FOREIGN KEY(cat_id) REFERENCES category(cat_id)
+);
+
+
+INSERT INTO category(cat_name) VALUES('航模'),('车模'),('船模
+
+');
+INSERT INTO category(cat_name) VALUES('动物模型');
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('F16战斗机',300,1000,900,1,120);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('F35战斗机',400,1200,1000,1,210);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('F117隐形轰炸机',290,800,600,1,99);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('牧马人',120,600,500,2,1200);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('宝马Z4',130,560,510,2,231);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('地中海帆船',90,300,180,3,68);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('密西西比号蒸汽明轮',100,560,520,3,114);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('德鲁伊号16门炮护卫舰',1322,2322,2600,3,100);
+INSERT INTO goods
+(goods_name,goods_price,shop_price,market_price,cat_id,goods_number) 
+VALUES('皇家理查德号 74门炮战舰',350,800,769,3,312);
+
+
+1求每个类别下商品种类数
+
+2查询本店每个商品价格比市场价低多少；
+
+3查询每个类别下面积压的货款
+
+4查询本店商品价格比市场价低多少钱，输出低200元以上的商品
+
+5查询积压货款超过2万元的栏目，以及该栏目积压的货款
+
+6按类别号升序排列，每个类别下的商品进价降序排列
+
+7取价格第1-6高的商品
+
+8查询每个类别下进价最高的商品
+
+9取出每个类别下最新的产品(goods_id唯一)
+
+//10题以后选作，思考题
+10.查询没有商品的商品类别
+
+11.查询超过最高卖价航模的商品有哪些商品？
+
+12.查询每个商品类别的商品总数超过500个的商品类别有哪些？
+
+13.查询商品进价低于100的商品类别有哪些？

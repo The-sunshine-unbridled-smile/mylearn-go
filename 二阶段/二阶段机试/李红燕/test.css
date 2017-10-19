@@ -3,8 +3,23 @@
     padding: 0;
 }
 
+@font-face {
+    src: url("font_7uaw8r5a5pyl23xr/iconfont.woff");
+    font-family: myfont;
+}
+#top-weibu{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+}
+#top-weibu>a{
+    color: white;
+}
 a {
     text-decoration: none;
+}
+a span{
+    font-family: myfont;
 }
 
 ul li {
@@ -159,7 +174,7 @@ nav > div > ul > li {
     line-height: 70px;
     float: left;
     margin-right: 50px;
-    /*overflow: hidden;*/
+    overflow: hidden;
     -webkit-transition: all linear .2s;
 }
 
@@ -232,6 +247,7 @@ nav > div > ul > li > a:hover {
     height: 60px;
     -webkit-transition: all linear .3s;
     position: relative;
+    overflow: hidden;
 }
 .menu3-left>ul>li span{
     display: inline-block;
@@ -241,6 +257,7 @@ nav > div > ul > li > a:hover {
 .menu3-left>ul>li:hover{
     color: rgba(255,255,255,1);
     cursor: pointer;
+    overflow: visible;
 }
 .menu3-left>ul>li:hover span{
     border-bottom: 1px solid rgba(255,255,255,.5);
@@ -254,7 +271,6 @@ nav > div > ul > li > a:hover {
     height: 480px;
     padding-top:80px;
     color: white;
-    display: none;
 }
 .onemenu>ul{
     width: 240px;
@@ -269,6 +285,7 @@ nav > div > ul > li > a:hover {
     margin-bottom: 30px;
     font-size: 18px;
     border-bottom: 1px solid rgba(255,255,255,0);
+
 }
 .onemenu>ul>li:hover{
     border-bottom: 1px solid rgba(255,255,255,.3);
@@ -290,7 +307,7 @@ nav > div > ul > li > a:hover {
     left:360px ;
     top:-60px;
     font-style: normal;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     width: 890px;
     height: 480px;
     padding-top:80px;
@@ -337,7 +354,7 @@ nav > div > ul > li > a:hover {
 }
 .menu {
     position: absolute;
-    left: -430px;
+    left: -450px;
     top: 70px;
     z-index: 2;
     width: 1349px;
@@ -404,7 +421,7 @@ nav > div > ul > li > a:hover {
 
 .menu2 {
     position: absolute;
-    left: -680px;
+    left: -720px;
     top: 70px;
     z-index: 2;
     width: 1149px;
@@ -434,7 +451,10 @@ nav > div > ul > li > a:hover {
 .menu2 > ul > li > a:hover {
     border-bottom: 1px solid rgba(255, 255, 255, .5);
 }
-
+#search{
+    font-family: myfont;
+    font-size: 26px;
+}
 .news {
     width: 1349px;
     height: 90px;
