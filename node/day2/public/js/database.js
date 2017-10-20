@@ -26,10 +26,10 @@ userArr=[
     {"username":"admin","pwd":"admins"}
 ];
 /*roleNo:角色ID,roleName:角色名称,roleDes:角色描述,roleBz:角色备注*/
-roleArr=[{"roleNo":1,"roleName":"项目经理","roleDes":"排课","roleBz":"经理"},
+/*roleArr=[{"roleNo":1,"roleName":"项目经理","roleDes":"排课","roleBz":"经理"},
     {"roleNo":2,"roleName":"人事经理","roleDes":"学生管理","roleBz":"经理"},
     {"roleNo":3,"roleName":"管理员","roleDes":"系统管理员","roleBz":"管理人员"},
-    {"roleNo":4,"roleName":"游客","roleDes":"学生管理","roleBz":"游客"}];
+    {"roleNo":4,"roleName":"游客","roleDes":"学生管理","roleBz":"游客"}];*/
 /*data:休假的日期*/
 dateArr=[
      {"data":"2017-10-1"},

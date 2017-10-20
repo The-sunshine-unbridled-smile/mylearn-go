@@ -7,9 +7,11 @@ const favicon = require("serve-favicon");  //移入图标模块
 const app = express();
 
 // ============================= 配置==================================
-app.use(logger("dev")); //调用日志，配置为Dev模式
+//调用日志，配置为Dev模式
+app.use(logger("dev"));
 //集成了路由，只需要告诉静态资源在哪里即可
 app.use(express.static(__dirname + "/public"));
+//图标位置，配置图标
 app.use(favicon(__dirname + "/public/images/pass.png"));
 //================================监听端口=================================
 app.listen(8888, () => {
