@@ -3,16 +3,20 @@
  */
 //处理的具体业务逻辑
 const myfs = require("fs");
-
+const url=require("url");
 //专门处理HTML
 module.exports.sendHTML = function (request, response) {
     console.log("来到了sendHTML");
-    let mypath = request.url;
-    let myNewPath = mypath.split("?");
-    myfs.readFile("public" + myNewPath[0], "utf-8", (err, data) => {
-        console.log(data);
+    let mypath =url.parse(request.url).pathname ;
+    //readFile（文档位置，字符编码，回调函数-当文件读取成功后调用-读取到的文件响应给客户端）
+    myfs.readFile("public" + mypath, "utf-8", (err, data) => {
+        console.log(data);//打印正确的位置，err错误的位置信息
+        //请求进来
+        //响应-- writeHead1.1：响应头: OK HTTP状态码 200-- 404错误 2.内容编码 解析标准
         response.writeHead(200, {"content-type": "text/html;charset=utf-8"});
+        //2：响应内容
         response.write(data);
+        //3：响应结束
         response.end();
     })
 };
