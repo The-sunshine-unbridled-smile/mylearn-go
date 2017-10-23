@@ -58,9 +58,9 @@ const userController = {
         }
       }
     );
-    db.end()
+    db.end();
     // resp.redirect("success.html") //思考: 原生原理是怎么样
   }
-}
+};
 
-module.exports = userController
+module.exports = userController;

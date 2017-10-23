@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/course.css">
+</head>
+<body>
+<section class="couMan container">
+    <div class=" row">
+        <div></div>
+        <div id="table">
+            <button type="button" class="addCourseBtn">新增课程</button>
+            <table class="table">
+                <tr>
+                    <th><input type="checkbox" id="allChoise"/></th>
+                    <th>ID号</th>
+                    <th>名称</th>
+                    <th>阶段</th>
+                    <th>总天数</th>
+                    <th>日期</th>
+                    <th>类型</th>
+                    <th>操作</th>
+
+                </tr>
+            </table>
+            <button type="button" class="delBtn">删除</button>
+            <div style="clear: both"></div>
+        </div>
+        <div class="Flip text-center">
+            <button id="Prevbtn">上一页</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>...</button>
+            <button id="Nextbtn">下一页</button>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.params.js"></script>
+<script type="text/javascript">
+
+
+
+
+    //获取初始值
+    var s=-1;
+    var liebiao=0;
+    var courseArr=window.top.courseArr;
+    for(var i=0;i<courseArr.length;i++){
+        liebiao++;
+        var str='<tr>'+
+            '<td><input type="checkbox" class="items"/></td>'+
+            '<td class="ct"></td>'+
+            '<td class="ct"></td>'+
+            '<td class="ct"></td>'+
+            '<td class="ct"></td>'+
+            '<td class="ct"></td>'+
+            '<td class="ct"></td>'+
+            '<td class="moDi"><a href="#" class="ope">修改</a><a class="Del" href="#">删除</a></td>'+
+        '</tr>'
+        $(".table").append(str);
+        $.each(courseArr[i],function (key) {
+            s++;
+            $(".ct")[s].innerText=courseArr[i][key];
+        })
+    }
+    //点击修改
+    var operate=$(".ope");
+    operate.each(function () {
+        //单击修改获取修改数据的值
+        $(document).on("click",".ope",function () {
+            var id=$(this).parent().parent().children(":eq(1)").text();
+            var name=$(this).parent().parent().children(":eq(2)").text();
+            var num=$(this).parent().parent().children(":eq(3)").text();
+            var day=$(this).parent().parent().children(":eq(4)").text();
+            var date=$(this).parent().parent().children(":eq(5)").text();
+            var bei=$(this).parent().parent().children(":eq(6)").text();
+            console.log(id);
+            console.log(name);
+            console.log(num);
+            console.log(day);
+            console.log(date);
+            console.log(bei);
+            window.location.href="courseNewly.html?id="+id+"&name="+name+"&num="+num+"&day="+day+
+                    "&date="+date+"&bei="+bei;
+        })
+    });
+
+
+    //点击新增跳转
+    $(".addCourseBtn").click(function () {
+        window.location.href="courseNewly.html"
+    });
+    //点击删除
+    $(document).on("click",".Del",function (){
+        if (confirm("确认删除吗？")){
+            $(this).parent().parent().remove();
+            var id=$(this).parent().children(":eq(1)").text();
+            for (var i=0;i<courseArr.length;i++){
+                if (id==courseArr[i].courseNo){
+                    courseArr.splice(i,1)
+                }
+            }
+        }
+    });
+    //全选
+    $("#allChoise").click(function () {
+        if ($(this).prop("checked")){
+            $(".items").prop("checked",true);
+            $(".items").attr("checked",true);
+        }else {
+            $(".items").prop("checked",false);
+            $(".items").attr(("checked"),false)
+        }
+    });
+    $(".items").click(function () {
+        if ($(this).prop("checked")){
+            $(this).prop("checked",true);
+            $(this).attr("checked",true);
+            if ($(".items[checked]").length==$(".items").length){
+                $("#allChoise").prop("checked",true);
+            }
+        }else {
+            $(this).prop("checked",false);
+            $(this).attr("checked",false);
+            $("#allChoise").prop("checked",false)
+        }
+    });
+    //删除选中
+        $(".delBtn").click(function () {
+            if(($(".items[checked]").length==0)){
+                alert("请选择需要删除的项");
+                return false;
+            }
+            if (confirm("确认要删除吗？")){
+                $(".items").each(function () {
+                    if (($(this).attr("checked"))){
+                        $(this).parent().parent().remove();
+                        var id=$(this).parent().siblings(":eq(0)").text();  //获取ID值
+                        for(var i=0;i<courseArr.length;i++){
+                            if(id==courseArr[i].courseNo){
+                                courseArr.splice(i,1);
+                            }
+                        }
+                    }
+                })
+            }
+        });
+
+
+
+
+</script>
+</body>
+</html>
