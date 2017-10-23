@@ -12,9 +12,6 @@ var Rolebz=$.query.get("ders");
   $(".put").val(Rolename);
   $("#der").val(Roleder);
   $("#ders").val(Rolebz);
-
-
-
 /*点击修改*/
 $(".roleBtn").click(function () {
     var put = $(".put").val();
@@ -29,16 +26,6 @@ $(".roleBtn").click(function () {
         }
     };
     requset.send(null);
-    /*for (var i = 0; i < roleArr.length; i++) {
-        $.each(roleArr[i], function (e) {
-            if (roleNo == roleArr[i][e]) {
-                roleArr[i].roleNo = roleNo;
-                roleArr[i].roleName = put;
-                roleArr[i].roleDes = der;
-                roleArr[i].roleBz = ders;
-            }
-        })
-    }*/
     window.location.href = "roleMan.html"
 });
 //新增页面信息开始

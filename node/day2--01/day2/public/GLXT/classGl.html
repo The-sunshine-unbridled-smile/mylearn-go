@@ -29,17 +29,15 @@
         <table class="table">
             <thead>
             <tr>
-                <td>编号</td>
+                <td>班级编号</td>
                 <td>班级名称</td>
-                <td>教室</td>
+                <td>班级课程编号</td>
+                <td>班级教室</td>
                 <td>开班日期</td>
-                <td>学生人数</td>
-                <td>项目经理</td>
-                <td>班主任</td>
-                <td>当前阶段</td>
-                <td>备注</td>
-                <td>创建人</td>
                 <td>创建时间</td>
+                <td>班级状态</td>
+                <td>QQ群号</td>
+                <td>备注</td>
                 <td>操作</td>
             </tr>
             </thead>
@@ -53,11 +51,91 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.params.js"></script>
 <script type="text/javascript">
+    var request = new XMLHttpRequest();
+    request.open("get", "roleMan.do", true);
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            var data = JSON.parse(request.responseText);
+            arr(data);
+        }
+    };
+    request.send(null);
+
+    //页面显示数据
+    function arr(data) {
+        var role = -1;
+        for (var i = 0; i < data.length; i++) {
+            var str = '<tr class="interline">' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td class="line"></td>' +
+                '<td><button type="button" class="revise">修改</button>' +
+                '<button type="button" class="del">删除</button>' +
+                '</td>' +
+                '</tr>';
+            if (data.length > 1) {
+                $("#tbody").append(str);
+            } else {
+                $("#tbody").html(str);
+            }
+            $.each(data[i], function (key) {
+                role++;
+                $(".line")[role].innerText = data[i][key];
+            })
+        }
+    }
+
+
+    //点击获取修改数据的值
+    $(document).on("click", ".revise", function () {
+        var roleNo = $(this).parent().parent().children(":eq(0)").text();
+        var put = $(this).parent().parent().children(":eq(1)").text();
+        var der = $(this).parent().parent().children(":eq(2)").text();
+        var ders = $(this).parent().parent().children(":eq(3)").text();
+        window.location.href = "roleManchild.html?id=" + roleNo + "&put=" + put + "&der=" + der + "&ders=" + ders;
+    })
+
+    //删除角色信息
+    $(document).on("click", ".del", function () {
+        if (confirm("确认删除吗?")) {
+            $(this).parent().parent().remove();
+            var put = $(this).parent().parent().children(":eq(0)").text();
+            var request = new XMLHttpRequest();
+            request.open("get", "deleterole.do?put=" + put, true);
+            request.send(null);
+        }
+    });
+    //查询信息
+    $(".Search").click(function () {       //给查询按钮设置单击事件
+        var num = $("#perNo").val(),
+            name = $("#perName").val();
+        var request = new XMLHttpRequest();
+        request.open("get", "seach.do?roleNo=" + num + "&&roleName=" + name);
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                arr(data);
+            }
+        };
+        request.send(null);
+    });
+
+</script>
+
+<!--<script type="text/javascript">
 var classArr=window.top.classArr;
 var classCourseArr=window.top.classCourseArr;
 var studentArr=window.top.studentArr;
 //添加默认数据
-for(var i=0;i<classArr.length;i++){
+
+
+/*for(var i=0;i<classArr.length;i++){
     var count=0;
     for(var j=0;j<studentArr.length;j++){
         if (classArr[i].classNo==studentArr[j].classNo){
@@ -79,7 +157,7 @@ for(var i=0;i<classArr.length;i++){
            '<td class="classDate"><button class="Ope">修改</button></td>'+
            '</tr>';
    $("tbody").append(str);
-}
+}*/
 //查询
 $(".Search").click(function () {
     var Nos=$(".claNo").val();
@@ -214,6 +292,6 @@ for(i=0;i<classArr.length;i++){
             "&jieduan="+jieduan+"&beizhu="+beizhu;
     }))
 
-</script>
+</script>-->
 </body>
 </html>
