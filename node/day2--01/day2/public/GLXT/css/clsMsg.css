@@ -151,10 +151,13 @@ table{
 }
 table tr th{
     border-top: 0!important;
+    text-align: center;
 }
 table tr td{
     border-top: 0!important;
+    text-align: center;
 }
+
 table tr:last-child{
     border-bottom: 0!important;
 }
@@ -171,4 +174,10 @@ table tr{
     .container {
         width: 100%;
     }
+}
+.revise,.del{
+    height: 30px;
+    background: none;
+    border: none;
+    outline: none;
 }

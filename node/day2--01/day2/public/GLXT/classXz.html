@@ -15,11 +15,19 @@
         <div class="form">
             <form class="form-inline">
                 <label>班级编号</label>
-                <input type="text" class="claNo">
+                <input type="text" class="classNo">
                 <label>班级名称</label>
-                <input type="text" class="claName">
+                <input type="text" class="className">
+                <label>班级课程编号</label>
+                <input type="text" class="classCourseNo">
+                <label>班级教室</label>
+                <input type="text" class="classroom">
+                <label>开班日期</label>
+                <input type="text" class="startdate">
+                <label>创建时间</label>
+                <input type="text" class="createdate">
                 <label>班级状态</label>
-                <select name="claZt" class="claZt">
+                <select name="claZt" class="classdes">
                     <option value="未开班" class="option">未开班</option>
                     <option value="预科" class="option">预科</option>
                     <option value="就业" class="option">就业</option>
@@ -27,14 +35,10 @@
                     <option value="停课" class="option">停课</option>
                     <option value="结业" class="option">结业</option>
                 </select>
-                <label>开班日期</label>
-                <input type="text" class="claData" placeholder="年/月/日">
                 <label>QQ群号</label>
-                <input type="number" class="qqPhone">
-                <label>教室</label>
-                <input type="text" class="claMate">
+                <input type="text" class="classQQ">
                 <label>备注</label>
-                <textarea rows="7" cols="92" style="vertical-align:top" class="beizhu"></textarea>
+                <textarea rows="7" cols="92" style="vertical-align:top" class="classBz"></textarea>
             </form>
         </div>
         <!--班级详细信息-->
@@ -105,7 +109,29 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.params.js"></script>
 <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-<script type="text/javascript">
+<script>
+    //保存
+    $(".save").click(function () {
+        var classNo=$(".classNo").val;
+        var className=$(".className").val;
+        var classCourseNo=$(".classCourseNo").val;
+        var classroom=$(".classroom").val;
+        var startdate=$(".startdate").val;
+        var createdate=$(".createdate").val;
+        var classdes=$(".classdes").val;
+        var classQQ=$(".classQQ").val;
+        var classBz=$(".classBz").val;
+        var request=new XMLHttpRequest();
+        request.open("get","addclass.do?classNo="+classNo+"&&className="+className+"&&classCourseNo="
+            +classCourseNo+"&&classroom="+classroom+"&&startdate="+startdate+"&&createdate="
+            +createdate+"&&classdes="+classdes+"&&classQQ="+classQQ+"&&classBz="
+            +classBz,true);
+        request.send(null);
+        window.location.href="classGl.html";
+    });
+</script>
+
+<!--<script type="text/javascript">
    var courseArr=window.top.courseArr;
     var studentArr=window.top.studentArr;
     var classArr=window.top.classArr;
@@ -141,20 +167,20 @@
         var str='<div class="tab-content tab-content-0">'+
             '<div role="tabpanel" class="tab-pane active" id="1">'+
             '<select  id="xzkc" class="classCourseSel">'+
-            <!--选择课程-->
-            '<option  class="option">--选择课程--</option>'+
+            &lt;!&ndash;选择课程&ndash;&gt;
+            '<option  class="option">&#45;&#45;选择课程&#45;&#45;</option>'+
             '</select>'+
             '<lable>开始日期</lable>'+
             '<input type="text" class="classCourseTime" placeholder="年/月/日">'+
             '<a href="#" class="Del">x</a>'+
-            <!-- Nav tabs -->
+            &lt;!&ndash; Nav tabs &ndash;&gt;
             '<ul class="nav nav-tabs nav3" role="tablist">'+
             '<li role="presentation" class="active"><a href="#'+(ids+1)+'" aria-controls="home" role="tab" data-toggle="tab">一阶段</a></li>'+
             '<li role="presentation"><a href="#'+(ids+2)+'" aria-controls="home" role="tab" data-toggle="tab">二阶段</a></li>'+
             '<li role="presentation" ><a href="#'+(ids+3)+'" aria-controls="home" role="tab" data-toggle="tab">三阶段</a></li>'+
             '<li role="presentation"><a href="#'+(ids+4)+'" aria-controls="home" role="tab" data-toggle="tab">四阶段</a></li>'+
             '</ul>'+
-            <!-- Tab panes -->
+            &lt;!&ndash; Tab panes &ndash;&gt;
             '<div class="tab-content tab-content-1">'+
             '<div role="tabpanel" class="tab-pane active" id='+(ids+1)+'>'+
             '</div>'+
@@ -170,7 +196,7 @@
             num++;
             var str1= '<lable>授课人</lable>'+
                 '<select name="xzkc"  class="classTeaSel classTeaSel'+num+'">'+
-                '<option  class="option">--选择授课人或者班主任--</option>'+
+                '<option  class="option">&#45;&#45;选择授课人或者班主任&#45;&#45;</option>'+
                 '<option class="option">邹杰</option>'+
                 '<option class="option">王芳</option>'+
                 '<option class="option">杨阳</option>'+
@@ -178,7 +204,7 @@
                 '<option class="option">唐钰伟</option>'+
                 '</select>'+
                 '<select class="classTchRptT classTchRptT'+num+'">'+
-                '<option  class="option">--重复周期--</option>'+
+                '<option  class="option">&#45;&#45;重复周期&#45;&#45;</option>'+
                 '<option class="option">每天</option>'+
                 '<option class="option">星期一</option>'+
                 '<option class="option">星期二</option>'+
@@ -195,7 +221,7 @@
         num++;
         var str= '<lable>授课人</lable>'+
             '<select name="xzkc"  class="classTeaSel classTeaSel'+num+'">'+
-            '<option  class="option">--选择授课人或者班主任--</option>'+
+            '<option  class="option">&#45;&#45;选择授课人或者班主任&#45;&#45;</option>'+
             '<option class="option">邹杰</option>'+
             '<option class="option">王芳</option>'+
             '<option class="option">杨阳</option>'+
@@ -203,7 +229,7 @@
             '<option class="option">唐钰伟</option>'+
             '</select>'+
             '<select class="classTchRptT classTchRptT'+num+'">'+
-            '<option  class="option">--重复周期--</option>'+
+            '<option  class="option">&#45;&#45;重复周期&#45;&#45;</option>'+
             '<option class="option">每天</option>'+
             '<option class="option">星期一</option>'+
             '<option class="option">星期二</option>'+
@@ -266,8 +292,8 @@
         function(){
         $(this).closest(".tab-content-0").remove()
         });
-//保存
-   $(".save").click(function () {
+
+  $(".save").click(function () {
        var bhs1=$(".claNo").val();
        var names=$(".claName").val();
        var zts=$(".claZt").val();
@@ -315,6 +341,7 @@
     classCourseArr[3].push(arraddkc4);
    window.location.href="classGl.html";
 });
-</script>
+</script>-->
+
 </body>
 </html>

@@ -36,6 +36,9 @@ function arr(data) {
         })
     }
 }
+
+
+
 //点击获取修改数据的值
 $(document).on("click", ".revise", function () {
     var roleNo = $(this).parent().parent().children(":eq(0)").text();
