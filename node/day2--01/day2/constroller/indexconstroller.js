@@ -191,23 +191,22 @@ const constroller = {
     },
     //查询班级
     getseachclass(req, res){
-        var roleNo = req.query.roleNo;
-        var roleName = req.query.roleName;
-        //新增
-        db.getPool("select * from t_role where r_no=? or r_name=?", [roleNo, roleName], (err, data) => {
-            if (data != undefined) {
-                if (data.length > 0) {
-                    res.send(data);
-                } else {
-                    res.end("erro");
-                }
-            } else {
-                res.end(err.message);
-            }
-        });
+        var claNo = req.query.claNo||"";
+        var claName = req.query.claName||"";
+        let sql="select * from t_class where 1=1";
+        let params=[];
+        if(claNo!=""){
+            sql += " and t_no = ?";
+            params.push(claNo);
+        }
+        if(claName!=""){
+            sql += " and t_name like ?";
+            claName = "%"+claName+"%";
+            params.push(claName)
+        }
+        db.getPool(sql, params, (err, data) => {
+            res.send(data)
+        })
     },
 };
-
-
-
 module.exports = constroller;

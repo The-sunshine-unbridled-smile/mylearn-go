@@ -15,6 +15,7 @@ router.get("/seach.do", constroller.getseachrole);
 //班级管理的增删改查业务连接
 router.get("/class.do", constroller.getClass);
 router.get("/addclass.do", constroller.getaddClass);
-router.get("/deleteclass.do", constroller.getDeleteClass);
+// router.get("/deleteclass.do", constroller.getDeleteClass);
 router.get("/xgclass.do", constroller.getxgclass);
+router.get("/seachclass.do", constroller.getseachclass);
 module.exports = router;
