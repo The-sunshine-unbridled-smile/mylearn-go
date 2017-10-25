@@ -1,8 +1,5 @@
-/**
- * Created by admin on 2017/9/30.
- */
-//ajax显示数据
 
+//ajax显示数据
 var request = new XMLHttpRequest();
 request.open("get", "roleMan.do", true);
 request.onreadystatechange = function () {

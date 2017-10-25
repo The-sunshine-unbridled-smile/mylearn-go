@@ -107,7 +107,7 @@ const constroller = {
     },
 
     //=================================班级部分 增删改查===================================
-    //显示到页面
+    //班级信息显示到页面
     getClass(req, res){
         db.getPool("select * from t_class", (err, data) => {
             if (data != undefined) {
@@ -121,7 +121,7 @@ const constroller = {
             }
         });
     },
-    //新增数据
+    //新增班级
     getaddClass(req, res){
         var classNo = req.query.classNo;
         var className = req.query.className;
@@ -133,9 +133,53 @@ const constroller = {
         var classQQ = req.query.classQQ;
         var classBz = req.query.classBz;
         //新增
-        db.getPool("insert into t_class values(?,?,?,?,?,?,?,?,?)",
-            [null, className, classCourseNo, classroom,startdate,createdate,classdes,classQQ,classBz],
-            (err, data) => {
+        db.getPool("insert into t_class values(?,?,?,?,?,?,?,?,?)", [null, className, classCourseNo, classroom,startdate,createdate,classdes,classQQ,classBz], (err, data) => {
+            console.log(data)
+            if (data != undefined) {
+                if (err) {
+                    res.end("erro");
+                }else{
+                    console.log("1")
+                }
+            } else {
+                console.log(err.message)
+            }
+        });
+    },
+    //删除班级
+  /*  getDeleteClass(req, res){
+        var classNo = req.query.putClasss;
+        console.log(classNo);
+        //删除
+        db.getPool("delete from t_class where t_no=?", classNo, (err, data) => {
+            if (data != undefined) {
+                if (err) {
+                    res.end(err.message)
+                }
+            } else {
+                res.end(err.message);
+            }
+        });
+    },*/
+    //修改班级
+    getxgclass(req, res){
+        var classNo = req.query.classNo;
+        var className = JSON.stringify(req.query.className);
+        var classcourseNo = JSON.stringify(req.query.classCourseNo);
+        var classRoom = JSON.stringify(req.query.classroom);
+        var calssStart = JSON.stringify(req.query.startdate);
+        var classCreate = JSON.stringify(req.query.createdate);
+        var calssdes = JSON.stringify(req.query.classdes);
+        var calssQQ = JSON.stringify(req.query.classQQ);
+        var classBz = JSON.stringify(req.query.classBz);
+        console.log(classCreate);
+        //修改
+        db.getPool("update t_class set t_no=" + classNo +
+            ",t_name=" + className + ",t_c_no=" + classcourseNo +
+            ",t_classroom=" + classRoom +
+            ",t_startdate=" + calssStart + ",t_create=" + classCreate +
+            ",t_des=" + calssdes +",t_qq=" + calssQQ +",t_bz=" + classBz +
+            " where t_no=?", classNo, (err, data) => {
             if (data != undefined) {
                 if (err) {
                     res.end("erro");
@@ -145,15 +189,17 @@ const constroller = {
             }
         });
     },
-    //删除班级
-    getDeleteClass(req, res){
-        var classNo = req.query.put;
-        console.log(classNo);
-        //删除
-        db.getPool("delete from t_class where r_no=?", classNo, (err, data) => {
+    //查询班级
+    getseachclass(req, res){
+        var roleNo = req.query.roleNo;
+        var roleName = req.query.roleName;
+        //新增
+        db.getPool("select * from t_role where r_no=? or r_name=?", [roleNo, roleName], (err, data) => {
             if (data != undefined) {
-                if (err) {
-                    res.end(err.message)
+                if (data.length > 0) {
+                    res.send(data);
+                } else {
+                    res.end("erro");
                 }
             } else {
                 res.end(err.message);

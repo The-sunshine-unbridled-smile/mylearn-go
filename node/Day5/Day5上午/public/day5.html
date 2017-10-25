@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>搜索</h1>
+    姓名: <input type="text" id="stuname">
+    学生编号: <input type="text" id="stuid">
+    分数: <input type="text" id="grade">
+    性别： <input type="text" id="sex">
+
+    <button onclick="searchStudent();">搜索</button>
+    <table cellspacing="0" cellpadding="0" border="1" width="500">
+        <thead>
+        <tr>
+            <th>学生编号</th>
+            <th>学生姓名</th>
+            <th>分数</th>
+            <th>班级id</th>
+            <th>性别</th>
+        </tr>
+        </thead>
+        <tbody id="studentTable">
+
+        </tbody>
+    </table>
+    <script src="js/ajax.js"></script>
+    <script>
+        window.onload=getAllStudent
+        function showStudent(){
+            console.log(xhr.responseText);
+            var data = JSON.parse(xhr.responseText)
+            document.getElementById("studentTable").innerHTML="";
+            for(var i=0;i<data.length;i++){
+              document.getElementById("studentTable").innerHTML+="<tr>" +
+                "<td>"+data[i].stuid+"</td>" +
+                "<td>"+data[i].stuname+"</td>" +
+                "<td>"+data[i].grade+"</td>" +
+                "<td>"+data[i].classid+"</td>" +
+                "<td>"+data[i].sex+"</td>" +
+                "</tr>"
+          }
+        }
+        //查询所有的学生
+        function getAllStudent(){
+            myAjax("get","/getStudent.do","",showStudent)
+        }
+        function searchStudent(){
+          var stuname = document.getElementById("stuname").value;
+          var stuid = document.getElementById("stuid").value;
+          var grade = document.getElementById("grade").value;
+          var sex = document.getElementById("sex").value;
+
+          myAjax("get","/getStudent.do","stuname="+stuname+"&stuid="+stuid+"&grade="+grade+"&sex="+sex+"",showStudent)
+        }
+        //修改
+        //删除
+
+        function deleteStudent(){
+          //1.删除了之后显示所有学生
+//          myAjax()
+//          getAllStudent()
+          //2.删除之后只是更新搜索的结果
+//          searchStudent
+        }
+    </script>
+</body>
+</html>

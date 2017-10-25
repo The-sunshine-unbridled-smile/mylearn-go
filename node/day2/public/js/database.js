@@ -126,10 +126,10 @@ studentArr=[
 
 
 //班级编号：classNo 班级名字：className 班级开班日期：classStartDay  班级总人数:classStuUs 班级qq群名字：classQQ 班级备注：classBz
-classArr = [
+/*classArr = [
     {"classNo": "126", "className": "web前端","classRoom":"15","classStartDay": "2017/9/27","classStuAll": 0, "classQQ": 1234567,"classZt":"在读", "classBz": "这是百杰125班","creater":"管理员","createTime":"2017/9/27"},
     {"classNo": "125", "className": "JAVA", "classRoom":"16","classStartDay": "2017/9/27","classStuAll": 0, "classQQ": 54545457,"classZt":"预科", "classBz": "这是百杰126班","creater":"管理员","createTime":"2017/9/26"},
-];
+];*/
 //班级总人数：classStuAll 班级男生人数：classStumale 班级女生人数：classStuFamale 班级专科学历人数：classStuColl 班级本科人数学历：classStuUs 班级高中及以下人数:classStuHigh
 classExpArr = [
     {"classStuAll": 0, "classStuMale": 0, "classStuFamale": 0, "classStuColl": 0, "classStuUs": 0, "classStuHigh": 0}

@@ -27,14 +27,7 @@
                 <label>创建时间</label>
                 <input type="text" class="createdate">
                 <label>班级状态</label>
-                <select name="claZt" class="classdes">
-                    <option value="未开班" class="option">未开班</option>
-                    <option value="预科" class="option">预科</option>
-                    <option value="就业" class="option">就业</option>
-                    <option value="在读" class="option">在读</option>
-                    <option value="停课" class="option">停课</option>
-                    <option value="结业" class="option">结业</option>
-                </select>
+                <input type="text"class="classdes">
                 <label>QQ群号</label>
                 <input type="text" class="classQQ">
                 <label>备注</label>
@@ -103,6 +96,7 @@
             </div>
         </div>
         <button class="addClass">新增课程</button>
+        <button class="new">新增</button>
         <button class="save">保存</button>
     </div>
     </section>
@@ -110,23 +104,70 @@
 <script type="text/javascript" src="js/jquery.params.js"></script>
 <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script>
-    //保存
-    $(".save").click(function () {
-        var classNo=$(".classNo").val;
-        var className=$(".className").val;
-        var classCourseNo=$(".classCourseNo").val;
-        var classroom=$(".classroom").val;
-        var startdate=$(".startdate").val;
-        var createdate=$(".createdate").val;
-        var classdes=$(".classdes").val;
-        var classQQ=$(".classQQ").val;
-        var classBz=$(".classBz").val;
+    //点击新增
+    $(".new").click(function () {
+        var classNo=$(".classNo").val();
+        var className=$(".className").val();
+        var classCourseNo=$(".classCourseNo").val();
+        var classroom=$(".classroom").val();
+        var startdate=$(".startdate").val();
+        var createdate=$(".createdate").val();
+        var classdes=$(".classdes").val();
+        var classQQ=$(".classQQ").val();
+        var classBz=$(".classBz").val();
         var request=new XMLHttpRequest();
         request.open("get","addclass.do?classNo="+classNo+"&&className="+className+"&&classCourseNo="
             +classCourseNo+"&&classroom="+classroom+"&&startdate="+startdate+"&&createdate="
             +createdate+"&&classdes="+classdes+"&&classQQ="+classQQ+"&&classBz="
             +classBz,true);
         request.send(null);
+        window.location.href="classGl.html";
+    });
+
+
+    //点击首页的修改后 获取传过来的值
+    var classNo=$.query.get("classNo");
+    var className=$.query.get("className");
+    var classCourseNo=$.query.get("classcourseNo");
+    var classroom=$.query.get("classRoom");
+    var startdate=$.query.get("calssStart");
+    var createdate=$.query.get("classCreate");
+    var classdes=$.query.get("calssdes");
+    var classQQ=$.query.get("calssQQ");
+    var classBz=$.query.get("classBz");
+  //显示首页传过来的值
+    $(".classNo").val(classNo);
+    $(".className").val(className);
+   $(".classCourseNo").val(classCourseNo);
+    $(".classroom").val(classroom);
+    $(".startdate").val(startdate);
+   $(".createdate").val(createdate);
+    $(".classdes").val(classdes);
+    $(".classQQ").val(classQQ);
+    $(".classBz").val(classBz);
+
+    //点击保存（是修改后的保存）
+    $(".save").click(function () {
+       var classNo= $(".classNo").val();
+        var className= $(".className").val();
+        var classCourseNo= $(".classCourseNo").val();
+        var classroom=$(".classroom").val();
+        var startdate= $(".startdate").val();
+        var createdate= $(".createdate").val();
+        var classdes= $(".classdes").val();
+        var classQQ= $(".classQQ").val();
+        var classBz= $(".classBz").val();
+        var requset=new XMLHttpRequest();
+        requset.open("get","xgclass.do?classNo="+classNo+"&&className="+className+"&&classCourseNo="
+            +classCourseNo+"&&classroom="+classroom+"&&startdate="+startdate+"&&createdate="
+            +createdate+"&&classdes="+classdes+"&&classQQ="+classQQ+"&&classBz="
+            +classBz,true);
+        requset.onreadystatechange=function () {
+            if(requset.readyState==4&&requset.status==200){
+
+            }
+        };
+        requset.send(null);
         window.location.href="classGl.html";
     });
 </script>

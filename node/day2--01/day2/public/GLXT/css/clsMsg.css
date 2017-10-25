@@ -181,3 +181,9 @@ table tr{
     border: none;
     outline: none;
 }
+.Flip button{
+    border: 1px solid white;
+    background: none;
+    border-radius: 3px;
+    padding: 0 .5vw;
+}

@@ -1,6 +1,4 @@
-/**
- * Created by admin on 2017/10/6.
- */
+
 // var roleArr=window.top.roleArr;
 //获取传过来的值
 var roleNum=$.query.get("id");

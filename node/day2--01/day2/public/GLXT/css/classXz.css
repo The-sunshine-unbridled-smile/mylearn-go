@@ -294,7 +294,7 @@ select option{
     margin-left: 54.5%
 }
 /*保存*/
-.save{
+.save,.new{
     padding: 5px 40px;
     background-color: rgba(0,0,0,0);
     color: white;
