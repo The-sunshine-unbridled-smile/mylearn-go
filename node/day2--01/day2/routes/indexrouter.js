@@ -18,4 +18,8 @@ router.get("/addclass.do", constroller.getaddClass);
 // router.get("/deleteclass.do", constroller.getDeleteClass);
 router.get("/xgclass.do", constroller.getxgclass);
 router.get("/seachclass.do", constroller.getseachclass);
+//分页显示
+router.get("/getPageTotal.do", constroller.getPageclass);
+
+
 module.exports = router;

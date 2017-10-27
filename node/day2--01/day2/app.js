@@ -10,4 +10,4 @@ app.use(logger("dev"));//日志文件
 
 app.use(express.static(__dirname+"/public/GLXT"));//导入静态资源页面
 app.use(favicon(__dirname+"/public/GLXT/images/kitty.ico"));//使用页面图标
-app.listen(8888,()=>{console.log("服务器启动成功")});
+app.listen(8882,()=>{console.log("服务器启动成功")});

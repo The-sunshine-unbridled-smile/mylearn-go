@@ -1,16 +1,15 @@
 {
-  "name": "day2",
+  "name": "day1",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is a node project",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "nana",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",

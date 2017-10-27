@@ -11,18 +11,18 @@
 <section class="container">
     <div class="content">
         <div class="select">
-                        <form class="form-inline">
-                            <label>班级编号</label>
-                        <input type="text" class="claNo">
-                        <label>班级名称</label>
-                        <input type="text" class="claName">
-                        <label>项目经理</label>
-                        <input type="text" class="proMan">
-                        <label>班主任</label>
-                        <input type="text" class="claTea">
-                            <input type="button" class="Search" value="查询">
-                    </form>
-                 </div>
+            <form class="form-inline">
+                <label>班级编号</label>
+                <input type="text" class="claNo">
+                <label>班级名称</label>
+                <input type="text" class="claName">
+                <label>项目经理</label>
+                <input type="text" class="proMan">
+                <label>班主任</label>
+                <input type="text" class="claTea">
+                <input type="button" class="Search" value="查询">
+            </form>
+        </div>
         <a href="classXz.html" class="addClassbtn">新增班级</a>
         <div style="clear: both"></div>
         <!--表格-->
@@ -41,25 +41,27 @@
                 <td>操作</td>
             </tr>
             </thead>
-        <tbody>
-        </tbody>
+            <tbody id="tbody">
+            </tbody>
         </table>
 
         <div class="Flip text-center">
             <button id="Prevbtn">上一页</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>..</button>
+            <div id="anniu">
+
+            </div>
             <button id="Nextbtn">下一页</button>
+            <div id="yeshu">总共<span id="page"></span>页</div>
         </div>
+
+
     </div>
 
 </section>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.params.js"></script>
+<script src="js/ajax.js"></script>
 <script type="text/javascript" src="js/class.js"></script>
 
 

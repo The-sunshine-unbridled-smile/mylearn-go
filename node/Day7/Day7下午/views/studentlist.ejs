@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--带横线的 - 就是输出内容+html解析
+带等号 = 就是输出内容（不进行解析）,输出数据
+什么都不带 就是执行流程JS -->
+<%-include("common/header.ejs")%>
+<table>
+  <thead>
+    <tr>
+      <th>学生姓名</th>
+      <th>学生成绩</th>
+      <th>性别</th>
+      <th>操作</th>
+    </tr>
+  <tbody>
+  <!--embedded JavaScript -> JS内嵌至HTML-->
+  <!--执行的JS 没有等号-->
+  <%for(var i=0;i<list.length;i++){%>
+    <tr>
+      <td><%=list[i].stuname%></td>
+      <td><%=list[i].grade%></td>
+      <%if(list[i].sex=="女"){%>
+      <td style="color:red"><%=list[i].sex%></td>
+      <%}else{%>
+      <td><%=list[i].sex%></td>
+      <%}%>
+      <td><button>修改</button></td>
+    </tr>
+  <%}%>
+  </tbody>
+  </thead>
+</table>
+
+<%-include("common/footer.ejs")%>
+<script>
+
+</script>
+</body>
+</html>

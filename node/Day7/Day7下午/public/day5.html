@@ -32,6 +32,7 @@
         <button onclick="prevPage();">上一页</button>
         <div id="numberBlock"></div>
         <button onclick="nextPage();">下一页</button>
+
         <div>总共<span id="totalpage"></span>页</div>
     </div>
     <!--<a href="/add"> sendFile (详情页面)</a>-->
@@ -53,6 +54,9 @@
           getAllStudent(); //xhr
           getPageTotal(); //xhr ->
         }
+        //a()
+        // .b()
+        // .c()
         function showStudent(){
             console.log(xhr.responseText);
             var data = JSON.parse(xhr.responseText)
@@ -69,7 +73,22 @@
         }
         //查询所有的学生
         function getAllStudent(){
-            myAjax("get","/getStudent.do","currentPage="+currentPage,showStudent,false)
+//            myAjax("get","/getStudent.do","currentPage="+currentPage,showStudent,false)
+            myAjax("get","/getStudent.do","currentPage="+currentPage,function(){
+              console.log(xhr.responseText);
+              var data = JSON.parse(xhr.responseText)
+              document.getElementById("studentTable").innerHTML="";
+              for(var i=0;i<data.length;i++){
+                document.getElementById("studentTable").innerHTML+="<tr>" +
+                  "<td>"+data[i].stuid+"</td>" +
+                  "<td>"+data[i].stuname+"</td>" +
+                  "<td>"+data[i].grade+"</td>" +
+                  "<td>"+data[i].classid+"</td>" +
+                  "<td>"+data[i].sex+"</td>" +
+                  "</tr>"
+              }
+              myAjax()
+            },false)
         }
         function searchStudent(){
           var stuname = document.getElementById("stuname").value;
@@ -77,7 +96,7 @@
           var grade = document.getElementById("grade").value;
           var sex = document.getElementById("sex").value;
 
-          myAjax("get","/getStudent.do","stuname="+stuname+"&stuid="+stuid+"&grade="+grade+"&sex="+sex+"",showStudent)
+          myAjax("get","/getStudent.do","stuname="+stuname+"&stuid="+stuid+"&grade="+grade+"&sex="+sex+"&currentPage="+currentPage,showStudent)
         }
         //修改
         //删除
@@ -96,7 +115,7 @@
             alert("这是最后一页");
             currentPage=pageTotal;
           }else{
-            getAllStudent()
+            searchStudent()
             totalpage.innerHTML = currentPage+"/"+pageTotal;
           }
         }
@@ -107,7 +126,7 @@
             if(currentPage<=0){
               currentPage=1;
             }else{
-              getAllStudent();
+              searchStudent();
               totalpage.innerHTML = currentPage+"/"+pageTotal;
             }
         }
@@ -120,20 +139,26 @@
         /*2.每页显示对应的数据
         * -- 当前在第几页*/
         function getPageTotal(){
-          var totalpage = $("#page");
+          var totalpage = document.getElementById("totalpage");
+          var numberBlock = document.getElementById("numberBlock");
           myAjax("get","/getPageTotal.do","",function(){
             console.log(xhr.responseText);
+
             var data = JSON.parse(xhr.responseText);
             pageTotal = data;
               totalpage.innerHTML = currentPage+"/"+data;
 //            console.log(data[0].totalcount)
             //生成页码
             //作业: 点击页码要显示对应的数据
-//            for(var i=1;i<=data;i++){
-//              numberBlock.innerHTML += "<a href=''>"+i+"</a>"
-//            }
+            for(var i=1;i<=data;i++){
+              numberBlock.innerHTML += "<a href=''>"+i+"</a>"
+            }
           },true)
         }
+
+
+        //FormData [{username:zhangsan,age:15}]
+//        username="zhangsan"&age="15"
 
 
     </script>

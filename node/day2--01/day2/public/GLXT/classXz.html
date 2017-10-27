@@ -170,58 +170,35 @@
         requset.send(null);
         window.location.href="classGl.html";
     });
-</script>
 
-<!--<script type="text/javascript">
-   var courseArr=window.top.courseArr;
-    var studentArr=window.top.studentArr;
-    var classArr=window.top.classArr;
-    var classCourseArr=window.top.classCourseArr;
+
     //人数
     var all=0;
     var nan=0;
     var nv=0;
     var ben=0;
     var zhuan=0;
-    //获取传值
-    var bhs =$.query.get("claNo");
-    var name=$.query.get("name");
-    var classMate=$.query.get("classMate");
-    var startData=$.query.get("startData");
-    var pelNum=$.query.get("pelNum");
-    var xmjl=$.query.get("xmjl");
-    var bzr=$.query.get("bzr");
-    var jieduan=$.query.get("jieduan");
-    var beizhu=$.query.get("beizhu");
-    $(".claNo").val(bhs);
-    $(".claName").val(name);
-    $(".claMate").val(classMate);
-    $(".claData").val(startData);
-    $(".peopleNum").val(pelNum);
-    $(".classTeaSel1").val(bzr);
-    $(".beizhu").val(beizhu);
-
     //新增课程
     var ids=9;
     $(".addClass").click(function () {
         ids=ids+4;
         var str='<div class="tab-content tab-content-0">'+
-            '<div role="tabpanel" class="tab-pane active" id="1">'+
-            '<select  id="xzkc" class="classCourseSel">'+
-            &lt;!&ndash;选择课程&ndash;&gt;
-            '<option  class="option">&#45;&#45;选择课程&#45;&#45;</option>'+
-            '</select>'+
-            '<lable>开始日期</lable>'+
-            '<input type="text" class="classCourseTime" placeholder="年/月/日">'+
-            '<a href="#" class="Del">x</a>'+
-            &lt;!&ndash; Nav tabs &ndash;&gt;
-            '<ul class="nav nav-tabs nav3" role="tablist">'+
-            '<li role="presentation" class="active"><a href="#'+(ids+1)+'" aria-controls="home" role="tab" data-toggle="tab">一阶段</a></li>'+
-            '<li role="presentation"><a href="#'+(ids+2)+'" aria-controls="home" role="tab" data-toggle="tab">二阶段</a></li>'+
-            '<li role="presentation" ><a href="#'+(ids+3)+'" aria-controls="home" role="tab" data-toggle="tab">三阶段</a></li>'+
-            '<li role="presentation"><a href="#'+(ids+4)+'" aria-controls="home" role="tab" data-toggle="tab">四阶段</a></li>'+
-            '</ul>'+
-            &lt;!&ndash; Tab panes &ndash;&gt;
+                    '<div role="tabpanel" class="tab-pane active" id="1">'+
+                         '<select  id="xzkc" class="classCourseSel">'+
+                            <!--选择课程-->
+                             '<option  class="option">--选择课程--</option>'+
+                         '</select>'+
+                         '<lable>开始日期</lable>'+
+                        '<input type="text" class="classCourseTime" placeholder="年/月/日">'+
+                        '<a href="#" class="Del">x</a>'+
+            <!-- Nav tabs -->
+                         '<ul class="nav nav-tabs nav3" role="tablist">'+
+                             '<li role="presentation" class="active"><a href="#'+(ids+1)+'" aria-controls="home" role="tab" data-toggle="tab">一阶段</a></li>'+
+                             '<li role="presentation"><a href="#'+(ids+2)+'" aria-controls="home" role="tab" data-toggle="tab">二阶段</a></li>'+
+                             '<li role="presentation" ><a href="#'+(ids+3)+'" aria-controls="home" role="tab" data-toggle="tab">三阶段</a></li>'+
+                             '<li role="presentation"><a href="#'+(ids+4)+'" aria-controls="home" role="tab" data-toggle="tab">四阶段</a></li>'+
+                         '</ul>'+
+            <!-- Tab panes -->
             '<div class="tab-content tab-content-1">'+
             '<div role="tabpanel" class="tab-pane active" id='+(ids+1)+'>'+
             '</div>'+
@@ -237,7 +214,7 @@
             num++;
             var str1= '<lable>授课人</lable>'+
                 '<select name="xzkc"  class="classTeaSel classTeaSel'+num+'">'+
-                '<option  class="option">&#45;&#45;选择授课人或者班主任&#45;&#45;</option>'+
+                '<option  class="option">--选择授课人或者班主任--</option>'+
                 '<option class="option">邹杰</option>'+
                 '<option class="option">王芳</option>'+
                 '<option class="option">杨阳</option>'+
@@ -245,7 +222,7 @@
                 '<option class="option">唐钰伟</option>'+
                 '</select>'+
                 '<select class="classTchRptT classTchRptT'+num+'">'+
-                '<option  class="option">&#45;&#45;重复周期&#45;&#45;</option>'+
+                '<option  class="option">--重复周期--</option>'+
                 '<option class="option">每天</option>'+
                 '<option class="option">星期一</option>'+
                 '<option class="option">星期二</option>'+
@@ -262,7 +239,7 @@
         num++;
         var str= '<lable>授课人</lable>'+
             '<select name="xzkc"  class="classTeaSel classTeaSel'+num+'">'+
-            '<option  class="option">&#45;&#45;选择授课人或者班主任&#45;&#45;</option>'+
+            '<option  class="option">--选择授课人或者班主任--</option>'+
             '<option class="option">邹杰</option>'+
             '<option class="option">王芳</option>'+
             '<option class="option">杨阳</option>'+
@@ -270,7 +247,7 @@
             '<option class="option">唐钰伟</option>'+
             '</select>'+
             '<select class="classTchRptT classTchRptT'+num+'">'+
-            '<option  class="option">&#45;&#45;重复周期&#45;&#45;</option>'+
+            '<option  class="option">--重复周期--</option>'+
             '<option class="option">每天</option>'+
             '<option class="option">星期一</option>'+
             '<option class="option">星期二</option>'+
@@ -288,21 +265,22 @@
     }
     //计算班级人数
 
-        for(j=0;j<studentArr.length;j++){
-            if(studentArr[j].classNo==$(".claNo").val()){
-                all++;
-            }
-            if(studentArr[j].sex=="男"&&studentArr[j].classNo==$(".claNo").val()){
-                nan++;
-            }
-            if(studentArr[j].sex=="女"&&studentArr[j].classNo==$(".claNo").val()){
-                nv++;
-            }
-            if(studentArr[j].edu=="本科"&&studentArr[j].classNo==$(".claNo").val()){
-                ben++;
-            }
-            if(studentArr[j].edu=="专科"&&studentArr[j].classNo==$(".claNo").val()){
-                zhuan++
+    for(j=0;j<studentArr.length;j++){
+        if(studentArr[j].classNo==$(".claNo").val()){
+            all++;
+        }
+        if(studentArr[j].sex=="男"&&studentArr[j].classNo==$(".claNo").val()){
+            nan++;
+        }
+        if(studentArr[j].sex=="女"&&studentArr[j].classNo==$(".claNo").val()){
+            nv++;
+        }
+        if(studentArr[j].edu=="本科"&&studentArr[j].classNo==$(".claNo").val()){
+            ben++;
+        }
+        if(studentArr[j].edu=="专科"&&studentArr[j].classNo==$(".claNo").val()){
+            zhuan++
+
         }
     }
     $(".classStuAll").append(all+"人");
@@ -331,58 +309,9 @@
     //删除课程
     $(document).on("click",'.Del',
         function(){
-        $(this).closest(".tab-content-0").remove()
+            $(this).closest(".tab-content-0").remove()
         });
-
-  $(".save").click(function () {
-       var bhs1=$(".claNo").val();
-       var names=$(".claName").val();
-       var zts=$(".claZt").val();
-       var startdata=$(".claData").val();
-       var qq=$(".qqPhone").val();
-       var claMate=$(".claMate").val();
-       var beizhu=$(".beizhu").val();
-       var courseSel=$(".classCourseSel").val();
-       var ksdata=$(".classCourseTime").val();
-       var classTs1=$(".classTeaSel1").val();
-       var classTs2=$(".classTeaSel2").val();
-       var classTs3=$(".classTeaSel3").val();
-       var classTs4=$(".classTeaSel4").val();
-       var classTchRptT1=$(".classTchRptT1").val();
-       var classTchRptT2=$(".classTchRptT2").val();
-       var classTchRptT3=$(".classTchRptT3").val();
-       var classTchRptT4=$(".classTchRptT4").val();
-       d = new Date();
-       var createTime= d.getFullYear()+"/"+(d.getMonth()+1)+"/"+d.getDate();
-       var arraddkc1={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "一阶段", "peopleName": classTs1, "classRepeat": classTchRptT1};
-       var arraddkc2={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "二阶段", "peopleName": classTs2, "classRepeat": classTchRptT2};
-       var arraddkc3={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "三阶段", "peopleName": classTs3, "classRepeat": classTchRptT3};
-       var arraddkc4={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "四阶段", "peopleName": classTs4, "classRepeat": classTchRptT4};
-
-       var arradd={"classNo": bhs1, "className": names,"classRoom":claMate,"classStartDay": startdata,"classStuAll": 0, "classQQ": qq,"classZt":zts, "classBz":beizhu,"creater":"管理员","createTime":createTime};
-       //判断是否重复以及对修改内容的保存
-       for(var i=0;i<classArr.length;i++){
-           if(bhs1==classArr[i].classNo&&bhs1!=$.query.get("claNo")){
-               alert("已经存在此编号,请重新输入");
-               return;
-           }else if(bhs1==$.query.get("claNo")&&bhs1==classArr[i].classNo){
-               classArr[i]={"classNo": bhs1, "className": names,"classRoom":claMate,"classStartDay": startdata,"classStuAll": 0, "classQQ": qq,"classZt":zts, "classBz":beizhu,"creater":"管理员","createTime":createTime};
-               classCourseArr[0][i]={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "一阶段", "peopleName": classTs1, "classRepeat": classTchRptT1};
-               classCourseArr[1][i]={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "二阶段", "peopleName": classTs2, "classRepeat": classTchRptT2};
-               classCourseArr[2][i]={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "三阶段", "peopleName": classTs3, "classRepeat": classTchRptT3};
-               classCourseArr[2][i]={"classNo": bhs1, "courseName": courseSel, "classCourseTime": ksdata, "stageName": "四阶段", "peopleName": classTs4, "classRepeat": classTchRptT4};
-               window.location.href="classGl.html";
-               return;
-           }
-       }
-    classArr.push(arradd);
-    classCourseArr[0].push(arraddkc1);
-    classCourseArr[1].push(arraddkc2);
-    classCourseArr[2].push(arraddkc3);
-    classCourseArr[3].push(arraddkc4);
-   window.location.href="classGl.html";
-});
-</script>-->
+</script>
 
 </body>
 </html>

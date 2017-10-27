@@ -1,13 +1,20 @@
+var currentPage = 1;
+var pageTotal = 0;
+show();
+getPageTotal();
 ////ajax显示数据
-var request = new XMLHttpRequest();
-request.open("get", "class.do", true);
-request.onreadystatechange = function () {
-    if (request.readyState == 4 && request.status == 200) {
-        var data = JSON.parse(request.responseText);
-        arr(data);
-    }
-};
-request.send(null);
+function show() {
+    var request = new XMLHttpRequest();
+    request.open("get", "class.do?currentPage=" + currentPage, true);
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            var data = JSON.parse(request.responseText);
+            arr(data);
+        }
+    };
+    request.send(null);
+}
+
 //页面显示数据
 function arr(data) {
     var role = -1;
@@ -25,8 +32,7 @@ function arr(data) {
             '<td><button type="button" class="revise">修改</button>' +
             '</td>' +
             '</tr>';
-
-        $("tbody").append(str);
+        $("#tbody").append(str);
     }
 }
 
@@ -59,7 +65,7 @@ $(document).on("click", ".revise", function () {
 });
 ////给查询按钮设置单击事件
 $(".Search").click(function () {
-    $("tbody").html("");
+    $("#tbody").html("");
     var num = $(".claNo").val(),
         name = $(".claName").val();
     var request = new XMLHttpRequest();
@@ -72,3 +78,54 @@ $(".Search").click(function () {
     };
     request.send(null);
 });
+
+function getPageTotal() {
+    var totalpage = $("#page");
+    var anmiu = $("#anniu");
+    myAjax("get", "/getPageTotal.do", "", function () {
+        var data = JSON.parse(xhr.responseText);
+        pageTotal = data;
+        totalpage.text(currentPage + "/" + data);
+      //显示页数1,2,3的按钮
+        for (var i = 1; i <= data; i++) {
+            var str = "<button class='mybtn'>" + i + "</button>";
+            anmiu.append(str);
+        }
+    }, true)
+}
+
+//下一页
+$("#Nextbtn").click(function () {
+    var totalpage = $("#page");
+    currentPage++;
+    if(currentPage>pageTotal){
+        currentPage=pageTotal
+    }else {
+        $("#tbody").html("");
+        show();
+        totalpage.text(currentPage+"/"+pageTotal)
+    }
+});
+
+//上一页
+$("#Prevbtn").click(function () {
+    var totalpage = $("#page");
+    currentPage--;
+    if(currentPage<=0){
+        currentPage=1;
+    }else {
+        $("#tbody").html("");
+        show();
+        totalpage.text(currentPage+"/"+pageTotal)
+    }
+});
+
+$(document).on("click",(".mybtn"),function () {
+    $("#tbody").html("");
+    var totalpage = $("#page");
+    currentPage=$(this).text();
+    show();
+    totalpage.text(currentPage+"/"+pageTotal)
+});
+
+

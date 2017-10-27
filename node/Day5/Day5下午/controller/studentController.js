@@ -83,6 +83,6 @@ const studentController = {
             // resp.send(data);
         })
     }
-}
+};
 
 module.exports = studentController;

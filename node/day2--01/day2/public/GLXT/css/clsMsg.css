@@ -40,6 +40,9 @@ input{
 span:nth-child(1){
     margin-left: 2%;
 }
+span:nth-child(1)#page{
+    margin-left: 0;
+}
 .claNo,.claName,.proMan,.claTea{
     width: 83px;
     height: 25px;
@@ -186,4 +189,10 @@ table tr{
     background: none;
     border-radius: 3px;
     padding: 0 .5vw;
+}
+#anniu{
+    display: inline-block;
+}
+#yeshu{
+    margin-top: 10px;
 }
