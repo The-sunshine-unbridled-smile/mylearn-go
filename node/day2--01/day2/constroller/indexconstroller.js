@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const optPool = require("../config/studentconfig");
 const db = new optPool();
+const userModel=require("../dao/userDAO");  //引入DAO层
 const constroller = {
     getUser(req, res){
         var name = req.query.user;
@@ -204,7 +205,6 @@ const constroller = {
             res.send(data)
         })
     },
-
     //分页显示班级数据
     getPageclass(req,res){
         let result;
@@ -213,5 +213,24 @@ const constroller = {
             res.send(200,result);
         })
     },
+
+
+    //========================课程部分==============================
+    //课程信息的显示
+    getCourse(req,res){
+        var currentPage=parseInt(req.query.currentPage);
+        userModel.getCourse( [(currentPage-1)*constroller.pageCount,constroller.pageCount], function (result) {
+            res.send(result);
+        });
+    },
+    //课程分页
+    getPagecourse(req,res){
+        userModel.getCoursepage("",function (result) {
+            var data=JSON.stringify(result);
+            //总页数是string才能传回前台，number类型不能传回前台
+            res.send(data);
+        })
+    },
+
 };
 module.exports = constroller;

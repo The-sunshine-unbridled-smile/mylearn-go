@@ -62,12 +62,12 @@ workArr=[
 
 var myDate=new Date();
 
-courseArr=[
+/*courseArr=[
     {"courseNo":1,"courseName":"web前端","courseNum":4,"courseDay":140,"courseDate":myDate.toLocaleDateString(),"courseBei":"专业课"},
     {"courseNo":2,"courseName":"JAVA","courseNum":4,"courseDay":140,"courseDate":myDate.toLocaleDateString(),"courseBei":"专业课"},
     {"courseNo":3,"courseName":"职业素养课","courseNum":2,"courseDay":140,"courseDate":myDate.toLocaleDateString(),"courseBei":"专业课"},
     {"courseNo":4,"courseName":"UI预科班","courseNum":4,"courseDay":140,"courseDate":myDate.toLocaleDateString(),"courseBei":"专业课"}
-];
+];*/
 /*
  课程对应的不同阶段
  courseNo:课程ID stageName：阶段名称   name:学习内容   day:阶段学习天数

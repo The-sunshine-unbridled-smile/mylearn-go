@@ -120,6 +120,7 @@ $("#Prevbtn").click(function () {
     }
 });
 
+//点击页数按钮跳转到对应的页
 $(document).on("click",(".mybtn"),function () {
     $("#tbody").html("");
     var totalpage = $("#page");

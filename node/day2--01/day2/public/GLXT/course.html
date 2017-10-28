@@ -13,146 +13,174 @@
         <div id="table">
             <button type="button" class="addCourseBtn">新增课程</button>
             <table class="table">
+                <thead>
                 <tr>
                     <th><input type="checkbox" id="allChoise"/></th>
-                    <th>ID号</th>
-                    <th>名称</th>
-                    <th>阶段</th>
-                    <th>总天数</th>
-                    <th>日期</th>
-                    <th>类型</th>
+                    <th>课程编号</th>
+                    <th>课程名称</th>
+                    <th>课程类别</th>
+                    <th>修改日期</th>
                     <th>操作</th>
-
                 </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
             </table>
             <button type="button" class="delBtn">删除</button>
             <div style="clear: both"></div>
         </div>
         <div class="Flip text-center">
             <button id="Prevbtn">上一页</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>...</button>
+            <div id="anniu">
+            </div>
             <button id="Nextbtn">下一页</button>
+            <div id="yeshu">总共<span id="page"></span>页</div>
         </div>
     </div>
 </section>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jquery.params.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript">
-
-
+    var currentPage = 1;
+    var totalpage = $("#page");
+    var anniu = $("#anniu");
+    //页面显示数据
+    show();
+    getPageTotal();
+    function show() {
+        var request = new XMLHttpRequest();
+        request.open("get", "course.do?currentPage=" + currentPage, true);
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                var data = JSON.parse(request.responseText);
+                arr(data);
+            }
+        };
+        request.send(null);
+    }
+    function arr(data) {
+        for (var i = 0; i < data.length; i++) {
+            var str = '<tr>' +
+                '<td><input type="checkbox" class="items"/></td>' +
+                '<td class="ct">' + data[i].c_no + '</td>' +
+                '<td class="ct">' + data[i].c_name + '</td>' +
+                '<td class="ct">' + data[i].c_category + '</td>' +
+                '<td class="ct">' + data[i].c_date + '</td>' +
+                '<td class="moDi"><a href="#" class="ope">修改</a><a class="Del" href="#">删除</a></td>' +
+                '</tr>'
+            $("#tbody").append(str);
+        }
+    }
+    //分页
+    function getPageTotal() {
+        myAjax("get", "/getCoursePage.do", "", function () {
+            var data = JSON.parse(xhr.responseText);
+            totalpage.text(currentPage + "/" + data);
+            //显示页数1,2,3的按钮
+          /*  for (var i = 1; i <= data; i++) {
+                var str = "<button class='mybtn'>" + i + "</button>";
+                anniu.append(str);
+            }*/
+        }, true)
+    }
+    //点击页数按钮跳转到对应的页
+    $(document).on("click", (".mybtn"), function () {
+        var data = JSON.parse(xhr.responseText);
+        $("#tbody").html("");
+        currentPage = $(this).text();
+        show();
+        totalpage.text(currentPage + "/" + data)
+    });
 
 
     //获取初始值
-    var s=-1;
-    var liebiao=0;
-    var courseArr=window.top.courseArr;
-    for(var i=0;i<courseArr.length;i++){
-        liebiao++;
-        var str='<tr>'+
-            '<td><input type="checkbox" class="items"/></td>'+
-            '<td class="ct"></td>'+
-            '<td class="ct"></td>'+
-            '<td class="ct"></td>'+
-            '<td class="ct"></td>'+
-            '<td class="ct"></td>'+
-            '<td class="ct"></td>'+
-            '<td class="moDi"><a href="#" class="ope">修改</a><a class="Del" href="#">删除</a></td>'+
-        '</tr>'
-        $(".table").append(str);
-        $.each(courseArr[i],function (key) {
-            s++;
-            $(".ct")[s].innerText=courseArr[i][key];
-        })
-    }
+
+    var liebiao = 0;
+    var courseArr = window.top.courseArr;
+
     //点击修改
-    var operate=$(".ope");
+    var operate = $(".ope");
     operate.each(function () {
         //单击修改获取修改数据的值
-        $(document).on("click",".ope",function () {
-            var id=$(this).parent().parent().children(":eq(1)").text();
-            var name=$(this).parent().parent().children(":eq(2)").text();
-            var num=$(this).parent().parent().children(":eq(3)").text();
-            var day=$(this).parent().parent().children(":eq(4)").text();
-            var date=$(this).parent().parent().children(":eq(5)").text();
-            var bei=$(this).parent().parent().children(":eq(6)").text();
+        $(document).on("click", ".ope", function () {
+            var id = $(this).parent().parent().children(":eq(1)").text();
+            var name = $(this).parent().parent().children(":eq(2)").text();
+            var num = $(this).parent().parent().children(":eq(3)").text();
+            var day = $(this).parent().parent().children(":eq(4)").text();
+            var date = $(this).parent().parent().children(":eq(5)").text();
+            var bei = $(this).parent().parent().children(":eq(6)").text();
             console.log(id);
             console.log(name);
             console.log(num);
             console.log(day);
             console.log(date);
             console.log(bei);
-            window.location.href="courseNewly.html?id="+id+"&name="+name+"&num="+num+"&day="+day+
-                    "&date="+date+"&bei="+bei;
+            window.location.href = "courseNewly.html?id=" + id + "&name=" + name + "&num=" + num + "&day=" + day +
+                "&date=" + date + "&bei=" + bei;
         })
     });
 
 
     //点击新增跳转
     $(".addCourseBtn").click(function () {
-        window.location.href="courseNewly.html"
+        window.location.href = "courseNewly.html"
     });
     //点击删除
-    $(document).on("click",".Del",function (){
-        if (confirm("确认删除吗？")){
+    $(document).on("click", ".Del", function () {
+        if (confirm("确认删除吗？")) {
             $(this).parent().parent().remove();
-            var id=$(this).parent().children(":eq(1)").text();
-            for (var i=0;i<courseArr.length;i++){
-                if (id==courseArr[i].courseNo){
-                    courseArr.splice(i,1)
+            var id = $(this).parent().children(":eq(1)").text();
+            for (var i = 0; i < courseArr.length; i++) {
+                if (id == courseArr[i].courseNo) {
+                    courseArr.splice(i, 1)
                 }
             }
         }
     });
     //全选
     $("#allChoise").click(function () {
-        if ($(this).prop("checked")){
-            $(".items").prop("checked",true);
-            $(".items").attr("checked",true);
-        }else {
-            $(".items").prop("checked",false);
-            $(".items").attr(("checked"),false)
+        if ($(this).prop("checked")) {
+            $(".items").prop("checked", true);
+            $(".items").attr("checked", true);
+        } else {
+            $(".items").prop("checked", false);
+            $(".items").attr(("checked"), false)
         }
     });
     $(".items").click(function () {
-        if ($(this).prop("checked")){
-            $(this).prop("checked",true);
-            $(this).attr("checked",true);
-            if ($(".items[checked]").length==$(".items").length){
-                $("#allChoise").prop("checked",true);
+        if ($(this).prop("checked")) {
+            $(this).prop("checked", true);
+            $(this).attr("checked", true);
+            if ($(".items[checked]").length == $(".items").length) {
+                $("#allChoise").prop("checked", true);
             }
-        }else {
-            $(this).prop("checked",false);
-            $(this).attr("checked",false);
-            $("#allChoise").prop("checked",false)
+        } else {
+            $(this).prop("checked", false);
+            $(this).attr("checked", false);
+            $("#allChoise").prop("checked", false)
         }
     });
     //删除选中
-        $(".delBtn").click(function () {
-            if(($(".items[checked]").length==0)){
-                alert("请选择需要删除的项");
-                return false;
-            }
-            if (confirm("确认要删除吗？")){
-                $(".items").each(function () {
-                    if (($(this).attr("checked"))){
-                        $(this).parent().parent().remove();
-                        var id=$(this).parent().siblings(":eq(0)").text();  //获取ID值
-                        for(var i=0;i<courseArr.length;i++){
-                            if(id==courseArr[i].courseNo){
-                                courseArr.splice(i,1);
-                            }
+    $(".delBtn").click(function () {
+        if (($(".items[checked]").length == 0)) {
+            alert("请选择需要删除的项");
+            return false;
+        }
+        if (confirm("确认要删除吗？")) {
+            $(".items").each(function () {
+                if (($(this).attr("checked"))) {
+                    $(this).parent().parent().remove();
+                    var id = $(this).parent().siblings(":eq(0)").text();  //获取ID值
+                    for (var i = 0; i < courseArr.length; i++) {
+                        if (id == courseArr[i].courseNo) {
+                            courseArr.splice(i, 1);
                         }
                     }
-                })
-            }
-        });
-
-
+                }
+            })
+        }
+    });
 
 
 </script>
