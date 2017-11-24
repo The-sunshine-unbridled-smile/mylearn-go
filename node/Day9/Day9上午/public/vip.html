@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>vip页面，必须要登录才能访问</h1>
+
+    <h2>欢迎,<span id="username"></span></h2>
+
+
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $.ajax({
+          url:"/getUsername.do",
+          success:function(data){
+            console.log(data)
+            $("#username").html(data)
+          }
+        })
+    </script>
+</body>
+</html>

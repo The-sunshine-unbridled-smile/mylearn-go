@@ -1,0 +1,37 @@
+用面向对象思想封装一个轮播:
+1.用户使用方式:
+	在html里面按照figure>img+figcaption的格式放置图片
+	在JS中引入封装js文件
+	可以自定义配置（如:轮播大小，轮播点点的位置，自动轮播速度）
+	不限图片数量，点点根据用户实际html结构自动生成
+实现手势轮播，鼠标模拟手势（按着左键不放上下左右滑动）
+
+ <div id="slider">
+        <figure>
+            <img src="" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+        <figure>
+            <img src="" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+        <figure>
+            <img src="" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+    </div>
+
+    <script src="slider.js"></script>
+<script>
+    //API：
+    /*配置项:
+    * dian:left,right
+    * speed:"fast","normal","slow"
+    * autoplay:true
+    * */
+    $("#slider").init({
+        dian:left,
+		speed:4000,
+		autoplay:true,
+		
+    });

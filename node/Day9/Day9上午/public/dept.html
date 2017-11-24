@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table id="deptTable"></table>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $.ajax({
+          url:"/getDept.do",
+          success:function(data){
+            console.log(data)
+          }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="getAllUsers();">查询</button>
+<a href="detail.html"><button>新增学生</button></a>
+<br/>
+搜索：<input type="text" id="search">
+<button onclick="searchUser();">搜索</button>
+<table id="userTable" cellpadding="0" cellspacing="0" border="1" width="300" >
+    <tr>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>操作</th>
+    </tr>
+    <!--<tr>
+        <td>admin</td>
+        <td>password</td>
+    </tr>
+    <tr>
+        <td>abc</td>
+        <td>123</td>
+    </tr>-->
+</table>
+<form action="/reg.do" method="post">
+    用户名: <input type="text" id="username" name="username" onblur="checkUser()">
+    <span id="msg"></span>
+    <br/>
+    密码: <input type="text" name="password">
+    <br/>
+    <!--姓名: <input type="text">-->
+    <button>提交</button>
+</form>
+
+<script>
+    function checkUser(){
+      var usernameV = document.getElementById("username").value;
+
+      /*1.创建XMLHTTPRequest对象*/
+      var xhr;
+//      兼容处理
+      if(window.XMLHttpRequest){
+        xhr = new XMLHttpRequest()
+      }else{        //低版本IE
+        xhr = new ActiveXObject("Microsoft.XMLHTTP")
+      }
+
+      /*2.注册回调函数 - 事件处理程序
+      * 事件: readystatechange
+      * 事件处理程序 : 绑定的函数*/
+      xhr.onreadystatechange=function(){
+//        监听的是xhr.readyState的变化 //执行了4次
+//        0-未初始化 1-读取中 2-已读取 3-交互中 4-完成
+        if(xhr.readyState==4){
+          console.log(xhr.responseText);    //响应的内容
+          //结果回来之后要做什么
+          document.getElementById("msg").innerHTML=xhr.responseText
+        }
+      }
+        /*======GET请求=========*/
+      /*3.XHR跟服务器发起连接
+      * 1.请求方法 HTTP
+      * 2.请求地址
+      * get请求数据: url?name=值*/
+//      xhr.open("get","/checkuser.do?username="+usernameV);
+//   4.发送参数
+//   get请求: 参数send(null)
+//      xhr.send(null)
+
+
+      /*======POST请求=========*/
+      /*3.XHR跟服务器发起连接
+       * 1.请求方法 HTTP
+       * 2.请求地址
+       * 3.是否为异步: true 异步，false
+      * */
+      xhr.open("post","/checkuser.do");
+      /*4.POST请求必须设置请求头*/
+      xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+      /*5.send数据,字符串数据类型
+      * */
+      xhr.send("username="+usernameV)
+    }
+    function getAllUsers(){
+//        1.创建xhr对象
+      var xhr;
+      if(window.XMLHttpRequest){
+        xhr = new XMLHttpRequest();
+      }else{
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+//      2.注册回调函数
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==4&&xhr.status==200){
+            console.log(xhr.responseText);
+//            var data = xhr.responseText;
+//            console.log(typeof data); //string
+            //JSON字符串类型转化成JSON对象
+          var data = JSON.parse(xhr.responseText)
+          console.log(data[0].u_username)   //数组对象的形式去操作数据
+          //DOM操作
+          //不刷新页面，局部刷新内容
+          //请求: 资源HTML
+          //请求：数据 ==> 响应的时候也是响应数据
+
+          for(var i=0;i<data.length;i++){
+            document.getElementById("userTable").innerHTML+="<tr>"+
+              "<td>"+data[i].u_username+"</td>"+
+              "<td>"+data[i].u_password+"</td>"+
+                "<td><button>删除</button>" +
+              "<a href='detail.html?id="+data[i].id+"'><button>修改</button></a>" +
+              "</td>"+
+              "</tr>"
+          }
+        }
+      }
+
+//      3.发送请求 - 连接服务器
+      xhr.open("get","/getAllUser.do");
+//      4.发送参数
+      xhr.send(null);
+
+
+
+
+    }
+    function searchUser(){
+      var username = document.getElementById("search").value
+//      1.创建XHR对象
+      var xhr;
+      if(window.XMLHttpRequest){
+        xhr = new XMLHttpRequest();
+      }else{
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+//     2.注册回调函数
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.status==200){
+          console.log(xhr.responseText);
+          var data = JSON.parse(xhr.responseText);
+          document.getElementById("userTable").innerHTML="";
+
+          for(var i=0;i<data.length;i++){
+            document.getElementById("userTable").innerHTML+="<tr>"+
+              "<td>"+data[i].u_username+"</td>"+
+              "<td>"+data[i].u_password+"</td>"+
+              "</tr>"
+          }
+
+        }
+      }
+      xhr.open("get","/searchUser.do?username="+username)
+      xhr.send(null)
+
+    }
+</script>
+</body>
+</html>

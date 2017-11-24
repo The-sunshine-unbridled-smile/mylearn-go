@@ -1,0 +1,74 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+section{
+    position: relative;
+    width: 1349px;
+    height: 630px;
+}
+#slider{
+    position: relative;
+    width: 1349px;
+    height: 630px;
+    overflow: hidden;
+}
+figure{
+    position: relative;
+    width: 1349px;
+    height: 630px;
+    display: none;
+    /*border: 1px solid red;*/
+}
+figure:nth-of-type(1){
+    display:block;
+}
+figure img{
+    width: 1349px;
+    height: 630px;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+
+/*切换的小圆点*/
+.dot-left{
+    position: absolute;
+    left: 12px;
+    top:50%;
+    transform: translate(-50%,0);
+    border: 1px solid red;
+}
+.dot-right{
+    position: absolute;
+    right: 0;
+    top:50%;
+    transform: translate(-50%,0);
+    border: 1px solid red;
+}
+.dot-top{
+     position: absolute;
+     left: 50%;
+     top:12px;
+     transform: translate(0,-50%);
+     border: 1px solid red;
+ }
+.dot-top>.one,.dot-bottom>.one{
+    float: left;
+    margin-top: 0;
+    margin-left: 10px;
+}
+.dot-bottom{
+    position: absolute;
+    left: 50%;
+    bottom:0;
+    transform: translate(0,-50%);
+    border: 1px solid red;
+}
+#dot>.one{
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    border: 1px solid white;
+  margin-top: 10px;
+}

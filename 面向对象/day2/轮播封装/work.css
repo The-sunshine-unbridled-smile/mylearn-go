@@ -1,0 +1,74 @@
+*{
+    padding:0;
+    margin: 0;
+}
+body{
+    padding: 100px;
+}
+figure{
+    width: 300px;
+    height: 220px;
+    float: left;
+    margin: 0 0 40px 60px;
+    position: relative;
+}
+#lightbox img{
+    width: 300px;
+    height: 220px;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+figcaption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px 20px;
+    border: 1px solid white;
+    color: white;
+    opacity: 0;
+    -webkit-transition: all linear .3s ;
+}
+figure:hover figcaption{
+    opacity: 1;
+}
+#Carousel{
+    width: 1349px;
+    height: 700px;
+    background-color: slategray;
+    position: fixed;
+    left: 0;
+    top:0;
+    display: none;
+}
+
+#banner>img,#caozuo{
+    position: absolute;
+    left: 300px;
+    top: 90px;
+  width: 649px;
+    height: 469px;
+}
+.close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.change{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 100%;
+}
+.toPre{
+    float: left;
+    cursor: pointer;
+}
+.toNext{
+    float: right;
+    cursor: pointer;
+}
+
+

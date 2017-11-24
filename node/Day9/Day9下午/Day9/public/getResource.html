@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>获取数据库资源路径</h1>
+    <img id="myimg" src="" alt="">
+
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $.ajax({
+          url:"/getImage.do",
+          success:function(data){
+            console.log(data)
+            $("#myimg")[0].src=data[0].u_imgsrc;
+          }
+        })
+    </script>
+</body>
+</html>
