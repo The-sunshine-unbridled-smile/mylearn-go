@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Person(){
+      this.sex="男"
+      this.name="张三"
+    }
+
+    var p1 = new Person();
+    //p1.sex=""
+    //p1.name=""
+    console.log(p1);
+    p1.age=15;
+
+    var p2 = new Person()
+    console.log(p1===p2)    //false
+    console.log(p1.__proto__===p2.__proto__)    //true
+
+    Person.prototype.address="成都"
+    console.log("p1.address"+p1.address);
+    console.log("p2.address"+p2.address);
+
+
+    function Dog(){
+      this.sound="wangwang"
+    }
+
+    var d1 = new Dog();
+    console.log(d1.address);
+    //思考new Dog怎么访问Person.prototype上面的address属性
+
+
+    Object.prototype.color="white"
+
+    console.log("p1"+p1.color);
+    console.log("p2"+p2.color);
+    console.log("d1"+d1.color);
+
+//    Function也是对象
+
+    Person.iq = false
+
+    console.log("p1.iq"+p1.iq)
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

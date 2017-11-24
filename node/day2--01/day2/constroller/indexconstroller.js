@@ -2,24 +2,25 @@ const mysql = require("mysql");
 const optPool = require("../config/studentconfig");
 const db = new optPool();
 const userModel=require("../dao/userDAO");  //引入DAO层
+const AV=require("leancloud-storage");//发短信
+const nodemailer=require("nodemailer");//邮件
 const constroller = {
     getUser(req, res){
-        var name = req.query.user;
-        var pass = req.query.password;
-        console.log('name:' + name);
-        console.log('pass:' + pass);
-        //登录
-        db.getPool("select * from t_login where t_username=? and t_password=?", [name, pass], (err, data) => {
-            if (data != undefined) {
-                if (data.length > 0) {
+        var name = req.body.username;
+        var pass = req.body.password;
+        userModel.getUser([name,pass]).then(
+            (data)=>{
+                if(data.length>0){
+                    req.session.username=data[0].t_username;
                     res.redirect("index.html");
-                } else {
-                    res.end("erro");
+                }else {
+                    res.send("登录失败");
                 }
-            } else {
-                res.end(err.message);
             }
-        });
+        );
+    },
+    getUsername(req,res){
+        res.send(req.session.username)
     },
 
     //=================================角色部分 增删改查===========================
@@ -231,6 +232,49 @@ const constroller = {
             res.send(data);
         })
     },
+
+    // =====================学生部分ejs====================
+    getAllStudent(req,res){
+        let params = [];
+        params.push((req.params.page-1)*constroller.pageCount);
+        params.push(constroller.pageCount);
+        userModel.getTotalCount().then(total=>{
+            let result = Math.ceil(total[0].totalcount/constroller.pageCount);
+            userModel.getStudent(params).then(info=>{
+                res.render("student",{list:info,totalCount:result})
+            })
+        })
+    },
+
+    //========================邮件===================
+    sendMail(req,res){
+        let transporter=nodemailer.createTransport({
+            host:"smtp.qq.com",
+            port:587,
+            secure:false,
+            auth:{
+                user:"2733884393@qq.com",
+                pass:"lvrhaogrdumrddji"
+            }
+        });
+        let mailOptions={
+            from:'"百节"<2733884393@qq.com>',
+            to:req.body.receiver,
+            subject:'hello world',
+            html:"<div> <h1>hello!!</h1>"+req.body.mailContent+"</div>",
+            attachments:[{
+                filename:"adm.png",
+                path:"./public/GLXT/images/adm.png"
+            }]
+        };
+        transporter.sendMail(mailOptions,(error,info)=>{
+            if(error){
+                res.send(error);
+            }else {
+                res.send(info);
+            }
+        });
+    }
 
 };
 module.exports = constroller;

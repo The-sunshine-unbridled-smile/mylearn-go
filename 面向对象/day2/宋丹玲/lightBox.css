@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#lightBox img{
+    width: 320px;
+    height: 200px;
+}
+
+#lightBox figure{
+    margin: 60px 60px 0;
+    position: relative;
+    display: inline-block;
+}
+
+#lightBox figure figcaption{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    top: 50%;
+    left: 110px;
+    margin-top: -20px;
+    border: 2px solid transparent;
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#lightBox figure:hover{
+    cursor: pointer;
+}
+
+#lightBox figure:hover figcaption{
+    border: 2px solid white;
+}
+
+#mask{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: none;
+    background-color: lavender;
+    overflow: hidden;
+}
+
+#lightBoxContainer .banner{
+    width: 786px;
+    height: 480px;
+    margin: 50px auto;
+    background-color: #2e2e2e;
+    overflow: hidden;
+    position: relative;
+}
+
+#lightBoxContainer .controlBlock{
+    position: absolute;
+    margin-top: 200px;
+    width: 100%;
+}
+
+#lightBoxContainer .controlBlock:after{
+    content: "";
+    clear: both;
+    visibility: hidden;
+    display: block;
+}
+
+#lightBoxContainer .close{
+    position: absolute;
+    right: 0;
+}
+
+#lightBoxContainer .toPre{
+    float: left;
+}
+
+#lightBoxContainer .toNext{
+    float: right;
+}
+
+
+#mask .banner span:hover{
+    cursor: pointer;
+}
+
+#lightBoxContainer .bannerImg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}

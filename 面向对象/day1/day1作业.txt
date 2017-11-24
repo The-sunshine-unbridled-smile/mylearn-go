@@ -1,0 +1,40 @@
+通过面向对象方式实现ajax封装:
+用户使用方式：
+	类似于jQuery的ajax
+	用户直接调用方法，并且传入对象作为参数
+	直接发送请求至后台，后台以一个通用拦截来拦截该请求
+	（需要考虑后台app拦截方式及前台请求地址发送配置）
+	$.ajax({
+		url:""
+	})
+	//用户调用的方式：
+	myAjax({
+		data:"",
+		url:"",
+		method:"",
+		async:"",
+		success:
+	})
+	
+	
+	
+	
+	//myAjax("url","method","data")
+	
+	function myAjax(obj){
+	  //封装兼容get和post
+	 
+	}
+	
+	// function Plane(imgsrc,x,y,speed){}
+	/*
+	new Plane({
+		speed:30,
+		x:10,
+		y:15,
+		imgsrc:"",
+	})
+	*/
+	//额外思考题：
+	 data:id=1&name=zhangsan====>换成对象 {}
+	 原生: xhr.send(字符串)

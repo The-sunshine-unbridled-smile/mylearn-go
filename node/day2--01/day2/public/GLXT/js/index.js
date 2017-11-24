@@ -24,7 +24,7 @@ $(".rl-manage").click(function () {
 });
 /*学生管理*/
 $(".stu-manage").click(function () {
-    $("#frame1").attr("src","stuMan.html")
+    $("#frame1").attr("src","student")
 });
 /*角色管理*/
 $(".js-manage").click(function () {
@@ -57,13 +57,19 @@ var hours=$.query.get("hours");
 var minute=$.query.get("minute");
 var seconds=$.query.get("seconds");
 /*显示账号信息*/
-for(var i=0;i<peopleArr.length;i++){
+/*for(var i=0;i<peopleArr.length;i++){
     var zhanghao=peopleArr[i].peopleAcount;
     if(username==zhanghao){
         $(".username").text(peopleArr[i].roleName);
     }
-    $(".adminName").text(username);
-}
+    $("#username").text(username);
+}*/
+$.ajax({
+    url:"/getUsername.do",
+    success:function (data) {
+        $("#username").text(data);
+    }
+});
 /*判断用户权限*/
 quanxian();
 function quanxian() {
@@ -90,3 +96,6 @@ function Imguser() {
         $(".imguser").attr("src","images/admin2.jpg")
     }
 }
+
+//上传头像
+

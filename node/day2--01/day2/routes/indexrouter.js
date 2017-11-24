@@ -1,8 +1,21 @@
 
 const express = require("express");
+const path = require("path");
 const router = express.Router();
 const constroller = require("../constroller/indexconstroller");
-router.get("/login.do", constroller.getUser);//连接业务控制
+router.post("/login.do", constroller.getUser);//连接业务控制
+router.get("/getUsername.do",constroller.getUsername);
+router.get("/index.html",(req,resp,next)=>{
+    console.log("拦截了");
+    // resp.send("被拦截下来了");
+    //判断一下登录了没有
+    if (req.session.username != undefined) {
+
+        next();
+    } else {
+       resp.redirect("/Login.html");
+    }
+});
 
 //=======================================角色部分==========================
 //角色管理的增删改查业务连接
@@ -24,4 +37,15 @@ router.get("/getPageTotal.do", constroller.getPageclass);
 router.get("/course.do", constroller.getCourse);
 //分页
 router.get("/getCoursePage.do", constroller.getPagecourse);
+
+//===========学生部分ejs=============
+router.get("/student",(req,res)=>{
+    res.redirect("/student/1")
+});
+router.get("/student/:page",constroller.getAllStudent);
+
+//=================邮件==========
+router.post("/sendMail.do",constroller.sendMail);
+
+
 module.exports = router;

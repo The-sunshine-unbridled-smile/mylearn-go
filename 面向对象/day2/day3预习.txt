@@ -1,0 +1,51 @@
+    function getPlane(x,y){
+      function Plane(){
+        this.x=x;
+        this.y=y;
+        this.imgNode=document.createElement("img");
+        this.blood=10;
+        this.speed=100;
+        this.move=function(){
+          console.log("飞机模板移动");
+        }
+      }
+      function SmallPlane(){
+        this.move=function(){
+          console.log("小飞机的移动")
+        }
+      }
+      SmallPlane.prototype = new Plane(x,y)
+      return new SmallPlane()
+    }
+
+    var small = getPlane(50,100)
+    console.log(small)
+    small.move()
+//    用户给所有的小飞机添加一个爆炸功能 - 可以如何实现
+ - 添加在哪个地方
+
+今天封装的插件只能调用，
+jQuery ->内部功能
+-> 人家可以基于jQuery继续开发 $("#popup").popup()
+扩展今天的组件
+如何暴露扩展的接口，可以在组件上进行扩展
+对外提供统一的方法extends({})，用户通过这个方法直接扩展
+getPlane.extends(
+ {bomb:function(){},
+  circle:function(){}
+ }
+)
+
+
+全局和局部
+局部只能在作用域范围内生效
+如何让外部能够调用作用域范围内的变量
+-- 闭包
+
+function test1(){
+ var a
+}
+
+function test2(){
+ a
+}

@@ -7,7 +7,8 @@ if(window.XMLHttpRequest){
 function myAjax(method,url,params,callback,async){
     xhr.onreadystatechange=function(){
         if(xhr.readyState==4&&xhr.status==200){
-            callback()
+            var data = JSON.parse(xhr.responseText);
+            callback(data)
         }
     };
     if(method=="get"){

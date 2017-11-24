@@ -2,10 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title>
+  <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/stuMen.css">
 </head>
 <body>
+<section class="container stuMen">
+  <div class="row">
+    <div>
+      <div class="inpStu">
+        <div class="inpStuNan">
+          <label>学生编号：</label>
+          <input type="text" class="num">
+        </div>
+        <div class="inpStuNO">
+          <label>学生姓名：</label>
+          <input type="text" class="name">
+        </div>
+        <div id="search">
+          <button>查询</button>
+        </div>
 
-
+      </div>
+      <div id="addStudetnbtn">
+        新增学生
+      </div>
+    </div>
+    <div id="stuTab">
+      <table class="table">
+        <thead>
+        <tr>
+          <th><input type="checkbox" id="allChoice"></th>
+          <th>学号</th>
+          <th>班级</th>
+          <th>姓名</th>
+          <th>联系电话</th>
+          <th>QQ</th>
+          <th>毕业学校</th>
+          <th>毕业时间</th>
+          <th>学历</th>
+          <th>紧急联系人电话</th>
+          <th>性别</th>
+          <th>邮箱</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <%for(var i=0;i<list.length;i++){%>
+        <tr>
+          <td><input type="checkbox" id="allChoice"></td>
+          <td><%=list[i].stu_id%></td>
+          <td><%=list[i].class_id%></td>
+          <td><%=list[i].stu_name%></td>
+          <td><%=list[i].stu_phone%></td>
+          <td><%=list[i].stuQQ%></td>
+          <td><%=list[i].stu_endsch%></td>
+          <td><%=list[i].stuendtime%></td>
+          <td><%=list[i].stuedu%></td>
+          <td><%=list[i].stu_contactsphn%></td>
+          <td><%=list[i].stu_sex%></td>
+          <td><%=list[i].stu_email%></td>
+          <td><%=list[i].stu_bz%></td>
+         <td>
+           <span class="Ope">修改</span>&nbsp;&nbsp;
+           <span class="Del">删除</span>
+         </td>
+        </tr>
+        <%}%>
+        </tbody>
+      </table>
+    </div>
+    <div class="container text-right">
+        <span id="DelAll" >
+            删除
+        </span>
+    </div>
+    <div class="Flip text-center">
+      <button id="Prevbtn">上一页</button>
+        <%for(var j=1;j<=totalCount;j++){%>
+      <a class="numberBlock" href="<%=j%>">
+          <%=j%>
+      </a>
+        <%}%>
+      <button id="Nextbtn">下一页</button>
+      <div>总共<%=totalCount%>页</div>
+    </div>
+  </div>
+</section>
 </body>
 </html>

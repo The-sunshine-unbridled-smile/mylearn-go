@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*对象属性*/
+//    in
+//    "属性" in 对象 -- 对象能够访问得到(自身/原型链)
+
+//    对象.hasOwnProperty("属性") -- 自身的属性
+
+//    对象是否某个构造函数的实例对象
+    console.log(Function instanceof Object)
+//    函数.prototype
+
+    var obj = new Object();
+//    obj=null;
+    //堆的对象没有任何东西指向
+
+    obj.name="张三"
+    obj.name=null
+    delete obj.name
+    console.log(obj);
+
+
+
+    Date.prototype.formatDate=function(){
+      return this.getFullYear()+"-"+(this.getMonth()+1)+"-"+this.getDate();
+    }
+    var d = new Date()
+    console.log(d.formatDate())
+
+</script>
+</body>
+</html>

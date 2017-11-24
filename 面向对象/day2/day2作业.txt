@@ -1,0 +1,32 @@
+���������˼���װһ��ͨ�õ���:
+1.�û�ʹ�÷�ʽ:
+	��html���水��figure>img+figcaption�ĸ�ʽ����ͼƬ
+	��JS�������װjs�ļ�
+	��ʽ��ľ�������CSS
+	��ͼƬ����������л�ͼƬ
+	
+	�û�����:
+	<link ...lightbox.css>
+	<div id="lightbox">
+        <figure class="">
+            <img src="" alt=""/>
+            <figcaption>��������</figcaption>
+        </figure>
+		 <figure class="">
+            <img src="" alt=""/>
+            <figcaption>��������</figcaption>
+        </figure>
+		 <figure class="">
+            <img src="" alt=""/>
+            <figcaption>��������</figcaption>
+        </figure>
+		 <figure class="">
+            <img src="" alt=""/>
+            <figcaption>��������</figcaption>
+        </figure>
+    </div>
+	
+	
+	
+	<link>
+    <script src="work.js"></script>

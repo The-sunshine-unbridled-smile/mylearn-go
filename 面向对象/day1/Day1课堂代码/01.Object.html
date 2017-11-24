@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+ /*创建对象的方法
+ * 1. new关键词
+ * new Array()
+ * new Date()*/
+var obj1 = new Object();
+console.log(obj1)
+ console.log(Object)
+
+
+    /*2.字面量*/
+var obj2 = {};
+console.log(obj2)
+
+//    function Plane(){}
+//    new Plane()
+
+    /*3.Object.create(对象模板)*/
+//var obj3 = Object.create(null);
+var obj3 = Object.create({x:1});
+
+/*模板（原型Prototype）和对象之间有什么关系*/
+/*1.原型也是对象
+* 2.原型对象上的属性和从这个原型创建出来的对象有什么关系
+* 原型对象有的属性，会共享给创建出来的对象*/
+console.log(obj3.x);
+obj3.y = 2;
+console.log(obj3)
+
+    var obj4 = Object.create(obj3);
+console.log(obj4);
+/*原型对象的关系，串联之后，形成了原型链*/
+
+/*Object - 引用类型
+* 栈：obj5（堆的引用地址）
+* 堆: 对象*/
+    var obj5 = new Object();
+    obj5.name = "张三"
+    var obj6 = obj5;
+    obj6.name="李四"
+    console.log(obj5.name); //李四
+
+//var a=1
+// var b=a
+// b=2
+//    var arr1 = new Array(1,2,3);
+//    var arr2 = arr1
+//    arr2.push("a");
+//    console.log(arr1);
+//    var arr2=[];
+//    for(var i=0;i<arr1.length;i++){
+//      arr2.push(arr1[i])
+//    }
+
+    /*对象原型*/
+//    找到原型
+    console.log(obj4.__proto__.__proto__.__proto__)
+//    浏览器内部提供 __proto__
+//    prototype -- 函数才有的属性
+//    console.log(obj4.__proto__.__proto__.__proto__===Object.prototype)
+    Object.prototype.age=15
+    console.log(obj1.age)
+    var obj6 = {}
+    console.log(obj6.age)
+    console.log(obj6.__proto__===Object.prototype)
+
+    function Plane(){
+      this.name="小飞机"
+    }
+    var plane  = new Plane()
+    console.log(plane.age)
+    plane.blood=10;
+    Plane.prototype.speed=10;
+
+//    plane.speed=20;
+
+    console.log(plane.name);
+    console.log(plane.age);
+    console.log(plane.speed);
+
+    console.log(plane.__proto__.speed);
+
+    console.log("speed" in plane)   //对象能不能访问得到这个属性
+    console.log(plane.hasOwnProperty("speed")) //对象自身有没有这一个属性
+
+    Object.prototype.color="red";
+    console.log(plane.color)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
