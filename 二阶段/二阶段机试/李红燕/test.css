@@ -72,6 +72,7 @@ header {
     overflow: hidden;
     color: white;
     display: none;
+    /*background-color: transparent;*/
 }
 
 .list.list1 {

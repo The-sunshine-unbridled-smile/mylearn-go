@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        ul{list-style:none;border:1px solid #ccc;border-radius:5px;width:900px;margin:30px auto 10px;}
+        .clearfix{zoom:1;}
+        .clearfix:after{content:".";display:block;width:0;height:0;visibility:hidden;clear: both;}
+        li{float:left;border-right:1px solid #ccc;width:20%;text-align:center;height:30px;line-height:30px;cursor:pointer;}
+        li:last-child{border:none;}
+        li.active{background-color:#0099cc;color:#fff;}
+        .container,.wrapper,.con{height:300px;}
+        .container{width:900px;margin:0 auto;position:relative;overflow:hidden;}
+        .wrapper{position:relative;top:0;}
+        .con{line-height:300px;text-align:center;border:1px solid #ccc;}
+        .dd{margin: 30px auto;width:1200px;}
+        .cc{float:left;width:300px;height:200px;overflow:hidden;margin:20px;}
+        .c1,.c2{width:100%;height:100%;margin:0 auto;text-align:center;line-height:200px;cursor:pointer;overflow:hidden}
+        .c1{background-color:#c01110;}
+        .c2{background-color:#0099cc;}
+    </style>
+</head>
+<body>
+<!--<form action="#">
+<select name="" id="sel1">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+<input type="submit" id="sub" value="提交"/>
+</form>-->
+<ul class="clearfix">
+    <li class="active">选项1</li>
+    <li>选项2</li>
+    <li>选项3</li>
+    <li>选项4</li>
+    <li>选项5</li>
+</ul>
+<div class="container">
+    <div class="wrapper">
+        <div class="con">
+            111111
+        </div>
+        <div class="con">
+            222222
+        </div>
+        <div class="con">
+            33333
+        </div>
+        <div class="con">
+            44444
+        </div>
+        <div class="con">
+            55555
+        </div>
+    </div>
+</div>
+<!--<div class="dd clearfix">
+    <div class="cc">
+        <div class="c1">111</div>
+        <div class="c2">222</div>
+    </div>
+    <div class="cc">
+        <div class="c1">111</div>
+        <div class="c2">222</div>
+    </div>
+    <div class="cc">
+        <div class="c1">111</div>
+        <div class="c2">222</div>
+    </div>
+    <div class="cc">
+        <div class="c1">111</div>
+        <div class="c2">222</div>
+    </div>
+    <div class="cc">
+        <div class="c1">111</div>
+        <div class="c2">222</div>
+    </div>
+    <div class="cc">
+        <div class="c1">111</div>
+        <div class="c2">222</div>
+    </div>
+</div>-->
+<script src="jquery.min.js"></script>
+<script>
+    var timer;
+    $("li").on("mouseover",function(){
+        clearTimeout(timer);
+        timer=null;
+        $(this).addClass("active");
+        $(this).siblings().removeClass("active");
+        var $index=$(this).index();
+        /*$(".wrapper").animate({top:-$index*300});*/
+        timer=setTimeout(function(){
+            $(".wrapper").animate({top:-$index*300});
+        },300)
+    });
+
+
+    $('.dd').find($(".cc")).hover(function(){
+        $(this).find(".c1").stop().animate({width:0},100,function(){
+            $(this).hide().next().show().animate({width:300},100);
+        })
+    },function(){
+        $(this).find(".c2").animate({width:0},100,function(){
+            $(this).hide().prev().show().animate({width:300},100);
+        })
+    });
+
+</script>
+</body>
+</html>
