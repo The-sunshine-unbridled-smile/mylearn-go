@@ -1,0 +1,134 @@
+作业：自己封装$对象的扩展方式
+$.extend({
+	myfunc:function(){}
+})
+
+$.myfunc()
+*****详细解释*******
+
+=====现在我能直接使用$=======
+$("#div").css()
+$.ajax()
+$("#div").ajax()
+$.css()
+
+function $(){
+	
+}
+//基本选择器 === 》 #div .class div ==> 得到节点 $("选择器")--》得到
+//有方法获取到原生节点 document.getElement....
+
+
+//自带的--实现功能
+$("#div").html()	//如果不传参数，获取innerHTML, 如果传参，就是设置
+$("#div1").css("color")	
+$("#div1").css({
+	"width":"100px",
+	"height":"200px"
+})
+2选1:
+1.传对象直接设置-单词的css能实现设置color,width,height//background-color--暂时不需要 如果可以实现就实现
+2.实现传入单个参数是字符串，获取最终样式-做兼容
+//style.color ==> 内联样式
+$.each()//完全实现遍历
+$.each("数组",function(item,index){单个遍历的内容和下标都要能直接注入到参数位置})
+
+
+//2种扩展方法****
+$.fn.extend(
+	{css:function(){},
+	html:function(){}}
+)
+==> $("#div").html()	
+$.html() XXXXXX 
+
+Jquery.prototype.css=function(){}
+obj = new Jquery()
+obj.css()
+
+
+$.extend({
+	ajax:function(){}
+})
+===> $.ajax()
+$("#div1").ajax() XXXXXXXX
+
+Jquery.ajax=function(){}
+Jquery.ajax()
+new Jquery()
+
+
+
+
+
+
+1.$可以是一个函数，里面传入选择器
+
+$("#id")
+
+$可以被扩展
+$.extend(传对象)
+$.extend({
+	test:function(){
+		console.log("test")
+	}
+
+})
+
+而这种的拓展方法用户是通过$.test()调用
+例子: AJAX方法是通过$.方法()调用
+
+====================
+
+2. $.fn.extend(传对象)来拓展实例化的函数
+
+沿用上课的例子;上课的例子是直接在util上面的fn上给实例化的对象拓展属性和方法;
+--找出fn是什么？？？
+我现在需要用fn的extend(传递对象)运行方法传参数的形式来拓展
+
+$.fn.extend()拓展方法改良，我现在能够直接通过$("选择器").方法()直接调用
+就是说 也就是 需要做到
+
+$.fn.extend({
+
+	test2:function(){}
+})
+
+这样子拓展的方法，用户调用是:$("选择器").test2()调用
+例如: $("#id").css({})
+
+
+============
+最终效果：
+
+简单来说，$这个构造函数既能让实例化对象扩展，也能在本身这个函数上扩展
+如果再实例化对象上扩展，那么扩展的方法也就只能用在实例化对象上
+如果是本身函数上扩展，那么扩展的方法也就只能用在本身函数上
+参考Iphone.prototype = Phone 和 Iphone.prototype = new Phone()的区别。
+
+测试：
+<div id=#msg></div>
+
+$("#msg")
+$("#msg").css()
+
+$.each()
+
+$.fn.extend({
+	newFn:function(){}
+})
+
+$("#msg").newFn()
+$.newFn()<====XXXXXXXX
+
+$.extend({
+	testFn:function(){}
+})
+
+$.testFn();
+$("#msg").testFn()<=XXXXXX
+
+
+
+
+
