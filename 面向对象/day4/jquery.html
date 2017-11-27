@@ -5,7 +5,58 @@
     <title>Title</title>
 </head>
 <body>
+<div id="idTest">这是id的测试</div>
+<div class="classTest">这是class的测试</div>
+<h1>这是标签的测试</h1>
+<script>
+    //基本选择器 === 》 #div .class div ==> 得到节点 $("选择器")--》得到
+    //有方法获取到原生节点 document.getElement....
+    function myEle() {
+        this.element = [];
+        //获取id
+        this.getId = function (id) {
+            var myid = document.getElementById(id);
+            this.element.push(myid);
+            return this
+        };
+        //获取class
+        this.getClass = function (cla) {
+            var myclass = document.getElementsByClassName(cla);
+            for (var i = 0; i < myclass.length; i++) {
+                this.element.push(myclass[i]);
+            }
+            return this
+        };
+        //获取标签名
+        this.getTag = function (tag) {
+            var mytag = document.getElementsByTagName(tag);
+            for (var i = 0; i < mytag.length; i++) {
+                this.element.push(mytag[i])
+            }
+            return this
+        };
 
-<script src="jQuery.js"></script>
+    }
+    //添加方法
+    myEle.prototype.css = function (name, value) {
+        for (var i = 0; i < this.element.length; i++) {
+            this.element[i].style[name] = value;
+        }
+        return this
+    };
+    var newEle = new myEle();
+    // newEle.getId("idTest").css("background","red");  //id的测试
+    // newEle.getClass("classTest").css("color","blue");  //class的测试
+    newEle.getTag("h1").css("color", "red");      //标签名的测试
+
+
+    //自带的--实现功能
+    // $("#div").html()	如果不传参数，获取innerHTML, 如果传参，就是设置
+    /* //html方法
+     this.html=function (name) {
+     return arguments.length==1?this.obj[0].innerHTML=name:this.obj[0]
+     }*/
+
+</script>
 </body>
 </html>
