@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h1>{{msg | capitalize}}</h1> <!--capitalize过滤器的名称，在这里使用该过滤器的样式（首字母大写）-->
+    <input type="text" v-model="mytext">
+    <h2 v-bind:class="myclass"> {{mytext}}</h2>
+        <!-- 会直接将input输入的内容显示在这里-->
+
+    <h3 v-bind:class="{red:isRed}">  {{mytext}} </h3>
+    <!--右边的值表示red这个类被不被应用，可直接写成true/false;也可以动态设置-->
+
+    <!--<img v-bind:src="imgsrc" alt="">  &lt;!&ndash;v-bind可以省略只写冒号&ndash;&gt;-->
+
+    <h1>v-for的遍历数组，对象</h1>
+    <ul>
+        <!--for 变量 in 对象fruit-->
+        <!-- v-for遍历数组时：会返回两项
+        1：item返回的是具体遍历出来的内容，
+        2：index如果是数组返回的是下标可以直接进行运算-->
+        <li v-for="(item,index) in fruit">
+            {{index+1}}：{{item.fruitname}}=={{item.price}}
+            <button>删除</button>
+        </li>
+    </ul>
+    <ul>
+        <!--v-for遍历对象,返回的两项
+        1：值
+        2：键-->
+        <li v-for="(value,key) in user">{{key}}:{{value}}</li>  <!--遍历出来的是值，键-->
+    </ul>
+
+    <h1>条件渲染if；if else；else if</h1>
+    <div v-if="flag">
+        <h3>v-if的内容</h3>
+    </div>
+    <div v-else-if="fruit.length>5">  <!--使用v-else-if前提必须是if，if结果为false时-->
+        <h3>v-else-if的内容</h3>
+    </div>
+    <div v-else>
+        <h3>v-else的内容</h3>  <!--如果前面的条件多不满足则渲染v-else的内容-->
+    </div>
+
+    <h1>v-show</h1>
+    <!--永远都会渲染出来，决定它是否要显示出来,true显示-->
+    <div v-show="flag"> v-show的内容</div>
+
+    <h1>事件绑定v-on</h1>
+    <!--v-on:的缩写是@-->
+    <button v-on:click="count++">加一</button>{{count}}人觉得很赞
+    <!--<button @click="change">事件绑定</button>-->
+
+    <!--有参数：$event原生事件对象
+    在@click.stop写了.stop表示阻止事件冒泡；
+    .prevent阻止默认行为；.capture捕获行为；.self自身来触发事件；.once只执行一次-->
+    <button @click.stop="change('hello niclose',$event)">还见绑定</button>
+
+    <!--键盘事件：输入的是a的时候触发count++-->
+    <input type="text" @keyup.a="count++" placeholder="键盘事件：输入a加1">
+</div>
+<script src="../vue.js"></script>
+<script>
+    //自定义配置键盘时间的别名，Vue.config.keyCodes.别名 ；配置之后可直接在事件里使用
+    Vue.config.keyCodes.a=65
+
+    //定义：全局过滤器 capitalize过滤器名称  对数据进行样式的处理
+    /*Vue.filter("capitalize",function (value) {
+        var result=value.charAt(0).toUpperCase()+value.slice(1);  //首字母大写
+        return result
+    })*/
+
+    //初始数据可以提出来单独写
+    var newData={
+        msg: "hello world",
+        mytext:"nihaoa",
+        myclass:"red",
+//        imgsrc:"1.jpg" ,   //图片的路径
+        isRed:true, //是否应用该类
+        fruit:[
+            {fruitname:"苹果",price:"20"},
+            {fruitname:"桃子",price:"55"},
+            {fruitname:"香蕉",price:"88"},
+        ],
+        user:{name:"张三",age:22,address:"上海"},
+        flag:true,
+        count:0,   //绑定的+1事件
+    };
+   var vm= new Vue({
+        el: '#app',      //vue挂载在哪个节点，就是生效的敌方
+        data:newData,     //初始数据 写的是属性，属性名不能变
+        methods:{      //methods里面写绑定的事件处理程序
+            change:function (msg,event) {
+//                this.msg="hello"
+                this.msg=msg
+                console.log(event)  //原生的事件对象
+            }
+        },
+       //局部定义过滤器
+       filter:{
+           capitalize:function (value) {
+               var result=value.charAt(0).toUpperCase()+value.slice(1);  //首字母大写
+               return result
+           }
+       },
+    })
+</script>
+</body>
+</html>
