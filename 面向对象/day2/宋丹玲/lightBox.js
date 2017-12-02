@@ -3,20 +3,20 @@
  */
 // var index = 0;
 // var srcArray = [];
-// var imgArray = $("#lightBox figure img");
+// var imgArray = $("#lightBox figure images");
 // var str = "";
 // // var content;
 // for(var i = 0 ; i < imgArray.length ; i++){
 //     srcArray[i] = imgArray[i].attributes.src.value;
-//     str +='<img src="'+srcArray[i]+'" alt="" class="bannerImg">';
+//     str +='<images src="'+srcArray[i]+'" alt="" class="bannerImg">';
 // }
 //
 // var node = '<div id="mask"> ' +
 //     '<div class="banner"> ' + str +
-//     '<span class="close"><img src="img/close.png" alt=""></span> ' +
+//     '<span class="close"><images src="images/close.png" alt=""></span> ' +
 //     '<div class="controlBlock"> ' +
-//     '<span class="toPre"><img src="img/toPre.png" alt=""></span> ' +
-//     '<span class="toNext"><img src="img/toNext.png" alt=""></span> ' +
+//     '<span class="toPre"><images src="images/toPre.png" alt=""></span> ' +
+//     '<span class="toNext"><images src="images/toNext.png" alt=""></span> ' +
 //     '</div> ' +
 //     '</div> ' +
 //     '</div>';
@@ -58,18 +58,18 @@
             var index = 0;
             var str = "";
             var srcArray = [];
-            var imgArray = $("#lightBox figure img");
+            var imgArray = $("#lightBox figure images");
             for(var i = 0 ; i < imgArray.length ; i++){
                 srcArray[i] = imgArray[i].attributes.src.value;
-                str +='<img src="'+srcArray[i]+'" alt="" class="bannerImg">';
+                str +='<images src="'+srcArray[i]+'" alt="" class="bannerImg">';
             }
 
             var node = '<div id="mask"> ' +
                 '<div class="banner"> ' + str +
-                '<span class="close"><img src="img/close.png" alt=""></span> ' +
+                '<span class="close"><images src="images/close.png" alt=""></span> ' +
                 '<div class="controlBlock"> ' +
-                '<span class="toPre"><img src="img/toPre.png" alt=""></span> ' +
-                '<span class="toNext"><img src="img/toNext.png" alt=""></span> ' +
+                '<span class="toPre"><images src="images/toPre.png" alt=""></span> ' +
+                '<span class="toNext"><images src="images/toNext.png" alt=""></span> ' +
                 '</div> ' +
                 '</div> ' +
                 '</div>';

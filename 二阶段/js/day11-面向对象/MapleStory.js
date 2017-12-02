@@ -479,7 +479,7 @@ function moveBullet() {
 
 //大招
 function daZhao() {
-    mainObj.innerHTML += "<img src='dao/skill.gif' style='top:-50px;left:100px;'/>"
+    mainObj.innerHTML += "<images src='dao/skill.gif' style='top:-50px;left:100px;'/>"
 
 }
 

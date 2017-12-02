@@ -46,12 +46,12 @@ function fz(x) {
 
 }
 //点击切换到上一张
-$(".pageLeft img").click(function () {
+$(".pageLeft images").click(function () {
 
 });
 
 //点击切换到下一张
-$(".pageRight img").click(function () {
+$(".pageRight images").click(function () {
 
 });
 

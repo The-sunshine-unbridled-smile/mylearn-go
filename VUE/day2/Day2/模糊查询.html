@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+<!--mustache  handlebars-->
+<div id="app">
+    <h1>{{message | capitalize}}</h1>
+    <!--指令-->
+    <input type="text" v-model="mytext" >
+    <!--<h3 v-bind:class="myclass">{{mytext}}</h3>-->
+    <h3 v-bind:class="{red:isRed}" :title="myTitle">{{mytext}}</h3>
+    <img :src="imgsrc" alt="" width="50">
+
+    <h1>列表渲染</h1>
+    <ul>
+        <!--for 变量 in obj/arr alias in expression-->
+        <!--v-for遍历数组的时候
+        item - 具体每一项
+        index - 数组下标
+        -->
+        <li v-for="(item,index) in fruits">
+            ({{index+1}}) {{item.fruitname}}================{{item.price | currency}}
+            <button>删除</button>
+        </li>
+    </ul>
+
+    <!--v-for遍历对象-->
+    <ul>
+        <li v-for="(value,key) in user">
+            {{key}}=============={{value}}
+        </li>
+    </ul>
+
+    <!--条件渲染if elseif else-->
+    <h1>条件渲染</h1>
+    <div v-if="flag">
+        <h1>v-if内容</h1>
+    </div>
+    <div v-else-if="fruits.length>5">
+        <h1>v-else-if内容</h1>
+    </div>
+    <div v-else>
+        <h1>v-else内容</h1>
+    </div>
+
+    <!--v-show对比-->
+    <div v-show="flag">
+        <h1>v-show内容</h1>
+    </div>
+
+    <!--事件绑定 v-on-->
+    <button v-on:click="count+=1">按钮</button> {{count}}人点了赞
+    <button @click.once="changeMessage('hello 140A',$event)">事件绑定</button>
+
+    <input type="text" @keyup.a="count+=1">
+
+    <!--1.实现模糊搜索-->
+    模糊查询:<input type="text" v-model="searchText">
+    <div>
+        <ul>
+            <!--如果函数是写在methods,要加()
+            如果是在computed，作为属性看待，不用加()
+            computed: 计算属性: 首次渲染的时候会运算->得到结果，进行缓存
+            如果里面依赖的属性发生变化，会重新计算
+            其他的变化，不会重新计算-->
+            <li v-for="item in queryParam">
+                {{item.fruitname}} , {{item.price | currency}}
+            </li>
+        </ul>
+    </div>
+
+    <!--2.数据删除-->
+
+    <!--3.数据添加-->
+
+
+</div>
+<script src="../vue.js"></script>
+<script>
+    /*自定义配置键盘事件的别名
+    * Vue.config.keyCodes.别名 = KeyCode
+    * 配置之后直接在事件里面可以使用*/
+    Vue.config.keyCodes.a = 65
+
+    /*定义: 全局Vue Filter*/
+//    Vue.filter("capitalize",function(value){
+//      /*hello
+//      * Hello*/
+//      var result = value.charAt(0).toUpperCase()+value.slice(1)+"~~~~~"
+//      return result
+//    })
+
+    var modelData = {
+      message:"hello world!",
+      mytext:"",
+      myclass:"red",
+      imgsrc:"banner1.jpg",
+      isRed:true,
+      myTitle:"我的title",
+      fruits:[
+
+//        $20.00
+        {fruitname:"苹果",price:"20"},
+        {fruitname:"橙子",price:"30"},
+        {fruitname:"火龙果",price:"40"}
+      ],
+      user:{name:"张三",age:15,address:"成都"},
+      flag:false,
+      count:0,
+      searchText:""
+    }
+
+    var vm = new Vue({
+      /*VUE挂载在哪个节点，生效的地方*/
+      el:"#app",
+      /*初始数据*/
+      data:modelData,
+      methods:{
+        changeMessage:function(msg,event){
+//            console.log(this.message)
+          this.message=msg;
+          this.isRed=false;
+          console.log(event)
+//          event.stopPropagation()
+        }
+
+      },
+      computed:{
+        queryParam:function(){
+          console.log("进入queryParam函数")
+            /*最终要得到的结果*/
+//          return [{fruitname:"苹果",price:"20"},{fruitname:"火龙果",price:"40"}]
+//          searchText="果" fruitname="苹果"
+//          fruitname.indexOf(searchText), 如果有: 下标，如果没有: -1
+//          条件!=-1 返回true --> 进入返回的数组，不等于-1的数据
+//          var numbers = [1,2,3,4,5]
+//          numbers.filter(function(val){
+//              return val>2
+//          }) ==> 返回新的数组 [3,4,5]
+//          console.log(this);
+          var that = this;
+          var returnarr=this.fruits.filter(function(val){
+            console.log(val.fruitname.indexOf(that.searchText))//window
+//            判断
+            if(val.fruitname.indexOf(that.searchText)!=-1){
+              return true
+            }else{
+              return false
+            }
+          })
+          return returnarr
+        }
+      },
+      filters:{
+        capitalize: function(value){
+            /*hello
+             * Hello*/
+          var result = value.charAt(0).toUpperCase()+value.slice(1)+"~~~~~"
+          return result
+        },
+        currency: function(value){
+          return "$"+value+".00"
+        }
+      }
+    })
+</script>
+</body>
+</html>
