@@ -49,11 +49,13 @@ router.post("/sendMail.do", constroller.sendMail);
 router.get('/product.do', (req, resp) => {
     var data = [
         {id: 1, name: '产品1', img: 'images/1.jpg', sub: '产品副标题1', price: 30, content: '产品1详情文字内容'},
-        {id: 2, name: '产品2', img: 'images/2.jpg', sub: '产品副标题2', price: 50, content: '产品1详情文字内容'},
-        {id: 3, name: '产品3', img: 'images/3.jpg', sub: '产品副标题3', price: 20, content: '产品1详情文字内容'},
-        {id: 4, name: '产品4', img: 'images/4.jpg', sub: '产品副标题4', price: 60, content: '产品1详情文字内容'}
+        {id: 2, name: '产品2', img: 'images/2.jpg', sub: '产品副标题2', price: 50, content: '产品2详情文字内容'},
+        {id: 3, name: '产品3', img: 'images/3.jpg', sub: '产品副标题3', price: 20, content: '产品3详情文字内容'},
+        {id: 4, name: '产品4', img: 'images/4.jpg', sub: '产品副标题4', price: 60, content: '产品4详情文字内容'}
     ];
-    resp.send(data)
+    // console.log(req.query)
+    // resp.send(data)
+    resp.send(req.query.id?data[req.query.id-1]:data);
 });
 
 

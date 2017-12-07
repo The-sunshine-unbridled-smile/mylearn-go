@@ -16,7 +16,7 @@ Vue.prototype.$host="http://172.16.8.20:8888/";
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router,  //等同于router:router
   template: '<App/>',  //挂载的来自APP.Vue
   components: { App }
-})
+});

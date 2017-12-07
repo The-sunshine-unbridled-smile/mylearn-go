@@ -1,6 +1,9 @@
 <template>
   <figure>
-    <img :src="$host+imgsrc" alt="">
+    <!--插槽用来传递dom节点；一个组件可以设置多个插槽。可以在插槽里面插入很多内容 使用它的name-->
+    <slot name="headerslot"></slot>
+    <!--<img :src="$host+imgsrc" alt="">-->
+    <img :src="'/api'+imgsrc" alt="">
     <figcaption>
       <h1>{{productTitle}}</h1>
       <h2>{{productSubtitle}}</h2>

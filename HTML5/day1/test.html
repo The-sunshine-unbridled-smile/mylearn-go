@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+        }
+        #imageBox{
+            position: relative;
+            display: inline-block;
+        }
+        #imgShow{
+            display: inline-block;
+        }
+        #cutBox{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<!--上传图片-->
+<div>
+    <input type="file" id="uploadImg">
+    <img src="" alt="">
+</div>
+
+<!--大的画布-->
+<div id="imageBox">
+    <canvas width="500" height="500" id="myCnvas"></canvas>
+    <div id="cutBox"></div>
+</div>
+
+<!--效果预览-->
+<div id="imgShow">
+    <h1>预览</h1>
+    <canvas id="newCanvas" width="200" height="200"></canvas>
+</div>
+
+<script src="jquery.min.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

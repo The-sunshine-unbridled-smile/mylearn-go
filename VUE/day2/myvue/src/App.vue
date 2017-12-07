@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-    <day2 fromdad="传给儿子"></day2>   <!--使用day2这个组件-->
-    <mynav></mynav>
-    <product></product>
+    <!--<day2 fromdad="传给儿子"></day2>   &lt;!&ndash;使用day2这个组件&ndash;&gt;-->
+    <header>
+      <mynav></mynav>
+    </header>
+    <!--<keep-alive>-->
+      <router-view></router-view>   <!--前台路由拦截的内容都放在router-view中-->
+    <!--</keep-alive>-->
+    <footer>
+      <h1>页脚</h1>
+    </footer>
+
+    <!--<product></product>-->
     <!--<showbox></showbox>-->
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!--<img src="./assets/logo.png">-->
   </div>
 </template>
 <script>
