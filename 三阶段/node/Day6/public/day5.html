@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>搜索</h1>
+    姓名: <input type="text" id="stuname">
+    学生编号: <input type="text" id="stuid">
+    分数: <input type="text" id="grade">
+    性别： <input type="text" id="sex">
+
+    <button onclick="searchStudent();">搜索</button>
+
+    <button onclick="requestPage();">AJAX请求页面</button>
+    <table cellspacing="0" cellpadding="0" border="1" width="500">
+        <thead>
+        <tr>
+            <th>学生编号</th>
+            <th>学生姓名</th>
+            <th>分数</th>
+            <th>班级id</th>
+            <th>性别</th>
+        </tr>
+        </thead>
+        <tbody id="studentTable">
+
+        </tbody>
+    </table>
+    <div>
+        <button onclick="prevPage();">上一页</button>
+        <div id="numberBlock"></div>
+        <button onclick="nextPage();">下一页</button>
+
+        <div>总共<span id="totalpage"></span>页</div>
+    </div>
+    <!--<a href="/add"> sendFile (详情页面)</a>-->
+    <script src="js/ajax.js"></script>
+    <script>
+        /*ajax请求页面*/
+        function requestPage(){
+            myAjax("get","/success.html","",function(){
+              console.log(xhr.responseText);
+              location.href="success.html"
+            },true);
+
+        }
+
+
+        var currentPage = 1;
+        var pageTotal = 0;
+        window.onload=function(){
+          getAllStudent(); //xhr
+          getPageTotal(); //xhr ->
+        }
+        //a()
+        // .b()
+        // .c()
+        function showStudent(){
+            console.log(xhr.responseText);
+            var data = JSON.parse(xhr.responseText)
+            document.getElementById("studentTable").innerHTML="";
+            for(var i=0;i<data.length;i++){
+              document.getElementById("studentTable").innerHTML+="<tr>" +
+                "<td>"+data[i].stuid+"</td>" +
+                "<td>"+data[i].stuname+"</td>" +
+                "<td>"+data[i].grade+"</td>" +
+                "<td>"+data[i].classid+"</td>" +
+                "<td>"+data[i].sex+"</td>" +
+                "</tr>"
+          }
+        }
+        //查询所有的学生
+        function getAllStudent(){
+//            myAjax("get","/getStudent.do","currentPage="+currentPage,showStudent,false)
+            myAjax("get","/getStudent.do","currentPage="+currentPage,function(){
+              console.log(xhr.responseText);
+              var data = JSON.parse(xhr.responseText)
+              document.getElementById("studentTable").innerHTML="";
+              for(var i=0;i<data.length;i++){
+                document.getElementById("studentTable").innerHTML+="<tr>" +
+                  "<td>"+data[i].stuid+"</td>" +
+                  "<td>"+data[i].stuname+"</td>" +
+                  "<td>"+data[i].grade+"</td>" +
+                  "<td>"+data[i].classid+"</td>" +
+                  "<td>"+data[i].sex+"</td>" +
+                  "</tr>"
+              }
+              myAjax()
+            },false)
+        }
+        function searchStudent(){
+          var stuname = document.getElementById("stuname").value;
+          var stuid = document.getElementById("stuid").value;
+          var grade = document.getElementById("grade").value;
+          var sex = document.getElementById("sex").value;
+          myAjax("get","/getStudent.do","stuname="+stuname+"&stuid="+stuid+"&grade="+grade+"&sex="+sex+"&currentPage="+currentPage,showStudent)
+        }
+        //修改
+        //删除
+
+        function deleteStudent(){
+          //1.删除了之后显示所有学生
+//          myAjax()
+//          getAllStudent()
+          //2.删除之后只是更新搜索的结果
+//          searchStudent
+        }
+        function nextPage(){
+          var totalpage = document.getElementById("totalpage");
+          currentPage++ //让当前页页面+1  //5
+          if(currentPage>pageTotal){
+            alert("这是最后一页");
+            currentPage=pageTotal;
+          }else{
+            searchStudent()
+            totalpage.innerHTML = currentPage+"/"+pageTotal;
+          }
+        }
+
+        function prevPage(){
+          var totalpage = document.getElementById("totalpage");
+            currentPage--;
+            if(currentPage<=0){
+              currentPage=1;
+            }else{
+              searchStudent();
+              totalpage.innerHTML = currentPage+"/"+pageTotal;
+            }
+        }
+
+
+        /*1.总页数
+        * -- 每页显示多少条
+        * -- 总共有多少条数据*/
+
+        /*2.每页显示对应的数据
+        * -- 当前在第几页*/
+        function getPageTotal(){
+          var totalpage = document.getElementById("totalpage");
+          var numberBlock = document.getElementById("numberBlock");
+          myAjax("get","/getPageTotal.do","",function(){
+            console.log(xhr.responseText);
+
+            var data = JSON.parse(xhr.responseText);
+            pageTotal = data;
+              totalpage.innerHTML = currentPage+"/"+data;
+//            console.log(data[0].totalcount)
+            //生成页码
+            //作业: 点击页码要显示对应的数据
+            for(var i=1;i<=data;i++){
+              numberBlock.innerHTML += "<a href=''>"+i+"</a>"
+            }
+          },true)
+        }
+
+
+        //FormData [{username:zhangsan,age:15}]
+//        username="zhangsan"&age="15"
+
+
+    </script>
+</body>
+</html>

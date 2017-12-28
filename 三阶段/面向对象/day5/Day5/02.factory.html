@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  var xhrFactory = function(){
+    var xhr = null;
+    if(window.XMLHttpRequest){
+      xhr = new XMLHttpRequest(); //基类1
+    }else if(window.ActiveXObject){
+      xhr = new ActiveXObject("Microsoft.XMLHTTP");   //基类2
+    }
+    return xhr;
+  };
+
+  var ajax = function(){
+    var newxhr = xhrFactory();  //通过工厂自己来决定使用哪一套生产方式，只需要知道最后自己能够得到xhr对象就行了
+    console.log(newxhr);
+  }
+
+  ajax();
+
+</script>
+</body>
+</html>

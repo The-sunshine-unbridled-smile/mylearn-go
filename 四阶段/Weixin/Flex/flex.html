@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        .box{
+            height:500px;
+            background-color:cadetblue;
+            display:flex;
+            /*主轴的方向 main axis
+            默认是row
+            row-reverse | column | column-reverse*/
+            flex-direction:row;
+            /*默认情况下，项目都在主轴线上
+            定义要不要换行
+            默认值是nowrap 不换行
+            wrap换行
+            wrap-reverse换行在下方*/
+            flex-wrap:nowrap;
+            /*内容在主轴上对齐的方式
+            默认在主轴main axis对齐main start: flex-start
+            flex-end 对齐主轴的main end
+            center 全部居中对齐
+            space-between 两端对齐，项目之间的间隔相等
+            space-around 两侧间隔相等，项目之间的间隔比两侧大一倍 (x2)*/
+            justify-content:space-around;
+            /*内容在交叉轴上的对齐方式
+            flex-start | flex-end |center
+            baseline: 第一排文字的基线对齐
+            默认值为stretch: 占满整个容器*/
+            align-items:baseline;
+            /*多跟轴线的对齐方式，只有一个轴线，属性不起作用
+            flex-start | flex-end | space-between | space -around | stretch*/
+            align-content:space-around;
+        }
+        .item{
+            background-color:palevioletred;
+            border:1px solid white;
+            width:100px;
+            /*Flex-shrink: 默认值是1
+            当空间不够又不换行的时候每一个项目缩小的比例
+            设为0代表项目保持现在的宽度，剩下的其他项目按比例缩小*/
+
+            /*flex-grow: 默认值是0
+            有多于的空间默认是不会放大
+            设了1代表项目把剩下的空间等比例的放大*/
+            flex-grow:1;
+
+        }
+        .item:first-child{
+            /*font-size:40px;*/
+            /*项目顺序
+            数值越小越在前面，默认为0*/
+            /*order:10;*/
+            flex-shrink:0;
+            /*剩下的space:
+            按比例的分给*/
+            /*flex-grow:2;*/
+            /*每个项目要占多少空间
+            默认是auto*/
+            flex-basis:auto;
+
+        }
+        .item:nth-child(2){
+            flex-shrink:2
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+</body>
+</html>

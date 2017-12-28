@@ -1,0 +1,1 @@
+SELECT * FROM student,(SELECT s_class,AVG(s_gread) FROM student GROUP BY s_gread) AS zz WHERE student.s_class = zz.s_class AND s_grdea>AVG(s_gread);

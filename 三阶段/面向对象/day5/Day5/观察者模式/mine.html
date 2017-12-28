@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta content="text/html" charset="utf-8"/>
+</head>
+<style type="text/css">
+
+</style>
+<body>
+<h1>我的页面</h1>
+<button onclick="sendPaymentResult()">支付好了</button>
+</body>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+
+        // 被观察对象
+        var Subject = function() {
+            // 保存所有观察者
+            var observers = [];
+
+            //添加观察者
+            this.addObserver = function(observer) {
+                observers.push(observer)
+            }
+            //观察者收到通知后调用的callback
+            this.callback = function(msg) {
+                console.log(msg);
+            }
+            //通知观察者
+            this.notifyObservers = function(arg){
+                if (observers.length == 0) {
+                    return;
+                };
+                for (var i = 0, len = observers.length; i < len; i++) {
+                    observers[i].update(this, arg);
+                }
+            }
+        }
+        //被观察者对象实例化
+        var s = new Subject()
+        //添加H5页面的观察者对象进来
+        // console.log($(window.parent.objTest()));
+        // window.parent.objTest();
+        s.addObserver(this.parent.m);
+    //支付成功调用的函数
+    function sendPaymentResult(){
+        var result = "支付成功了";
+        //发送结果给H5页面
+        s.notifyObservers(result);
+    }
+
+</script>
+</html>

@@ -1,0 +1,13 @@
+html5,css3的新特性有哪些？用过哪些？
+jQuery里的attr方法和prop方法都可以获取属性，有什么区别？
+在firefox里面实现outerHTML
+AJAX里面的同步和异步的区别？
+用过哪些js库和框架？
+sessionStorage和localStorage的区别？
+为什么不从事自己本专业的工作？
+js的数据类型有哪些？函数属于什么数据类型？
+动画是自己写的吗？用的原生JS还是框架或库？
+caller和callee的区别?
+对象如何继承?
+
+

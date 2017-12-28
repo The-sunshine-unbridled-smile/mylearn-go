@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/day1/day1"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/day1.png",
+      "selectedIconPath": "images/selected.png"
+    },{
+      "pagePath": "pages/day1/day1",
+      "text": "Day1",
+      "iconPath": "images/day2.png",
+      "selectedIconPath": "images/selected.png"
+    }]
+  }
+}

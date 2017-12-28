@@ -1,0 +1,25 @@
+<view class="box">
+  <view class="header">
+    <text class="my{{classname}}">{{title}}</text>
+    <text wx:if="{{length>4}}" class="text-all">全部精品</text>
+    <text wx:elif="{{length>2&&length<=4}}" class="text-all">已显示所有精品</text>
+    <text wx:else>没有了。。。</text>    
+  </view>
+
+  <view class="content">
+    <view class="content-item" wx:for="{{arr}}">
+    <!--图片的缩放通过image mode属性控制
+    CSS控制的是image组件整体的大小  -->
+      <image src="{{item.src}}" mode="aspectFill"></image>
+      <view class="content-item-text">
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+    
+  </view>
+
+<!--bind开头会冒泡
+catch会阻止冒泡  -->
+  <button bindtap="changeTitle">修改title</button>
+
+</view>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>用户详情页面</h1>
+    用户名: <input type="text" id="username">
+    密码: <input type="text" id="password">
+
+    <script>
+        window.onload=getUser;
+
+        function getUser(){
+//          1.创建XHR对象
+          var xhr;
+          if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest()
+          }else{
+            xhr = new ActiveXObject("Microsoft.XMLHTTP")
+          }
+//          2.注册回调函数
+          xhr.onreadystatechange=function(){
+            if(xhr.readyState==4&&xhr.status==200){
+             console.log(xhr.responseText);
+             var data = JSON.parse(xhr.responseText);
+             if(data.length>0){
+               document.getElementById("username").value=data[0].u_username
+               document.getElementById("password").value=data[0].u_password
+             }
+
+            }
+          }
+//          3.发送请求
+          xhr.open("get","/getUser.do"+location.search);
+//          4.发送参数
+          xhr.send(null)
+
+        }
+    </script>
+</body>
+</html>

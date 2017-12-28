@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  (function single(){
+      var unqiue; //存的唯一的实例
+      function Person(){
+        //构造函数
+      }
+
+      function getObject(){
+//        判断
+        if(unique == undefined){
+          unique = new Person();
+        }
+        return unique;
+      }
+
+      return getObject
+    })()
+
+
+    var createDiv = (function(){
+
+      var result;    //只有函数在执行的时候定义1次
+
+        /*考虑想要创建的时候直接打开，还是先创建，再打开*/
+
+
+      return function(){
+        if(result==undefined){ //这里执行的div是上面的那个div,
+          result = document.createElement("div");
+          result.className="layer";
+          document.body.appendChild(result);
+        }
+        var show = function() {
+          result.style.display = "block";
+          document.body.style.overflow = "hidden";
+        }
+
+        return result;
+      }
+    })();
+
+</script>
+</body>
+</html>

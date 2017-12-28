@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1"></div>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    /*extends 继承*/
+    /*$.extend 扩展*/
+    var obj1 = {myname:"张三"}
+    var obj2 = {age:15,address:"成都"}
+    var obj3 = {myname:"李四"}
+
+    /*$.extend(obj,obj2,obj....N)*/
+    $.extend(obj1,obj2,obj3)
+    console.log(obj1);
+    console.log(obj2);
+
+//    $.extend(obj) ==> $.extend($,obj)
+    $.extend($,obj1)
+    console.log($.myname)
+    $.extend({
+      myfn:function(){
+        console.log("myfn方法")
+      }
+    })
+    $.myfn()
+
+    /*$.fn.extend
+    * $().*/
+    console.log($.fn===jQuery.prototype)
+
+    $.fn.extend({
+      mymsg:function(){
+        this.html("这是我的msg")
+      }
+    })
+
+    $("#div1").mymsg()
+
+    /*Bootstrap.js*/
+    $("#tooltip").tooltip()
+
+
+
+</script>
+</body>
+</html>

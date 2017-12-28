@@ -1,0 +1,80 @@
+1.table内的单元格的合并，如何合并行和合并列。
+2.写出尽可能多的添加事件的方法。
+3.用js如何给一个元素添加一个类名。
+4.写出内联，内嵌，外联样式的不同点。
+5.如何理解CSS选择器的优先级。
+6.form表单发送数据时用哪个属性来设置它的发送方式。
+7.padding和margin的区别是？
+8.
+ <style>
+        div{
+            background-color: red !important; height: 100px;
+
+        }
+        #div1{
+            background-color: green;
+        }
+        .div1{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+  <div class="div1" id="div1" style="background-color: blue"></div>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+        document.getElementById('div1').style.backgroundColor='black'
+    }
+
+</script>
+
+在ie6,7下是什么颜色、ff下是什么颜色、Oprah下是什么颜色、Mozart下面是什么颜色。为什么
+<style>
+        div{
+            background-color: red !important; height: 100px;
+
+        }
+        #div1{
+            background-color: green !important;
+        }
+        .div1{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+  <div class="div1" id="div1" style="background-color: blue"></div>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+        document.getElementById('div1').style.backgroundColor='black'
+    }
+
+</script>
+
+问题同上
+<style>
+        div{
+            background-color: red !important; height: 100px;
+
+        }
+        #div1{
+            background-color: green !important;
+        }
+        .div1{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+  <div class="div1" id="div1" style="background-color: blue !important"></div>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+        document.getElementById('div1').style.backgroundColor='black'
+    }
+
+</script>
+
+问题同上

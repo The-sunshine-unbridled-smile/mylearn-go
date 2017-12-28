@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    var houArr = [{uname:"xiaomin","uage":18},{uname:"dsfdssdf","uage":45}];
+
+    // 前台的处理格式[{"u":"xiaomin","a":18}];
+    //前台使用的json ， 采用的key如下。
+    //如何让前后台都不改，写一个适配的方法
+    //解决方案：创建一个新的json , json的键为前台的键，值为后台传过来的值
+
+    // 将后台对应，在前面对应的键名，写在一个数组中
+    var qkeys = ["name","age"];
+    function dataAdapter(data,qkeys){
+        var arr  = new Array();
+        for(var i=0;i<data.length;i++){
+            var obj = new Object();
+            //产生一个对应，让键名为前台的键名
+            // Object.keys 将键名以数组的形式返回
+            //  [{uname:"xiaomin","uage":18}];   使用Object.keys返回["uname","uage"]
+            var objkeys = Object.keys(data[i]);
+            for(var j in objkeys){
+                //  i : i表示第一几个键
+                obj[qkeys[j]] = data[i][objkeys[j]];
+            }
+            arr.push(obj);
+        }
+        return arr;
+    }
+
+    // 前台在解析数据时，使用dataAdapter方法返回的数据，而不是直接使用后台的数据就OK
+  var newData =  dataAdapter(houArr,qkeys);
+    console.log(newData);
+</script>
+</body>
+</html>

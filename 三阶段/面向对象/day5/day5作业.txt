@@ -1,0 +1,14 @@
+jQuery Extend作业
+15个CSS特效中选5个，进行封装
+在jQuery上进行扩展
+
+用户html格式:
+ <figure id="pic1">
+        <img src="image/cat.jpg" alt=""/>
+        <figcaption>萌萌哒小猫</figcaption>
+  </figure>
+  
+ 用户JS调用:
+ 通过调用方法传入对象配置，自行选择哪一个特效
+ $("#pic1").myPic({effect:"b"})
+ $("#pic2").myPic({effect:"a"})

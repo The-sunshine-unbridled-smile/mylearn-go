@@ -1,0 +1,54 @@
+#slider{
+    height: 500px;
+    width: 800px;
+    overflow: hidden;
+    position:relative;
+}
+figure {
+    position: absolute;
+    overflow: hidden;
+}
+figure img{
+    width: 800px;
+    height: 500px;
+}
+div#changeDot {
+    position: absolute;
+    top: 40%;
+}
+/*轮播点点在左边*/
+.dotLeft{
+    left: 60px;
+}
+/*轮播点点在右边*/
+.dotRight {
+    position: absolute;
+    top: 40%;
+    right: 40px;
+}
+/*轮播点在下面*/
+.dotBottom{
+    position:absolute;
+    bottom:0px;
+}
+/*轮播点点在下面*/
+.dotBot{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: 999;
+    margin-left: 15px;
+    position: relative;
+    display: inline-block;
+}
+/*轮播点点在左右*/
+.dotLr{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: 999;
+    position: relative;
+    margin-top: 15px;
+}

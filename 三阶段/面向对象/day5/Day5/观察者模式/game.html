@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta content="text/html" charset="utf-8"/>
+</head>
+<style type="text/css">
+
+</style>
+<body>
+<h1>H5 GAME</h1>
+<button onclick="makePayment()">去支付===先点我点我点我</button>
+<div id="msg"></div>
+<iframe id="iframe" src="" frameborder="0"></iframe>
+
+</body>
+<script type="text/javascript">
+function objTest(){
+        console.log('这是父级方法')
+}
+    function makePayment(){
+        document.getElementById("iframe").src="mine.html"
+    }
+    // 观察者对象
+    var Observer = function() {
+        this.update = function(observable, obj) {
+            console.log("H5收到update");
+            if(typeof obj=="array"){
+                for (var i=0, len=obj.length; i<len; i++) {
+                    console.log(obj[i]);
+                }
+            }
+            //H5收到如果还要发东西回我的页面可以通过callback, observable就是被观察者
+            observable.callback("over over，H5页面收到");
+        }
+    }
+    //实例化观察者
+    var m = new Observer()
+
+</script>
+</html>

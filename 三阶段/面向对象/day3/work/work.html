@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="work.css">
+</head>
+<body>
+<section>
+    <div id="slider">
+        <figure>
+            <img src="images/banner1.jpg" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+        <figure>
+            <img src="images/banner2.jpg" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+        <figure>
+            <img src="images/banner5.jpg" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+        <figure>
+            <img src="images/banner6.jpg" alt=""/>
+            <figcaption></figcaption>
+        </figure>
+    </div>
+    <div id="dot" class="dot-left">
+        <div class="one"></div>
+        <div class="one"></div>
+        <div class="one"></div>
+        <div class="one"></div>
+    </div>
+    <div id="direction">
+        请选择小圆点所在的方向：
+        <select name="" id="">
+            <option value="top">上</option>
+            <option value="bottom">下</option>
+            <option value="left" selected>左</option>
+            <option value="right">右</option>
+        </select>
+    </div>
+</section>
+<script src="jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.js"></script>
+<script src="work.js"></script>
+<script>
+//    myFade($("figure"))
+openBook($("figure"));
+</script>
+</body>
+</html>

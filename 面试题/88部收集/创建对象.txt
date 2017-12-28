@@ -1,0 +1,199 @@
+/***传统的创建对象***/
+
+var person = new Object();
+
+person.name = “lancer”;
+
+person.age = 24;
+
+person.job = “UI”;
+
+person.sayName = function(){
+
+alert(this.name);
+
+}
+
+person.sayName();
+
+/***工厂模式***/
+
+function createPerson(name,age,job){
+
+var o = new Object();
+
+o.name = name;
+
+o.age = age;
+
+o.job = job;
+
+o.sayName = function(){
+
+alert(o.name);
+
+}
+
+return o;
+
+}
+
+var person1 = createPerson(“lancer”,24,”UI”);
+
+person1.sayName();
+
+/***构造函数***/
+
+function Person(name,age,job){
+
+this.name = name;
+
+this.age = age;
+
+this.job =job;
+
+this.sayName = function(){
+
+alert(this.name)
+
+}
+
+}
+
+var person1 = createPerson(“lancer”,24,”UI”);
+
+person1.sayName();
+
+/***原型模式***/
+
+function Person(){
+
+}
+
+Person.prototype.name =”lancer”;
+
+Person.prototype.age =24;
+
+Person.prototype.job = “UI”;
+
+Person.prototype.sayName = function(){
+
+alert(this.name)
+
+}
+
+var person1 = new Person();
+
+person1.sayName();
+
+var person2 = new Person();
+
+person2.name =”lara”
+
+person2.sayName();
+
+/***简单原型模式***/
+
+function Person(){
+
+}
+
+Person.prototype = {
+
+name : “lancer”,
+
+age : 24,
+
+job : “UI”,
+
+sayName : function(){
+
+alert(this.name)
+
+}
+
+};
+
+var person1 = new Person();
+
+person1.sayName();
+
+/***构造函数和原型模式***/
+
+function Person(name,age,job){
+
+this.name = name;
+
+this.age = age;
+
+this.job =job;
+
+}
+
+Person.prototype = {
+
+constructor :Person,
+
+sayName : function(){
+
+alert(this.name)
+
+}
+
+};
+
+var person1 = new Person(“lancer”,”24″,”UI”);
+
+person1.sayName();
+
+/***动态原型模式***/
+
+function Person(name,age,job){
+
+this.name = name;
+
+this.age = age;
+
+this.job =job;
+
+}
+
+if(typeof this.sayName !=”function”){
+
+Person.prototype = {
+
+constructor :Person,
+
+sayName : function(){
+
+alert(this.name)
+
+}
+
+};
+
+}
+
+var person1 = new Person(“lancer”,”24″,”UI”);
+
+person1.sayName();
+
+/***稳妥构造函数***/
+
+var Person = function(name,age,job){
+
+var O = new Object();
+
+O.sayName = function(){
+
+alert(name);
+
+};
+
+return O
+
+}
+
+var person1 = Person(“lancer”,24,”UI”);
+
+person1.sayName();

@@ -1,0 +1,46 @@
+@color: purple;
+@mediaa: mobile;
+/*同一个class定义多套模板
+根据必须要传入的参数的数量去自动选择用哪一套模板
+
+通过固定值来限定使用哪一套模板
+*/
+.myBorder(before,@bdcolor){
+  border:2px solid @bdcolor
+}
+/*定义模板*/
+.myBorder(after,@bdwidth:1px,@bdcolor){
+  border:@bdwidth dashed @bdcolor;
+}
+
+
+.myColor(@mycolor,@fontsize:10px){
+  color:@mycolor;
+  font-size:@fontsize;
+  background-color:greenyellow;
+}
+/*条件判断，如果有重复的模板，写在最后
+when(关系运算符，可以是传进来的参数，也可以是变量值) and (条件2)*/
+.myColor(@mycolor,@fontsize:25px) when (@fontsize>20px){
+  color:@mycolor;
+  font-size:@fontsize;
+  background-color:pink;
+}
+
+/*加上默认参数*/
+.mySBorder(@bdtop:1px,@bdleft:1px,@bdright:1px,@bdbottom:1px,@bdradius:10px){
+  border-top:@bdtop solid blue;
+  border-left:@bdleft solid green;
+  border-right:@bdright solid red;
+  border-bottom:@bdbottom solid pink;
+  border-radius:@bdradius;
+}
+/*Mixin条件调用- When*/
+/*2次筛选，用在div2,如果条件满足就会用这套样式，div1还是旧的*/
+.mySBorder(@bdtop:1px,@bdleft:1px,@bdright:1px,@bdbottom:1px,@bdradius:10px) when (@bdradius<10px){
+  border-top:@bdtop solid orange;
+  border-left:@bdleft solid orange;
+  border-right:@bdright solid orange;
+  border-bottom:@bdbottom solid orange;
+  border-radius:@bdradius;
+}

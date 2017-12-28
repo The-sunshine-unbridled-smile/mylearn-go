@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<input type="text" id="username">
+<button id="btn">存到storage</button>
+<body>
+<!--
+Local Storage
+Session Storage
+-->
+<script>
+    document.getElementById("btn").onclick=function(){
+//      var username = document.getElementById("username").value
+//      sessionStorage.user = username
+      var obj = {name:"zhangsan",age:15};
+      obj = JSON.stringify(obj);
+      localStorage.user = obj
+      location.href="successstorage.html"
+//      localStorage.getItem("key") localStorage.setItem("key","value")
+    }
+
+</script>
+
+</body>
+</html>
