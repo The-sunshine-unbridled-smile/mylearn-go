@@ -1,0 +1,18 @@
+div.home-show{
+    height:100px;
+    background:none;
+    display: inline-block;
+    color: #fff;
+    padding-left: 9%;
+    padding-top: 10px;
+}
+.home-show-title{
+    display: inline;
+}
+.home-show-content {
+    margin-top: 15px;
+}
+.home-show-content-num{
+    font-size:30px;
+    font-weight: bolder;
+}

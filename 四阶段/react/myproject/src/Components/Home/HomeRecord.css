@@ -1,0 +1,17 @@
+.home-record-list {
+    display: inline-block;
+    margin-top: 15px;
+}
+.home-record-list:nth-child(2){
+    margin-left:12%;
+}
+.home-record-list:nth-child(3){
+    margin-left: 12%;
+}
+.home-record-list-icon {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+}

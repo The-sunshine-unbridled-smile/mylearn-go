@@ -1,0 +1,14 @@
+.header-div{
+    background-color: #2199E9;
+    width: 90%;
+    color: white;
+    font-size: 16px;
+    padding:3% 5%;
+    text-align: center;
+    letter-spacing: 3px;
+    position: relative;
+}
+.prev{
+    position: absolute;
+    left: 5%;
+}

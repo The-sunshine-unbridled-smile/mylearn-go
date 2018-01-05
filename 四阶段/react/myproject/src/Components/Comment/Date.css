@@ -1,0 +1,13 @@
+.com{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 3% 0;
+    background-color:white;
+}
+.icon{
+    color: rgba(128,128,128,.5);
+}
+.mydate{
+    margin: 0 15px;
+}

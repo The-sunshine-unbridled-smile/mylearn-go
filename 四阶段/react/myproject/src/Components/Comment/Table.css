@@ -1,0 +1,21 @@
+.comm{
+    border: 1px solid rgba(128,128,128,.1);
+    font-size: 14px;
+    width: 90%;
+    height: 50px;
+    padding: 0 5%;
+    line-height: 50px;
+    font-family: "微软雅黑";
+    background-color: white;
+}
+.mylside{
+    float: left;
+
+}
+.myrside{
+    float: right;
+    color: rgba(128,128,128,.5);
+}
+.myrside span{
+    margin-left: 20px;
+}

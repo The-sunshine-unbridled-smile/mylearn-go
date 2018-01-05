@@ -1,0 +1,15 @@
+.active{
+    color:green;
+    font-weight:bold;
+}
+nav ul li{
+    list-style: none;
+    float:left;
+    width:100px;
+}
+nav ul{
+    height:50px;
+}
+a{
+    text-decoration: none;
+}

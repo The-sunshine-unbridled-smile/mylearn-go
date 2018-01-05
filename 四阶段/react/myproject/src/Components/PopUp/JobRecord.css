@@ -1,0 +1,47 @@
+.job-record-menu{
+    height:40px;
+    background-color: deepskyblue;
+    line-height: 40px;
+}
+.job-record-list{
+    text-align: center;
+    margin-top:20px;
+}
+table{
+    width: 75%;
+    margin:0 auto;
+    height:40%;
+}
+td {
+    height: 30px;
+    color:skyblue;
+    border:1px solid gray;
+}
+.job-record-footer{
+    /*margin-top: 250px;*/
+    /*margin-top: 90%;*/
+    position: fixed;
+    bottom: 1px;
+    margin: 0 auto;
+    width:100%;
+}
+.job-record-footer span{
+    padding-left:20%;
+}
+.job-record {
+    height: 70%;
+    background-color: #fff;
+    /*margin-top: 300px;*/
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+}
+.job-record-menu-left {
+    color: #fff;
+    text-align: left;
+    padding-left: 10px;
+}
+.job-record-menu-left span{
+    padding-left: 10px;
+}

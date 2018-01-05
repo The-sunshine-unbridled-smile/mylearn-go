@@ -1,0 +1,41 @@
+ .home-header{
+     height: 400px;
+     background-image: url('../img/home-beijing.png');
+     position: relative;
+     background-size:cover;
+ }
+ .home-header-nav{
+     color: #ffffff;
+     padding-top: 10px;
+     position: relative;
+
+ }
+ .home-header-banner{
+     color: #ffffff;
+     padding-top:80px;
+ }
+ .myCount{
+     font-size: 40px;
+     font-weight: bolder;
+ }
+ .home-record{
+     background-color: #ffffff;
+     width: 90%;
+     margin: 0 auto;
+     box-shadow:3px 3px 2px gray;
+     margin-top: 10px;
+     height: 90px;
+ }
+ .home-menu-boot{
+     border-top:1px solid gray;
+     height:100px;
+ }
+ .Pop,.Pop-leave,.Pop-tally{
+     display: none;
+     background-color: rgba(128,128,128,0.6);
+     position: absolute;
+     width: 100%;
+     top: 0;
+     left: 0;
+     height: 100%;
+ }

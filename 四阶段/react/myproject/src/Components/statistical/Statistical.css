@@ -1,0 +1,11 @@
+.calculate{
+    width: 90%;
+    margin-left: 5%;
+    border: 1px solid rgba(128,128,128,.1);
+}
+.date{
+    margin: 15px 0;
+}
+.spending{
+    margin-top: 15px;
+}
