@@ -1,110 +1,25 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>new</title>
     <link rel="stylesheet" href="new.css">
 </head>
 <body>
 <header>
-    <div class="banner">
-        <div>
+    <div id="continer" >
+        <a href="#" id="logo">
             <img src="logo.png" alt="">
-        </div>
+        </a>
     </div>
-    <div class="allmenu">
-        <nav>
-            <ul class="menu">
-                <li><a class="link" href="">HOME</a></li>
-                <li><a class="link" href="">Accommodation</a></li>
-                <li><a class="link" href="">Services</a></li>
-                <li><a class="link" href="">Packages</a></li>
-                <li><a class="link" href="">Reviews</a></li>
-                <li><a class="link" href="">Location</a></li>
-                <li><a class="link" href="">News</a></li>
-                <li><a class="link" href="">Weddings</a></li>
-                <li><a class="link" href="">Gallery</a></li>
-                <li><a class="num" href="">07 5447 3422</a></li>
-            </ul>
-            <div id="logo">
-                <div class="logo-left">
-                    <img src="logo.png" alt="">
-                </div>
-                <div class="logo-right">
-                </div>
-            </div>
-        </nav>
-    </div>
+
 </header>
 <section>
-    <div id="main">
-        <div class="lside"></div>
-        <div class="rside">
-            <div id="r-main">
-                <div class="r-main-text">
-                    <img src="3.jpg" alt="">
-                    <div class="page">
-                        <p class="text">Family Group Reunion in Noosa</p>
-                        <p class="price">$666</p>
-                        <p class="text"> per night</p>
-                    </div>
-                </div>
-                <div class="r-main-text">
-                    <img src="2.jpg" alt="">
-                    <div class="page">
-                        <p class="text">Family Group Reunion in Noosa</p>
-                        <p class="price">$680</p>
-                        <p class="text"> per night(min.3.night)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="control">
-                <div id="prev" onclick="myPrev()">&lt;</div>
-                <div id="next" onclick="myNext()">&gt;</div>
-            </div>
-            <div class="tags">
-                <a href="">Book Now</a>
-                <a href="">Reviews</a>
-                <a href="">Pakeages</a>
-            </div>
-        </div>
-    </div>
-    
-</section> 
+
+</section>
 <footer>
 
 </footer>
+
 </body>
-<script>
-    window.onscroll = function () {
-        var t = document.documentElement.scrollTop || document.body.scrollTop;
-
-    }
-
-
-
-
-    function myPrev() {
-        var myMain=document.getElementById("r-main");  //装有所有轮播图片的div
-        var  myList=document.getElementsByClassName("r-main-text");//单个轮播的图片清单
-        myMain.insertBefore(myList[1],myMain.firstChild);
-        myList[0].style.marginLeft="-728px";
-        setTimeout(function () {
-            myList[0].style.marginLeft="0";
-        },300)
-    }
-    function myNext() {
-        var myMain=document.getElementById("r-main");  //装有所有轮播图片的div
-        var  myList=document.getElementsByClassName("r-main-text");//单个轮播的图片清单
-        myList[0].style.marginLeft="-728px";
-        setTimeout(function () {
-            myList[0].style.marginLeft="0";
-            myMain.appendChild(myList[0])
-        },300)
-    }
-</script>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    /**
+     * 求并集
+     * /
+
+     /*var arr1 = [1,2,3,4,5,6];
+        var arr2 = [101,4,8,9];
+
+            union = function (a,b) {
+                for(var i=0;i<b.length;i++){
+                    var newarr = {};
+                  a.push(b[i]);
+                    console.log(a);
+                }
+            }
+            union(arr1,arr2);*/
+
+
+    var arr = [1,2,3,4,5,6];
+    shuffle = function (w) {
+        w.sort(function(){
+            return 0.5 - Math.random();// 前一个大于后一个，如果返回整数就是升序排列，相反可得降序排列
+        });
+        console.log(arr);
+    }
+    shuffle(arr)
+</script>
+</body>
+</html>
